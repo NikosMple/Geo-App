@@ -1,0 +1,82 @@
+[
+  {
+    "continent": "Africa",
+    "question": "What is the capital of Benin?",
+    "answer": "Porto-Novo",
+    "options": ["Porto-Novo", "Cotonou", "Parakou", "Djougou"],
+    "difficulty": "hard",
+    "points": 25
+  },
+  {
+    "continent": "Oceania",
+    "question": "What is the capital of Nauru?",
+    "answer": "Yaren",
+    "options": ["Yaren", "Aiwo", "Denigomodu", "Baiti"],
+    "difficulty": "hard",
+    "points": 25
+  },
+  {
+    "continent": "Asia",
+    "question": "What is the capital of Myanmar?",
+    "answer": "Naypyidaw",
+    "options": ["Naypyidaw", "Yangon", "Mandalay", "Nay Pyi Taw"],
+    "difficulty": "hard",
+    "points": 25
+  },
+  {
+    "continent": "South America",
+    "question": "What is the capital of Bolivia?",
+    "answer": "Sucre",
+    "options": ["Sucre", "La Paz", "Santa Cruz", "Cochabamba"],
+    "difficulty": "hard",
+    "points": 25
+  },
+  {
+    "continent": "Africa",
+    "question": "What is the capital of Equatorial Guinea?",
+    "answer": "Malabo",
+    "options": ["Malabo", "Bata", "Mongomo", "Ebebiyín"],
+    "difficulty": "hard",
+    "points": 25
+  },
+  {
+    "continent": "Europe",
+    "question": "What is the capital of San Marino?",
+    "answer": "San Marino",
+    "options": ["San Marino", "Serravalle", "Borgo Maggiore", "Domagnano"],
+    "difficulty": "hard",
+    "points": 25
+  },
+  {
+    "continent": "Asia",
+    "question": "What is the capital of Sri Lanka?",
+    "answer": "Sri Jayawardenepura Kotte",
+    "options": ["Sri Jayawardenepura Kotte", "Colombo", "Kandy", "Galle"],
+    "difficulty": "hard",
+    "points": 25
+  },
+  {
+    "continent": "Oceania",
+    "question": "What is the capital of Federated States of Micronesia?",
+    "answer": "Palikir",
+    "options": ["Palikir", "Weno", "Kolonia", "Tofol"],
+    "difficulty": "hard",
+    "points": 25
+  },
+  {
+    "continent": "Africa",
+    "question": "What is the capital of Djibouti?",
+    "answer": "Djibouti City",
+    "options": ["Djibouti City", "Ali Sabieh", "Dikhil", "Arta"],
+    "difficulty": "hard",
+    "points": 25
+  },
+  {
+    "continent": "Europe",
+    "question": "What is the capital of Liechtenstein?",
+    "answer": "Vaduz",
+    "options": ["Vaduz", "Schaan", "Triesen", "Balzers"],
+    "difficulty": "hard",
+    "points": 25
+  }
+]

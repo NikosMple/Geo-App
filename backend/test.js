@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 // 1. Test: Διάβασμα JSON
 function loadQuestions() {
   try {
-    const filePath = path.join(__dirname, 'data/capitals/europe.json');
+    const filePath = path.join(__dirname, 'data/capitals/boss.json');
     const data = fs.readFileSync(filePath, 'utf8');
     const questions = JSON.parse(data);
     

@@ -1,0 +1,82 @@
+[
+  {
+    "continent": "Oceania",
+    "question": "What is the capital of Australia?",
+    "answer": "Canberra",
+    "options": ["Canberra", "Sydney", "Melbourne", "Brisbane"],
+    "difficulty": "easy",
+    "points": 5
+  },
+  {
+    "continent": "Oceania",
+    "question": "What is the capital of New Zealand?",
+    "answer": "Wellington",
+    "options": ["Wellington", "Auckland", "Christchurch", "Queenstown"],
+    "difficulty": "easy",
+    "points": 5
+  },
+  {
+    "continent": "Oceania",
+    "question": "What is the capital of Papua New Guinea?",
+    "answer": "Port Moresby",
+    "options": ["Port Moresby", "Lae", "Madang", "Mount Hagen"],
+    "difficulty": "easy",
+    "points": 5
+  },
+  {
+    "continent": "Oceania",
+    "question": "What is the capital of Fiji?",
+    "answer": "Suva",
+    "options": ["Suva", "Nadi", "Lautoka", "Labasa"],
+    "difficulty": "easy",
+    "points": 5
+  },
+  {
+    "continent": "Oceania",
+    "question": "What is the capital of Solomon Islands?",
+    "answer": "Honiara",
+    "options": ["Honiara", "Auki", "Gizo", "Kira Kira"],
+    "difficulty": "medium",
+    "points": 10
+  },
+  {
+    "continent": "Oceania",
+    "question": "What is the capital of Vanuatu?",
+    "answer": "Port Vila",
+    "options": ["Port Vila", "Luganville", "Lenakel", "Norsup"],
+    "difficulty": "medium",
+    "points": 10
+  },
+  {
+    "continent": "Oceania",
+    "question": "What is the capital of Samoa?",
+    "answer": "Apia",
+    "options": ["Apia", "Salelologa", "Asau", "Faleolo"],
+    "difficulty": "medium",
+    "points": 10
+  },
+  {
+    "continent": "Oceania",
+    "question": "What is the capital of Tonga?",
+    "answer": "Nukuʻalofa",
+    "options": ["Nukuʻalofa", "Neiafu", "Ohonua", "Pangai"],
+    "difficulty": "hard",
+    "points": 15
+  },
+  {
+    "continent": "Oceania",
+    "question": "What is the capital of Kiribati?",
+    "answer": "South Tarawa",
+    "options": ["South Tarawa", "Betio", "Bairiki", "London"],
+    "difficulty": "hard",
+    "points": 15
+  },
+  {
+    "continent": "Oceania",
+    "question": "What is the capital of Federated States of Micronesia?",
+    "answer": "Palikir",
+    "options": ["Palikir", "Weno", "Kolonia", "Tofol"],
+    "difficulty": "hard",
+    "points": 15
+  }
+]
