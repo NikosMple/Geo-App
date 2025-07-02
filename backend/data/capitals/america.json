@@ -4,239 +4,209 @@
     "question": "What is the capital of United States?",
     "answer": "Washington D.C.",
     "options": ["Washington D.C.", "New York", "Los Angeles", "Chicago"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Canada?",
     "answer": "Ottawa",
     "options": ["Ottawa", "Toronto", "Vancouver", "Montreal"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Mexico?",
     "answer": "Mexico City",
     "options": ["Mexico City", "Guadalajara", "Monterrey", "Puebla"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Brazil?",
     "answer": "Brasília",
     "options": ["Brasília", "Rio de Janeiro", "São Paulo", "Salvador"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Argentina?",
     "answer": "Buenos Aires",
     "options": ["Buenos Aires", "Cordoba", "Rosario", "Mendoza"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Chile?",
     "answer": "Santiago",
     "options": ["Santiago", "Valparaíso", "Concepción", "La Serena"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Peru?",
     "answer": "Lima",
     "options": ["Lima", "Cusco", "Arequipa", "Trujillo"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Colombia?",
     "answer": "Bogotá",
     "options": ["Bogotá", "Medellín", "Cali", "Barranquilla"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Venezuela?",
     "answer": "Caracas",
     "options": ["Caracas", "Maracaibo", "Valencia", "Barquisimeto"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Cuba?",
     "answer": "Havana",
     "options": ["Havana", "Santiago de Cuba", "Camagüey", "Holguín"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Dominican Republic?",
     "answer": "Santo Domingo",
     "options": ["Santo Domingo", "Santiago de los Caballeros", "La Romana", "San Pedro de Macorís"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Haiti?",
     "answer": "Port-au-Prince",
     "options": ["Port-au-Prince", "Cap-Haïtien", "Gonaïves", "Les Cayes"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Costa Rica?",
     "answer": "San José",
     "options": ["San José", "Alajuela", "Cartago", "Heredia"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Panama?",
     "answer": "Panama City",
     "options": ["Panama City", "Colón", "David", "La Chorrera"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Honduras?",
     "answer": "Tegucigalpa",
     "options": ["Tegucigalpa", "San Pedro Sula", "La Ceiba", "El Progreso"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Guatemala?",
     "answer": "Guatemala City",
     "options": ["Guatemala City", "Quetzaltenango", "Mixco", "Villa Nueva"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Nicaragua?",
     "answer": "Managua",
     "options": ["Managua", "León", "Masaya", "Estelí"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of El Salvador?",
     "answer": "San Salvador",
     "options": ["San Salvador", "Santa Ana", "San Miguel", "Mejicanos"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Ecuador?",
     "answer": "Quito",
     "options": ["Quito", "Guayaquil", "Cuenca", "Santo Domingo"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Bolivia?",
     "answer": "Sucre",
     "options": ["Sucre", "La Paz", "Santa Cruz", "Cochabamba"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Paraguay?",
     "answer": "Asunción",
     "options": ["Asunción", "Ciudad del Este", "Encarnación", "Luque"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Uruguay?",
     "answer": "Montevideo",
     "options": ["Montevideo", "Salto", "Paysandú", "Rivera"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Suriname?",
     "answer": "Paramaribo",
     "options": ["Paramaribo", "Lelydorp", "Brokopondo", "Nieuw Nickerie"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Guyana?",
     "answer": "Georgetown",
     "options": ["Georgetown", "Linden", "New Amsterdam", "Corriverton"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Belize?",
     "answer": "Belmopan",
     "options": ["Belmopan", "Belize City", "San Ignacio", "Orange Walk Town"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of The Bahamas?",
     "answer": "Nassau",
     "options": ["Nassau", "Freeport", "Marsh Harbour", "George Town"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Trinidad and Tobago?",
     "answer": "Port of Spain",
     "options": ["Port of Spain", "San Fernando", "Chaguanas", "Arima"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Barbados?",
     "answer": "Bridgetown",
     "options": ["Bridgetown", "Speightstown", "Oistins", "Holetown"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Saint Lucia?",
     "answer": "Castries",
     "options": ["Castries", "Gros Islet", "Vieux Fort", "Soufrière"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Saint Kitts and Nevis?",
     "answer": "Basseterre",
     "options": ["Basseterre", "Charlestown", "Sandy Point", "Fig Tree"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   }
 ]

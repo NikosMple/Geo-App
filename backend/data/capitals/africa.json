@@ -4,239 +4,209 @@
     "question": "What is the capital of Egypt?",
     "answer": "Cairo",
     "options": ["Cairo", "Alexandria", "Giza", "Shubra El-Kheima"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of South Africa?",
     "answer": "Pretoria",
     "options": ["Pretoria", "Cape Town", "Johannesburg", "Durban"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Nigeria?",
     "answer": "Abuja",
     "options": ["Abuja", "Lagos", "Kano", "Ibadan"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Kenya?",
     "answer": "Nairobi",
     "options": ["Nairobi", "Mombasa", "Kisumu", "Nakuru"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Morocco?",
     "answer": "Rabat",
     "options": ["Rabat", "Casablanca", "Marrakech", "Fes"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Algeria?",
     "answer": "Algiers",
     "options": ["Algiers", "Oran", "Constantine", "Annaba"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Ethiopia?",
     "answer": "Addis Ababa",
     "options": ["Addis Ababa", "Dire Dawa", "Mekelle", "Gondar"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Ghana?",
     "answer": "Accra",
     "options": ["Accra", "Kumasi", "Tamale", "Takoradi"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Tanzania?",
     "answer": "Dodoma",
     "options": ["Dodoma", "Dar es Salaam", "Mwanza", "Arusha"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Democratic Republic of Congo?",
     "answer": "Kinshasa",
     "options": ["Kinshasa", "Lubumbashi", "Mbuji-Mayi", "Kananga"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Angola?",
     "answer": "Luanda",
     "options": ["Luanda", "Huambo", "Lobito", "Benguela"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Sudan?",
     "answer": "Khartoum",
     "options": ["Khartoum", "Omdurman", "Port Sudan", "Kassala"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Uganda?",
     "answer": "Kampala",
     "options": ["Kampala", "Entebbe", "Gulu", "Lira"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Mozambique?",
     "answer": "Maputo",
     "options": ["Maputo", "Matola", "Nampula", "Beira"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Madagascar?",
     "answer": "Antananarivo",
     "options": ["Antananarivo", "Toamasina", "Antsirabe", "Fianarantsoa"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Tunisia?",
     "answer": "Tunis",
     "options": ["Tunis", "Sfax", "Sousse", "Kairouan"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Libya?",
     "answer": "Tripoli",
     "options": ["Tripoli", "Benghazi", "Misrata", "Tarhuna"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Cameroon?",
     "answer": "Yaoundé",
     "options": ["Yaoundé", "Douala", "Garoua", "Kousséri"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Ivory Coast?",
     "answer": "Yamoussoukro",
     "options": ["Yamoussoukro", "Abidjan", "Bouaké", "Daloa"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Senegal?",
     "answer": "Dakar",
     "options": ["Dakar", "Touba", "Thiès", "Rufisque"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Zambia?",
     "answer": "Lusaka",
     "options": ["Lusaka", "Ndola", "Kitwe", "Livingstone"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Rwanda?",
     "answer": "Kigali",
     "options": ["Kigali", "Butare", "Gisenyi", "Ruhengeri"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Benin?",
     "answer": "Porto-Novo",
     "options": ["Porto-Novo", "Cotonou", "Parakou", "Djougou"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Togo?",
     "answer": "Lomé",
     "options": ["Lomé", "Sokodé", "Kara", "Kpalimé"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Sierra Leone?",
     "answer": "Freetown",
     "options": ["Freetown", "Bo", "Kenema", "Makeni"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Eritrea?",
     "answer": "Asmara",
     "options": ["Asmara", "Keren", "Massawa", "Assab"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Djibouti?",
     "answer": "Djibouti City",
     "options": ["Djibouti City", "Ali Sabieh", "Dikhil", "Arta"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Comoros?",
     "answer": "Moroni",
     "options": ["Moroni", "Mutsamudu", "Fomboni", "Domoni"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Seychelles?",
     "answer": "Victoria",
     "options": ["Victoria", "Anse Boileau", "Beau Vallon", "Anse Royale"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Sao Tome and Principe?",
     "answer": "São Tomé",
     "options": ["São Tomé", "Neves", "Santo António", "Trindade"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   }
 ]

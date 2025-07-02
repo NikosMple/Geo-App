@@ -4,239 +4,209 @@
     "question": "What is the capital of China?",
     "answer": "Beijing",
     "options": ["Beijing", "Shanghai", "Hong Kong", "Guangzhou"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of India?",
     "answer": "New Delhi",
     "options": ["New Delhi", "Mumbai", "Kolkata", "Bengaluru"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Japan?",
     "answer": "Tokyo",
     "options": ["Tokyo", "Osaka", "Kyoto", "Nagoya"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of South Korea?",
     "answer": "Seoul",
     "options": ["Seoul", "Busan", "Incheon", "Daegu"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Indonesia?",
     "answer": "Jakarta",
     "options": ["Jakarta", "Surabaya", "Bandung", "Medan"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Thailand?",
     "answer": "Bangkok",
     "options": ["Bangkok", "Chiang Mai", "Pattaya", "Phuket"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Vietnam?",
     "answer": "Hanoi",
     "options": ["Hanoi", "Ho Chi Minh City", "Da Nang", "Can Tho"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Philippines?",
     "answer": "Manila",
     "options": ["Manila", "Quezon City", "Davao City", "Cebu City"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Malaysia?",
     "answer": "Kuala Lumpur",
     "options": ["Kuala Lumpur", "George Town", "Ipoh", "Johor Bahru"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Singapore?",
     "answer": "Singapore",
     "options": ["Singapore", "Jurong East", "Woodlands", "Tampines"],
-    "difficulty": "easy",
-    "points": 5
+    "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Saudi Arabia?",
     "answer": "Riyadh",
     "options": ["Riyadh", "Jeddah", "Mecca", "Medina"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of United Arab Emirates?",
     "answer": "Abu Dhabi",
     "options": ["Abu Dhabi", "Dubai", "Sharjah", "Al Ain"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Turkey?",
     "answer": "Ankara",
     "options": ["Ankara", "Istanbul", "Izmir", "Bursa"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Iran?",
     "answer": "Tehran",
     "options": ["Tehran", "Mashhad", "Isfahan", "Shiraz"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Iraq?",
     "answer": "Baghdad",
     "options": ["Baghdad", "Mosul", "Basra", "Erbil"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Pakistan?",
     "answer": "Islamabad",
     "options": ["Islamabad", "Karachi", "Lahore", "Faisalabad"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Afghanistan?",
     "answer": "Kabul",
     "options": ["Kabul", "Kandahar", "Herat", "Mazar-i-Sharif"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Uzbekistan?",
     "answer": "Tashkent",
     "options": ["Tashkent", "Samarkand", "Namangan", "Andijan"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Kazakhstan?",
     "answer": "Astana",
     "options": ["Astana", "Almaty", "Shymkent", "Karaganda"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Nepal?",
     "answer": "Kathmandu",
     "options": ["Kathmandu", "Pokhara", "Lalitpur", "Biratnagar"],
-    "difficulty": "medium",
-    "points": 10
+    "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Sri Lanka?",
     "answer": "Sri Jayawardenepura Kotte",
     "options": ["Sri Jayawardenepura Kotte", "Colombo", "Kandy", "Galle"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Myanmar?",
     "answer": "Naypyidaw",
     "options": ["Naypyidaw", "Yangon", "Mandalay", "Nay Pyi Taw"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Cambodia?",
     "answer": "Phnom Penh",
     "options": ["Phnom Penh", "Siem Reap", "Battambang", "Sihanoukville"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Laos?",
     "answer": "Vientiane",
     "options": ["Vientiane", "Luang Prabang", "Savannakhet", "Pakse"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Mongolia?",
     "answer": "Ulaanbaatar",
     "options": ["Ulaanbaatar", "Erdenet", "Darkhan", "Choibalsan"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Oman?",
     "answer": "Muscat",
     "options": ["Muscat", "Salalah", "Sohar", "Nizwa"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Yemen?",
     "answer": "Sana'a",
     "options": ["Sana'a", "Aden", "Ta'izz", "Hodeidah"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Jordan?",
     "answer": "Amman",
     "options": ["Amman", "Zarqa", "Irbid", "Russeifa"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Azerbaijan?",
     "answer": "Baku",
     "options": ["Baku", "Ganja", "Sumqayit", "Mingachevir"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Georgia?",
     "answer": "Tbilisi",
     "options": ["Tbilisi", "Batumi", "Kutaisi", "Rustavi"],
-    "difficulty": "hard",
-    "points": 15
+    "difficulty": "hard"
   }
 ]

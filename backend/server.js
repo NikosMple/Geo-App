@@ -3,24 +3,25 @@ import cors from 'cors';
 import Capitals from './routes/capitals.js'
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
+// Fixed CORS configuration - allow both ports
 app.use(cors({
-  origin: 'http://localhost:3001'
+  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-
 app.use(express.json());
-app.use(cors());
-
 
 app.use('/capitals', Capitals);
 
-app.get('/', (req, res) => {
-    res.send('hello')
-})
-
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', message: 'Server is running' });
+});
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`)
+    console.log(`🚀 Server running on http://localhost:${port}`)
+    console.log(`📡 CORS enabled for localhost:3000 and localhost:3001`);
 })

@@ -1,13 +1,62 @@
-# React + Vite
+# Geo-Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a quiz game built with React.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To get a local copy up and running, follow these simple steps.
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# geo
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/your_username_/Project-Name.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+
+### Running the application
+
+```sh
+npm start
+```
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start` or `npm run dev`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+## Dependencies
+
+*   **react**: A JavaScript library for building user interfaces.
+*   **react-dom**: Serves as the entry point to the DOM and server renderers for React.
+*   **react-router-dom**: DOM bindings for React Router.
+*   **react-scripts**: Configuration and scripts for Create React App.
+
+## Dev Dependencies
+
+*   **tailwindcss**: A utility-first CSS framework for rapid UI development.
