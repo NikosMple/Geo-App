@@ -14,14 +14,12 @@ app.use(cors({
 
 app.use(express.json());
 
-app.use('/capitals', Capitals);
+app.use('/api', Capitals);
 
-// Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
 
 app.listen(port, () => {
-    console.log(`🚀 Server running on http://localhost:${port}`)
-    console.log(`📡 CORS enabled for localhost:3000 and localhost:3001`);
+    console.log(`Server running on http://localhost:${port}`)
 })

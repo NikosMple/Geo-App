@@ -35,27 +35,34 @@ const ChooseContinent = ({ gameMode = 'capitals', onContinentSelect }) => {
   };
 
   useEffect(() => {
-    api.getContinents()
-      .then(data => {
-        const formattedContinents = data.map(continent => ({
-          name: continent.charAt(0).toUpperCase() + continent.slice(1),
-          value: continent,
-          icon: getIconForContinent(continent),
-          color: getColorForContinent(continent),
-          countries: []
-        }));
+    const fetchContinents = async () => {
+      try {
+        const data = await api.getContinents();
+        if (Array.isArray(data)) {
+          const formattedContinents = data.map(continent => ({
+            name: continent.charAt(0).toUpperCase() + continent.slice(1),
+            value: continent,
+            icon: getIconForContinent(continent),
+            color: getColorForContinent(continent),
+            countries: []
+          }));
 
-        const regularContinents = formattedContinents.filter(c => c.value !== 'boss');
-        const boss = formattedContinents.find(c => c.value === 'boss');
+          const regularContinents = formattedContinents.filter(c => c.value !== 'boss');
+          const boss = formattedContinents.find(c => c.value === 'boss');
 
-        setContinents(regularContinents);
-        setBossLevel(boss);
-        setLoading(false);
-      })
-      .catch(err => {
+          setContinents(regularContinents);
+          setBossLevel(boss);
+        } else {
+          throw new Error('Invalid data format from API');
+        }
+      } catch (err) {
         console.error('Error fetching continents:', err);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchContinents();
   }, []);
 
   useEffect(() => {
@@ -65,7 +72,11 @@ const ChooseContinent = ({ gameMode = 'capitals', onContinentSelect }) => {
   const handleContinentClick = (continent) => {
     setSelectedContinent(continent.name);
     setTimeout(() => {
-      navigate(`/difficulty/${continent.value}`);
+      if (continent.value === 'boss') {
+        navigate(`/quiz/capitals/boss/hard`);
+      } else {
+        navigate(`/difficulty/${continent.value}`);
+      }
     }, 300);
   };
 

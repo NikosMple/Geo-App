@@ -1,12 +1,7 @@
 import express from 'express';
-import { loadQuestions, getAvailableContinents } from '../services/dataService.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { loadQuestions, getAvailableContinents, getAvailableCountries } from '../services/dataService.js';
 
 const router = express.Router();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 router.get('/continents', async (req, res) => {
     try {
@@ -17,6 +12,16 @@ router.get('/continents', async (req, res) => {
         res.status(500).json({ error: 'Could not load continents' });
     }
 });
+
+router.get('/countries', async (req, res) => {
+    try {
+        const countries = await getAvailableCountries();
+        res.json(countries);
+    } catch (error) {
+        console.error('Error loading countries:', error);
+        res.status(500).json({ error: 'Could not load countries' });
+    }
+})
 
 router.get('/:continent/:difficulty', async (req, res) => {
     try {
@@ -37,15 +42,14 @@ router.get('/:continent/:difficulty', async (req, res) => {
         
         // Load questions from JSON file
         const questions = await loadQuestions(continent);
-        
+
+        //Filter Questions by Difficulty
         let filteredQuestions;
         
         if (difficulty === 'random') {
-            // Shuffle all questions for random mode
             filteredQuestions = questions.sort(() => Math.random() - 0.5);
             console.log(`Random mode: shuffled all ${filteredQuestions.length} questions`);
         } else {
-            // Filter by specific difficulty
             filteredQuestions = questions.filter(q => q.difficulty === difficulty);
             console.log(`Filtered to ${filteredQuestions.length} ${difficulty} questions`);
         }
@@ -153,7 +157,6 @@ router.get('/:continent', async (req, res) => {
         if (req.query.difficulty) {
             filteredQuestions = questions.filter(q => q.difficulty === req.query.difficulty);
         }
-
         res.json(filteredQuestions);
         
     } catch (error) {

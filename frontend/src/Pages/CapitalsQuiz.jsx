@@ -53,17 +53,16 @@ const CapitalsQuiz = () => {
       const result = await api.checkAnswer(continent, currentQuestion.question, null);
       console.log('Time expired - got correct answer:', result.correctAnswer);
       setCorrectAnswer(result.correctAnswer);
-      
       setTimeout(() => {
         nextQuestion();
-      }, 3000);
-      
-    } catch (error) {
+      }, 1);
+
+        } catch (error) {
       console.error('Error getting correct answer after time expiry:', error);
       setCorrectAnswer(currentQuestion.answer);
       setTimeout(() => {
         nextQuestion();
-      }, 3000);
+      }, 1);
     }
   };
 
@@ -124,14 +123,14 @@ const CapitalsQuiz = () => {
       
       setTimeout(() => {
         nextQuestion();
-      }, 2000);
+      }, 1000);
       
     } catch (error) {
       console.error("❌ Error checking answer:", error);
       setCorrectAnswer(currentQuestion.answer);
       setTimeout(() => {
         nextQuestion();
-      }, 2000);
+      }, 1000);
     }
   };
 

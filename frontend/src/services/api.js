@@ -1,33 +1,46 @@
-const API_BASE_URL = 'http://localhost:3001';
+import axios from 'axios';
 
 const api = {
   getContinents: async () => {
-    const response = await fetch(`${API_BASE_URL}/capitals/continents`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    try {
+      const response = await axios.get('/api/continents');
+      return response.data;
+    } catch (error) {
+      throw new Error(`HTTP error! status: ${error.response?.status || 'Network Error'}`);
     }
-    return response.json();
   },
 
   getCapitalsQuizQuestions: async (continent, difficulty) => {
-    const response = await fetch(`${API_BASE_URL}/capitals/${continent}/${difficulty}`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    try {
+      const response = await axios.get(`/api/${continent}/${difficulty}`);
+      return response.data;
+    } catch (error) {
+      throw new Error(`HTTP error! status: ${error.response?.status || 'Network Error'}`);
     }
-    return response.json();
   },
 
   checkAnswer: async (continent, questionText, userAnswer) => {
-    const response = await fetch(`${API_BASE_URL}/capitals/check`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ continent, question: questionText, userAnswer }),
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    try {
+      const response = await axios.post('/api/check', {
+        continent,
+        question: questionText,
+        userAnswer
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(`HTTP error! status: ${error.response?.status || 'Network Error'}`);
     }
-    return response.json();
   },
+
+  getCountries: async () => {
+    try{
+      const response = await axios.get('api/countries');
+      return response.data;
+    } catch (error) {
+      console.log('API Error:', error);
+      throw new Error(`HTTP error! status: ${error.response?.status || 'Network Error'}`);
+    }
+  }
 };
 
 export default api;

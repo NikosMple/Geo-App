@@ -1,4 +1,3 @@
-// test.js
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -13,8 +12,8 @@ function loadQuestions() {
     const data = fs.readFileSync(filePath, 'utf8');
     const questions = JSON.parse(data);
     
-    console.log('✅ JSON loaded successfully!');
-    console.log(`📊 Total questions: ${questions.length}`);
+    console.log('JSON loaded successfully!');
+    console.log(`Total questions: ${questions.length}`);
     return questions;
   } catch (error) {
     console.error('❌ Error loading JSON:', error);
