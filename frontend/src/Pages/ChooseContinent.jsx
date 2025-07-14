@@ -137,7 +137,7 @@ const ChooseContinent = ({ gameMode = 'capitals', onContinentSelect }) => {
         </header>
 
         <section className="text-center mb-16 animate-slide-up animation-delay-200">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 bg-gradient-to-r from-white via-blue-400 to-purple-400 bg-clip-text text-transparent leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 bg-gradient-to-r from-white via-blue-400 to-purple-400 bg-clip-text text-transparent leading-tight font-righteous">
             Choose Your Continent
           </h1>
           <p className="text-lg sm:text-xl text-white/80 mb-8 font-light max-w-2xl mx-auto">

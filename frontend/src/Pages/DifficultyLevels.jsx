@@ -34,7 +34,6 @@ const DifficultyLevels = () => {
       title: 'Easy', // Τίτλος
       icon: '🟢', // Εικονίδιο
       description: 'Perfect for beginners', // Περιγραφή
-      points: 5, // Πόντοι που δίνει
       color: 'from-emerald-500 to-green-600', // Gradient χρώματα
       borderColor: 'border-emerald-400/30', // Χρώμα περιγράμματος
       hoverColor: 'hover:border-emerald-400/60', // Χρώμα hover
@@ -45,7 +44,6 @@ const DifficultyLevels = () => {
       title: 'Medium',
       icon: '🟡',
       description: 'Good challenge level',
-      points: 10,
       color: 'from-yellow-500 to-orange-500',
       borderColor: 'border-yellow-400/30',
       hoverColor: 'hover:border-yellow-400/60',
@@ -56,7 +54,6 @@ const DifficultyLevels = () => {
       title: 'Hard',
       icon: '🔴',
       description: 'For geography experts',
-      points: 15,
       color: 'from-red-500 to-red-600',
       borderColor: 'border-red-400/30',
       hoverColor: 'hover:border-red-400/60',
@@ -67,7 +64,6 @@ const DifficultyLevels = () => {
       title: 'Random',
       icon: '🌈',
       description: 'Mix of all difficulty levels',
-      points: 'Varies', // Μεταβλητοί πόντοι
       color: 'from-purple-500 via-pink-500 to-red-500',
       borderColor: 'border-purple-400/30',
       hoverColor: 'hover:border-purple-400/60',
@@ -115,7 +111,7 @@ const DifficultyLevels = () => {
         {/* ===== TITLE SECTION ===== */}
         <section className="text-center mb-16 animate-slide-up animation-delay-200">
           {/* Main Title */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 bg-gradient-to-r from-white via-blue-400 to-purple-400 bg-clip-text text-transparent leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 bg-gradient-to-r from-white via-blue-400 to-purple-400 bg-clip-text text-transparent leading-tight font-righteous">
             Choose Difficulty Level
           </h1>
 
@@ -129,10 +125,6 @@ const DifficultyLevels = () => {
             <div className="flex items-center gap-2 text-white/70 text-sm bg-white/5 px-4 py-2 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
               <span className="text-lg">🎯</span>
               <span>4 Difficulty Levels</span>
-            </div>
-            <div className="flex items-center gap-2 text-white/70 text-sm bg-white/5 px-4 py-2 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
-              <span className="text-lg">⭐</span>
-              <span>Earn Points</span>
             </div>
           </div>
         </section>
@@ -187,8 +179,7 @@ const DifficultyLevels = () => {
                   <div
                     className={`inline-flex items-center gap-2 bg-gradient-to-r ${option.color} bg-opacity-20 border border-white/20 px-4 py-2 rounded-full text-white text-sm font-medium mb-6`}
                   >
-                    <span>⭐</span>
-                    <span>{option.points} Points</span>
+                
                   </div>
 
                   {/* Call to Action */}
@@ -220,7 +211,7 @@ const DifficultyLevels = () => {
             <h3 className="text-2xl font-bold text-white mb-4">How it works</h3>
 
             {/* Steps Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white/70">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white/70">
               {/* Step 1: Choose Level */}
               <div className="flex flex-col items-center gap-2">
                 <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-2xl">
@@ -235,14 +226,6 @@ const DifficultyLevels = () => {
                   📝
                 </div>
                 <span className="font-medium">Answer questions</span>
-              </div>
-
-              {/* Step 3: Earn Points */}
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-2xl">
-                  🏆
-                </div>
-                <span className="font-medium">Earn points</span>
               </div>
             </div>
           </div>

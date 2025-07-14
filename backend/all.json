@@ -637,13 +637,6 @@
     "difficulty": "hard"
   },
   {
-    "continent": "South America",
-    "question": "What is the capital of Bolivia?",
-    "answer": "Sucre",
-    "options": ["Sucre", "La Paz", "Santa Cruz", "Cochabamba"],
-    "difficulty": "hard"
-  },
-  {
     "continent": "Africa",
     "question": "What is the capital of Equatorial Guinea?",
     "answer": "Malabo",
@@ -938,6 +931,13 @@
     "difficulty": "hard"
   },
   {
+    "continent": "Oceania",
+    "question": "What is the capital of Kiribati?",
+    "answer": "South Tarawa",
+    "options": ["South Tarawa", "Betio", "Bairiki", "London"],
+    "difficulty": "hard"
+  },
+    {
     "continent": "Oceania",
     "question": "What is the capital of Kiribati?",
     "answer": "South Tarawa",

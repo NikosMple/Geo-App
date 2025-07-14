@@ -17,7 +17,7 @@ function loadQuestions() {
     return questions;
   } catch (error) {
     console.error('❌ Error loading JSON:', error);
-    return [];
+    return [];  
   }
 }
 

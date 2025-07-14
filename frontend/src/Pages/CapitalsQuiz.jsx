@@ -16,6 +16,8 @@ const CapitalsQuiz = () => {
   
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [correctAnswer, setCorrectAnswer] = useState(null);
+  const [isRevealed, setIsRevealed] = useState(false);
+  
   const [mounted, setMounted] = useState(false);
   const [timerKey, setTimerKey] = useState(0);
 
@@ -51,18 +53,12 @@ const CapitalsQuiz = () => {
     
     try {
       const result = await api.checkAnswer(continent, currentQuestion.question, null);
-      console.log('Time expired - got correct answer:', result.correctAnswer);
       setCorrectAnswer(result.correctAnswer);
-      setTimeout(() => {
-        nextQuestion();
-      }, 1);
-
-        } catch (error) {
+    } catch (error) {
       console.error('Error getting correct answer after time expiry:', error);
       setCorrectAnswer(currentQuestion.answer);
-      setTimeout(() => {
-        nextQuestion();
-      }, 1);
+    } finally {
+      setIsRevealed(true);
     }
   };
 
@@ -106,7 +102,7 @@ const CapitalsQuiz = () => {
     
     console.log(`👆 User selected: ${answer}`);
     pause();
-    setSelectedAnswer(answer);
+    setSelectedAnswer(answer); // Set selected answer immediately for pending state
     
     try {
       const result = await api.checkAnswer(continent, currentQuestion.question, answer);
@@ -121,16 +117,11 @@ const CapitalsQuiz = () => {
       
       setCorrectAnswer(result.correctAnswer);
       
-      setTimeout(() => {
-        nextQuestion();
-      }, 1000);
-      
     } catch (error) {
       console.error("❌ Error checking answer:", error);
       setCorrectAnswer(currentQuestion.answer);
-      setTimeout(() => {
-        nextQuestion();
-      }, 1000);
+    } finally {
+      setIsRevealed(true); // Reveal the result after API call is complete
     }
   };
 
@@ -140,12 +131,13 @@ const CapitalsQuiz = () => {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedAnswer(null);
       setCorrectAnswer(null);
+      setIsRevealed(false);
     } else {
       console.log('🏁 Quiz completed!');
       pause();
       navigate('/score', { 
         state: { 
-          score: selectedAnswer === correctAnswer ? score + 1 : score, 
+          score: score, 
           totalQuestions: questions.length, 
           continent, 
           difficulty 
@@ -153,6 +145,7 @@ const CapitalsQuiz = () => {
       });
     }
   };
+
 
   // Calculate timer state for Timer component
   const timeLeft = minutes * 60 + seconds;
@@ -217,13 +210,13 @@ const CapitalsQuiz = () => {
       
       <div className="relative z-10 p-6 sm:p-8 max-w-4xl mx-auto min-h-screen">
         <header className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-          <Link 
-            to={`/difficulty/${continent}`}
-            className="inline-flex items-center gap-2 text-white bg-white/10 border border-white/20 px-6 py-3 rounded-full cursor-pointer transition-all duration-300 backdrop-blur-lg text-base no-underline hover:bg-white/20 hover:-translate-y-1"
-          >
-            <span className="text-xl">←</span>
-            <span>Back to Difficulty</span>
-          </Link>
+        <Link
+          to={continent === 'boss' ? '/choose-continent' : `/difficulty/${continent}`}
+          className="inline-flex items-center gap-2 text-white bg-white/10 border border-white/20 px-6 py-3 rounded-full cursor-pointer transition-all duration-300 backdrop-blur-lg text-base no-underline hover:bg-white/20 hover:-translate-y-1"
+        >
+          <span className="text-xl">←</span>
+          <span>Back to {continent === 'boss' ? 'Continents' : 'Difficulty'}</span>
+        </Link>
           
           <div className="flex items-center gap-4">
             {/* Use the imported Timer component */}
@@ -267,50 +260,66 @@ const CapitalsQuiz = () => {
         <div className="flex-1 flex items-center justify-center">
           <div className="w-full max-w-2xl">
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 mb-8 text-center">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
                 {currentQuestion?.question}
               </h2>
+              <p className="text-white/60 text-lg">Select the correct capital</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {currentQuestion?.options?.map((option, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleAnswerSelect(option)}
-                  disabled={selectedAnswer !== null}
-                  className={`
-                    p-4 rounded-2xl font-medium text-lg transition-all duration-300 border-2
-                    ${
-                      selectedAnswer === null 
-                        ? 'bg-white/5 border-white/20 text-white hover:bg-white/10 hover:border-white/30 hover:-translate-y-1 hover:shadow-lg' 
-                        : selectedAnswer === 'TIME_EXPIRED'
-                          ? correctAnswer && option === correctAnswer
-                              ? 'bg-emerald-500/30 border-emerald-400 text-emerald-200 shadow-lg shadow-emerald-500/20'
-                              : 'bg-white/5 border-white/10 text-white/40'
-                        : selectedAnswer === option
-                          ? correctAnswer && option === correctAnswer
-                              ? 'bg-emerald-500/20 border-emerald-400 text-emerald-300'
-                              : correctAnswer && option !== correctAnswer
-                                ? 'bg-red-500/20 border-red-400 text-red-300'
-                                : 'bg-white/5 border-white/20 text-white'
-                          : correctAnswer && option === correctAnswer
-                              ? 'bg-emerald-500/20 border-emerald-400 text-emerald-300'
-                              : 'bg-white/5 border-white/10 text-white/50'
-                    }
-                    ${selectedAnswer !== null ? 'cursor-not-allowed' : 'cursor-pointer'}
-                  `}
-                >
-                  <div className="flex items-center justify-center gap-3">
-                    <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm font-bold">
-                      {String.fromCharCode(65 + index)}
-                    </span>
-                    <span>{option}</span>
-                  </div>
-                </button>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {currentQuestion?.options?.map((option, index) => {
+                const isSelected = selectedAnswer === option;
+                const isCorrect = correctAnswer === option;
+
+                let buttonClass = 'bg-white/5 border-white/20 text-white hover:bg-white/10 hover:border-white/30';
+
+                if (isSelected && !isRevealed) {
+                  // Pending state while waiting for API response
+                  buttonClass = 'bg-white/20 border-white/40 animate-pulse';
+                } else if (isRevealed) {
+                  // Result state
+                  if (isCorrect) {
+                    buttonClass = 'bg-emerald-500/30 border-emerald-400 text-white shadow-lg shadow-emerald-500/20';
+                  } else if (isSelected && !isCorrect) {
+                    buttonClass = 'bg-red-500/30 border-red-400 text-white shadow-lg shadow-red-500/20';
+                  } else {
+                    buttonClass = 'bg-white/5 border-white/10 text-white/50';
+                  }
+                }
+                
+                if (selectedAnswer === 'TIME_EXPIRED' && isCorrect) {
+                    buttonClass = 'bg-emerald-500/30 border-emerald-400 text-white shadow-lg shadow-emerald-500/20';
+                }
+
+                return (
+                  <button
+                    key={index}
+                    onClick={() => handleAnswerSelect(option)}
+                    disabled={selectedAnswer !== null} // Disable all buttons once one is selected
+                    className={`
+                      p-4 rounded-2xl font-medium text-lg transition-all duration-300 border-2 flex items-center justify-between
+                      ${buttonClass}
+                      ${selectedAnswer === null ? 'cursor-pointer transform hover:-translate-y-1.5' : 'cursor-not-allowed'}
+                    `}
+                  >
+                    <div className="flex items-center gap-4">
+                      <span className="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center text-sm font-bold">  
+                        {String.fromCharCode(65 + index)}
+                      </span>
+                      <span className="font-semibold">{option}</span>
+                    </div>
+                    {isRevealed && isCorrect && (
+                      <span className="text-2xl">✅</span>
+                    )}
+                    {isRevealed && isSelected && !isCorrect && (
+                      <span className="text-2xl">❌</span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
-            {((selectedAnswer && correctAnswer) || (selectedAnswer === 'TIME_EXPIRED' && correctAnswer)) && (
+            {isRevealed && (
               <div className="mt-6 text-center">
                 <div className={`text-lg font-medium ${
                   selectedAnswer === 'TIME_EXPIRED'
@@ -326,6 +335,17 @@ const CapitalsQuiz = () => {
                       : `❌ Wrong! The correct answer is ${correctAnswer}`
                   }
                 </div>
+              </div>
+            )}
+
+            {isRevealed && (
+              <div className="mt-8 text-center">
+                <button
+                  onClick={nextQuestion}
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+                >
+                  {currentQuestionIndex < questions.length - 1 ? 'Next Question →' : 'Finish Quiz 🏁'}
+                </button>
               </div>
             )}
           </div>
