@@ -1,4 +1,3 @@
-import React from 'react';
 
 const LaunchButton = ({ 
   text = "Launch", 
@@ -7,12 +6,11 @@ const LaunchButton = ({
   size = "medium",
   variant = "default",
   icon = null,
-  narrow = false, // New prop for narrow buttons
+  narrow = false, 
   className = "",
   ...props 
 }) => {
   
-  // Default arrow launch icon (clean and modern)
   const defaultIcon = (
     <svg 
       viewBox="0 0 24 24" 
@@ -30,14 +28,12 @@ const LaunchButton = ({
     </svg>
   );
 
-  // Size classes with narrow options
   const sizeClasses = {
     small: narrow ? "text-sm px-3 py-1.5" : "text-sm px-4 py-2",
     medium: narrow ? "text-base px-4 py-2" : "text-base px-6 py-3", 
     large: narrow ? "text-lg px-6 py-3" : "text-lg px-8 py-4"
   };
 
-  // Updated variant classes with better colors
   const variantClasses = {
     default: "bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 shadow-lg",
     success: "bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 shadow-lg shadow-green-500/25",
@@ -50,14 +46,12 @@ const LaunchButton = ({
     light: "bg-gradient-to-r from-gray-100 to-gray-200 hover:from-white hover:to-gray-100 text-gray-800 shadow-lg"
   };
 
-  // Icon size classes
   const iconSizeClasses = {
     small: "w-3.5 h-3.5",
     medium: "w-4 h-4",
     large: "w-5 h-5"
   };
 
-  // Text color based on variant
   const textColor = variant === 'light' ? 'text-gray-800' : 'text-white';
 
   return (

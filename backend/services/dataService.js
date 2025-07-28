@@ -43,7 +43,7 @@ export async function getAvailableCountries() {
         const countriesPath = path.join(__dirname, '../all.json')
         const fileContent = await fs.readFile(countriesPath, 'utf-8');
         const countries = JSON.parse(fileContent);
-        console.log('Total countries:', countries.length);
+        // console.log('Total countries:', countries.length);
         return countries;
     } catch (error) {
         console.error('Error reading available countries:', error);

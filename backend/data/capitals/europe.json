@@ -3,210 +3,210 @@
     "continent": "Europe",
     "question": "What is the capital of Germany?",
     "answer": "Berlin",
-    "options": ["Berlin", "Munich", "Hamburg", "Frankfurt"],
+    "options": ["Vienna", "Warsaw", "Berlin", "Munich"],
     "difficulty": "easy"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of France?",
     "answer": "Paris",
-    "options": ["Paris", "Lyon", "Marseille", "Nice"],
+    "options": ["Madrid", "Paris", "Amsterdam", "Brussels"],
     "difficulty": "easy"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Italy?",
     "answer": "Rome",
-    "options": ["Rome", "Milan", "Naples", "Turin"],
+    "options": ["Athens", "Rome", "Budapest", "Lisbon"],
     "difficulty": "easy"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Spain?",
     "answer": "Madrid",
-    "options": ["Madrid", "Barcelona", "Valencia", "Seville"],
+    "options": ["Dublin", "Oslo", "Madrid", "Berlin"],
     "difficulty": "easy"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Greece?",
     "answer": "Athens",
-    "options": ["Athens", "Thessaloniki", "Patras", "Larissa"],
+    "options": ["Athens", "Warsaw", "Prague", "Helsinki"],
     "difficulty": "easy"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of United Kingdom?",
     "answer": "London",
-    "options": ["London", "Manchester", "Birmingham", "Liverpool"],
+    "options": ["Edinburgh", "Dublin", "Cardiff", "London"],
     "difficulty": "easy"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Netherlands?",
     "answer": "Amsterdam",
-    "options": ["Amsterdam", "Rotterdam", "The Hague", "Utrecht"],
+    "options": ["Amsterdam", "Brussels", "Luxembourg", "The Hague"],
     "difficulty": "easy"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Portugal?",
     "answer": "Lisbon",
-    "options": ["Lisbon", "Porto", "Braga", "Coimbra"],
+    "options": ["Rome", "Lisbon", "Athens", "Madrid"],
     "difficulty": "easy"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Austria?",
     "answer": "Vienna",
-    "options": ["Vienna", "Salzburg", "Innsbruck", "Graz"],
+    "options": ["Prague", "Budapest", "Bern", "Vienna"],
     "difficulty": "easy"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Switzerland?",
     "answer": "Bern",
-    "options": ["Bern", "Zurich", "Geneva", "Basel"],
+    "options": ["Luxembourg", "Ljubljana", "Zurich", "Bern"],
     "difficulty": "easy"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Poland?",
     "answer": "Warsaw",
-    "options": ["Warsaw", "Kraków", "Gdansk", "Wrocław"],
+    "options": ["Riga", "Helsinki", "Bratislava", "Warsaw"],
     "difficulty": "medium"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Czech Republic?",
     "answer": "Prague",
-    "options": ["Prague", "Brno", "Ostrava", "Plzen"],
+    "options": ["Valletta", "Skopje", "Oslo", "Prague"],
     "difficulty": "medium"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Hungary?",
     "answer": "Budapest",
-    "options": ["Budapest", "Debrecen", "Szeged", "Miskolc"],
+    "options": ["Tallinn", "Sofia", "Budapest", "Zagreb"],
     "difficulty": "medium"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Sweden?",
     "answer": "Stockholm",
-    "options": ["Stockholm", "Gothenburg", "Malmö", "Uppsala"],
+    "options": ["Oslo", "Stockholm", "Helsinki", "Copenhagen"],
     "difficulty": "medium"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Norway?",
     "answer": "Oslo",
-    "options": ["Oslo", "Bergen", "Trondheim", "Stavanger"],
+    "options": ["Reykjavik", "Oslo", "Bern", "Dublin"],
     "difficulty": "medium"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Denmark?",
     "answer": "Copenhagen",
-    "options": ["Copenhagen", "Aarhus", "Odense", "Aalborg"],
+    "options": ["Vilnius", "Tallinn", "Riga", "Copenhagen"],
     "difficulty": "medium"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Finland?",
     "answer": "Helsinki",
-    "options": ["Helsinki", "Tampere", "Turku", "Oulu"],
+    "options": ["Stockholm", "Helsinki", "Reykjavik", "Oslo"],
     "difficulty": "medium"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Romania?",
     "answer": "Bucharest",
-    "options": ["Bucharest", "Cluj-Napoca", "Timișoara", "Iași"],
+    "options": ["Athens", "Bucharest", "Sofia", "Zagreb"],
     "difficulty": "medium"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Croatia?",
     "answer": "Zagreb",
-    "options": ["Zagreb", "Split", "Rijeka", "Osijek"],
+    "options": ["Zagreb", "Ljubljana", "Sarajevo", "Belgrade"],
     "difficulty": "medium"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Ireland?",
     "answer": "Dublin",
-    "options": ["Dublin", "Cork", "Galway", "Limerick"],
+    "options": ["Cardiff", "Dublin", "Edinburgh", "London"],
     "difficulty": "medium"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Estonia?",
     "answer": "Tallinn",
-    "options": ["Tallinn", "Tartu", "Narva", "Pärnu"],
+    "options": ["Riga", "Vilnius", "Tallinn", "Helsinki"],
     "difficulty": "hard"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Latvia?",
     "answer": "Riga",
-    "options": ["Riga", "Daugavpils", "Liepāja", "Jelgava"],
+    "options": ["Tallinn", "Minsk", "Riga", "Vilnius"],
     "difficulty": "hard"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Lithuania?",
     "answer": "Vilnius",
-    "options": ["Vilnius", "Kaunas", "Klaipėda", "Šiauliai"],
+    "options": ["Warsaw", "Vilnius", "Riga", "Tallinn"],
     "difficulty": "hard"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Slovakia?",
     "answer": "Bratislava",
-    "options": ["Bratislava", "Košice", "Prešov", "Nitra"],
+    "options": ["Zagreb", "Bratislava", "Sarajevo", "Ljubljana"],
     "difficulty": "hard"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Slovenia?",
     "answer": "Ljubljana",
-    "options": ["Ljubljana", "Maribor", "Celje", "Kranj"],
+    "options": ["Belgrade", "Ljubljana", "Sarajevo", "Zagreb"],
     "difficulty": "hard"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Bulgaria?",
     "answer": "Sofia",
-    "options": ["Sofia", "Plovdiv", "Varna", "Burgas"],
+    "options": ["Skopje", "Athens", "Sofia", "Bucharest"],
     "difficulty": "hard"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Albania?",
     "answer": "Tirana",
-    "options": ["Tirana", "Durrës", "Vlorë", "Shkodër"],
+    "options": ["Pristina", "Tirana", "Podgorica", "Skopje"],
     "difficulty": "hard"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of North Macedonia?",
     "answer": "Skopje",
-    "options": ["Skopje", "Bitola", "Kumanovo", "Prilep"],
+    "options": ["Tirana", "Podgorica", "Skopje", "Pristina"],
     "difficulty": "hard"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Montenegro?",
     "answer": "Podgorica",
-    "options": ["Podgorica", "Nikšić", "Pljevlja", "Bijelo Polje"],
+    "options": ["Sarajevo", "Podgorica", "Tirana", "Skopje"],
     "difficulty": "hard"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Moldova?",
     "answer": "Chișinău",
-    "options": ["Chișinău", "Tiraspol", "Bălți", "Bender"],
+    "options": ["Tiraspol", "Bălți", "Chișinău", "Bender"],
     "difficulty": "hard"
   }
 ]

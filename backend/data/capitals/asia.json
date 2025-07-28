@@ -3,210 +3,210 @@
     "continent": "Asia",
     "question": "What is the capital of China?",
     "answer": "Beijing",
-    "options": ["Beijing", "Shanghai", "Hong Kong", "Guangzhou"],
+    "options": ["Tashkent", "Beijing", "Seoul", "Riyadh"],
     "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of India?",
     "answer": "New Delhi",
-    "options": ["New Delhi", "Mumbai", "Kolkata", "Bengaluru"],
+    "options": ["New Delhi", "Tokyo", "Manila", "Ankara"],
     "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Japan?",
     "answer": "Tokyo",
-    "options": ["Tokyo", "Osaka", "Kyoto", "Nagoya"],
+    "options": ["Bangkok", "Tokyo", "Tehran", "Kabul"],
     "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of South Korea?",
     "answer": "Seoul",
-    "options": ["Seoul", "Busan", "Incheon", "Daegu"],
+    "options": ["Seoul", "Jakarta", "Astana", "Baghdad"],
     "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Indonesia?",
     "answer": "Jakarta",
-    "options": ["Jakarta", "Surabaya", "Bandung", "Medan"],
+    "options": ["Hanoi", "Islamabad", "Jakarta", "Kathmandu"],
     "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Thailand?",
     "answer": "Bangkok",
-    "options": ["Bangkok", "Chiang Mai", "Pattaya", "Phuket"],
+    "options": ["Bangkok", "Sri Jayawardenepura Kotte", "Phnom Penh", "Ulaanbaatar"],
     "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Vietnam?",
     "answer": "Hanoi",
-    "options": ["Hanoi", "Ho Chi Minh City", "Da Nang", "Can Tho"],
+    "options": ["Vientiane", "Hanoi", "Muscat", "Amman"],
     "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Philippines?",
     "answer": "Manila",
-    "options": ["Manila", "Quezon City", "Davao City", "Cebu City"],
+    "options": ["Manila", "Baku", "Tbilisi", "Naypyidaw"],
     "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Malaysia?",
     "answer": "Kuala Lumpur",
-    "options": ["Kuala Lumpur", "George Town", "Ipoh", "Johor Bahru"],
+    "options": ["Sana'a", "Abu Dhabi", "Kuala Lumpur", "Singapore"],
     "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Singapore?",
     "answer": "Singapore",
-    "options": ["Singapore", "Jurong East", "Woodlands", "Tampines"],
+    "options": ["Singapore", "Beijing", "New Delhi", "Tokyo"],
     "difficulty": "easy"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Saudi Arabia?",
     "answer": "Riyadh",
-    "options": ["Riyadh", "Jeddah", "Mecca", "Medina"],
+    "options": ["Riyadh", "Seoul", "Jakarta", "Bangkok"],
     "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of United Arab Emirates?",
     "answer": "Abu Dhabi",
-    "options": ["Abu Dhabi", "Dubai", "Sharjah", "Al Ain"],
+    "options": ["Hanoi", "Manila", "Abu Dhabi", "Kuala Lumpur"],
     "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Turkey?",
     "answer": "Ankara",
-    "options": ["Ankara", "Istanbul", "Izmir", "Bursa"],
+    "options": ["Ankara", "Singapore", "Tehran", "Baghdad"],
     "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Iran?",
     "answer": "Tehran",
-    "options": ["Tehran", "Mashhad", "Isfahan", "Shiraz"],
+    "options": ["Islamabad", "Tehran", "Kabul", "Tashkent"],
     "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Iraq?",
     "answer": "Baghdad",
-    "options": ["Baghdad", "Mosul", "Basra", "Erbil"],
+    "options": ["Baghdad", "Astana", "Kathmandu", "Sri Jayawardenepura Kotte"],
     "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Pakistan?",
     "answer": "Islamabad",
-    "options": ["Islamabad", "Karachi", "Lahore", "Faisalabad"],
+    "options": ["Naypyidaw", "Phnom Penh", "Islamabad", "Vientiane"],
     "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Afghanistan?",
     "answer": "Kabul",
-    "options": ["Kabul", "Kandahar", "Herat", "Mazar-i-Sharif"],
+    "options": ["Ulaanbaatar", "Muscat", "Kabul", "Sana'a"],
     "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Uzbekistan?",
     "answer": "Tashkent",
-    "options": ["Tashkent", "Samarkand", "Namangan", "Andijan"],
+    "options": ["Tashkent", "Amman", "Baku", "Tbilisi"],
     "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Kazakhstan?",
     "answer": "Astana",
-    "options": ["Astana", "Almaty", "Shymkent", "Karaganda"],
+    "options": ["Riyadh", "Astana", "Abu Dhabi", "Ankara"],
     "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Nepal?",
     "answer": "Kathmandu",
-    "options": ["Kathmandu", "Pokhara", "Lalitpur", "Biratnagar"],
+    "options": ["Beijing", "New Delhi", "Kathmandu", "Tokyo"],
     "difficulty": "medium"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Sri Lanka?",
     "answer": "Sri Jayawardenepura Kotte",
-    "options": ["Sri Jayawardenepura Kotte", "Colombo", "Kandy", "Galle"],
+    "options": ["Seoul", "Sri Jayawardenepura Kotte", "Jakarta", "Bangkok"],
     "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Myanmar?",
     "answer": "Naypyidaw",
-    "options": ["Naypyidaw", "Yangon", "Mandalay", "Nay Pyi Taw"],
+    "options": ["Naypyidaw", "Hanoi", "Manila", "Kuala Lumpur"],
     "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Cambodia?",
     "answer": "Phnom Penh",
-    "options": ["Phnom Penh", "Siem Reap", "Battambang", "Sihanoukville"],
+    "options": ["Singapore", "Phnom Penh", "Riyadh", "Abu Dhabi"],
     "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Laos?",
     "answer": "Vientiane",
-    "options": ["Vientiane", "Luang Prabang", "Savannakhet", "Pakse"],
+    "options": ["Ankara", "Tehran", "Vientiane", "Baghdad"],
     "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Mongolia?",
     "answer": "Ulaanbaatar",
-    "options": ["Ulaanbaatar", "Erdenet", "Darkhan", "Choibalsan"],
+    "options": ["Ulaanbaatar", "Islamabad", "Kabul", "Tashkent"],
     "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Oman?",
     "answer": "Muscat",
-    "options": ["Muscat", "Salalah", "Sohar", "Nizwa"],
+    "options": ["Astana", "Kathmandu", "Muscat", "Sri Jayawardenepura Kotte"],
     "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Yemen?",
     "answer": "Sana'a",
-    "options": ["Sana'a", "Aden", "Ta'izz", "Hodeidah"],
+    "options": ["Sana'a", "Naypyidaw", "Phnom Penh", "Vientiane"],
     "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Jordan?",
     "answer": "Amman",
-    "options": ["Amman", "Zarqa", "Irbid", "Russeifa"],
+    "options": ["Ulaanbaatar", "Amman", "Muscat", "Baku"],
     "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Azerbaijan?",
     "answer": "Baku",
-    "options": ["Baku", "Ganja", "Sumqayit", "Mingachevir"],
+    "options": ["Tbilisi", "Sana'a", "Baku", "Amman"],
     "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Georgia?",
     "answer": "Tbilisi",
-    "options": ["Tbilisi", "Batumi", "Kutaisi", "Rustavi"],
+    "options": ["Tbilisi", "Beijing", "New Delhi", "Tokyo"],
     "difficulty": "hard"
   }
 ]

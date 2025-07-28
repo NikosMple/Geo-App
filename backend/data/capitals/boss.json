@@ -3,70 +3,70 @@
     "continent": "Africa",
     "question": "What is the capital of Benin?",
     "answer": "Porto-Novo",
-    "options": ["Porto-Novo", "Cotonou", "Parakou", "Djougou"],
+    "options": ["Cotonou", "Porto-Novo", "Lomé", "Ouagadougou"],
     "difficulty": "hard"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Nauru?",
     "answer": "Yaren",
-    "options": ["Yaren", "Aiwo", "Denigomodu", "Baiti"],
+    "options": ["Bairiki", "Denigomodu", "Yaren", "Majuro"],
     "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Myanmar?",
     "answer": "Naypyidaw",
-    "options": ["Naypyidaw", "Yangon", "Mandalay", "Nay Pyi Taw"],
+    "options": ["Yangon", "Naypyidaw", "Phnom Penh", "Vientiane"],
     "difficulty": "hard"
   },
   {
-    "continent": "South America",
+    "continent": "America",
     "question": "What is the capital of Bolivia?",
     "answer": "Sucre",
-    "options": ["Sucre", "La Paz", "Santa Cruz", "Cochabamba"],
+    "options": ["Sucre", "Quito", "Asunción", "La Paz"],
     "difficulty": "hard"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Equatorial Guinea?",
     "answer": "Malabo",
-    "options": ["Malabo", "Bata", "Mongomo", "Ebebiyín"],
+    "options": ["Libreville", "Bata", "Malabo", "São Tomé"],
     "difficulty": "hard"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of San Marino?",
     "answer": "San Marino",
-    "options": ["San Marino", "Serravalle", "Borgo Maggiore", "Domagnano"],
+    "options": ["San Marino", "Vaduz", "Andorra la Vella", "Monaco"],
     "difficulty": "hard"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Sri Lanka?",
     "answer": "Sri Jayawardenepura Kotte",
-    "options": ["Sri Jayawardenepura Kotte", "Colombo", "Kandy", "Galle"],
+    "options": ["Colombo", "Sri Jayawardenepura Kotte", "Thimphu", "Kathmandu"],
     "difficulty": "hard"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Federated States of Micronesia?",
     "answer": "Palikir",
-    "options": ["Palikir", "Weno", "Kolonia", "Tofol"],
+    "options": ["Koror", "Palikir", "Port Moresby", "Suva"],
     "difficulty": "hard"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Djibouti?",
     "answer": "Djibouti City",
-    "options": ["Djibouti City", "Ali Sabieh", "Dikhil", "Arta"],
+    "options": ["Addis Ababa", "Djibouti City", "Asmara", "Kampala"],
     "difficulty": "hard"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Liechtenstein?",
     "answer": "Vaduz",
-    "options": ["Vaduz", "Schaan", "Triesen", "Balzers"],
+    "options": ["Vaduz", "Bern", "Luxembourg", "Vienna"],
     "difficulty": "hard"
   }
 ]

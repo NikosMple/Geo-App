@@ -10,7 +10,6 @@ const Dashboard = () => {
   const [countriesCount, setCountriesCount] = useState(0);
   const navigate = useNavigate(); 
 
-  // ===== EFFECTS =====
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -89,7 +88,7 @@ const Dashboard = () => {
                 <span className="block bg-gradient-to-r from-emerald-400 via-blue-500 to-purple-600 bg-clip-text text-transparent animate-title-shimmer">
                   GEOGRAPHY
                 </span>
-                <span className="block text-white flex items-center justify-center" style={{textShadow: '0 0 30px rgba(16, 185, 129, 0.5)'}}>
+                <span className="text-white flex items-center justify-center" style={{textShadow: '0 0 30px rgba(16, 185, 129, 0.5)'}}>
                   <span className="inline-block mx-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl animate-globe-rotate">🌍</span>
                   MASTER
                 </span>
@@ -101,17 +100,6 @@ const Dashboard = () => {
 
               <div className="text-sm sm:text-base text-white/60 max-w-2xl mx-auto mb-8">
                 Two exciting game modes to challenge your geography skills
-              </div>
-
-              {/* Main Launch Button */}
-              <div className="flex justify-center">
-                <LaunchButton
-                  text="Start Your Journey"
-                  size="large"
-                  variant="success"
-                  onClick={() => navigate('/choose-continent')}
-                  icon={<span>🚀</span>}
-                />
               </div>
             </div>
 

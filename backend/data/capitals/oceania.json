@@ -3,70 +3,70 @@
     "continent": "Oceania",
     "question": "What is the capital of Australia?",
     "answer": "Canberra",
-    "options": ["Canberra", "Sydney", "Melbourne", "Brisbane"],
+    "options": ["Canberra", "Wellington", "Port Moresby", "Suva"],
     "difficulty": "easy"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of New Zealand?",
     "answer": "Wellington",
-    "options": ["Wellington", "Auckland", "Christchurch", "Queenstown"],
+    "options": ["Nukuʻalofa", "Apia", "Wellington", "Honiara"],
     "difficulty": "easy"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Papua New Guinea?",
     "answer": "Port Moresby",
-    "options": ["Port Moresby", "Lae", "Madang", "Mount Hagen"],
+    "options": ["Port Moresby", "Canberra", "Palikir", "Port Vila"],
     "difficulty": "easy"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Fiji?",
     "answer": "Suva",
-    "options": ["Suva", "Nadi", "Lautoka", "Labasa"],
+    "options": ["Suva", "Nukuʻalofa", "Apia", "Wellington"],
     "difficulty": "easy"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Solomon Islands?",
     "answer": "Honiara",
-    "options": ["Honiara", "Auki", "Gizo", "Kira Kira"],
+    "options": ["Palikir", "Honiara", "Port Vila", "Nukuʻalofa"],
     "difficulty": "medium"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Vanuatu?",
     "answer": "Port Vila",
-    "options": ["Port Vila", "Luganville", "Lenakel", "Norsup"],
+    "options": ["Port Vila", "Apia", "Honiara", "Canberra"],
     "difficulty": "medium"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Samoa?",
     "answer": "Apia",
-    "options": ["Apia", "Salelologa", "Asau", "Faleolo"],
+    "options": ["Apia", "Wellington", "Suva", "Port Moresby"],
     "difficulty": "medium"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Tonga?",
     "answer": "Nukuʻalofa",
-    "options": ["Nukuʻalofa", "Neiafu", "Ohonua", "Pangai"],
+    "options": ["Nukuʻalofa", "Canberra", "Palikir", "Suva"],
     "difficulty": "hard"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Kiribati?",
     "answer": "South Tarawa",
-    "options": ["South Tarawa", "Betio", "Bairiki", "London"],
+    "options": ["South Tarawa", "Apia", "Port Vila", "Wellington"],
     "difficulty": "hard"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Federated States of Micronesia?",
     "answer": "Palikir",
-    "options": ["Palikir", "Weno", "Kolonia", "Tofol"],
+    "options": ["Palikir", "Nukuʻalofa", "Port Moresby", "Honiara"],
     "difficulty": "hard"
   }
 ]

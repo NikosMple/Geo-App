@@ -16,10 +16,6 @@ app.use(express.json());
 
 app.use('/api', Capitals);
 
-app.get('/health', (req, res) => {
-  res.json({ status: 'OK', message: 'Server is running' });
-});
-
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`)
 })

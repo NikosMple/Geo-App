@@ -3,210 +3,210 @@
     "continent": "America",
     "question": "What is the capital of United States?",
     "answer": "Washington D.C.",
-    "options": ["Washington D.C.", "New York", "Los Angeles", "Chicago"],
+    "options": ["Bogotá", "Washington D.C.", "Lima", "Ottawa"],
     "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Canada?",
     "answer": "Ottawa",
-    "options": ["Ottawa", "Toronto", "Vancouver", "Montreal"],
+    "options": ["Ottawa", "Brasília", "Buenos Aires", "Santiago"],
     "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Mexico?",
     "answer": "Mexico City",
-    "options": ["Mexico City", "Guadalajara", "Monterrey", "Puebla"],
+    "options": ["Caracas", "Havana", "Mexico City", "Quito"],
     "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Brazil?",
     "answer": "Brasília",
-    "options": ["Brasília", "Rio de Janeiro", "São Paulo", "Salvador"],
+    "options": ["Sucre", "Brasília", "Montevideo", "Asunción"],
     "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Argentina?",
     "answer": "Buenos Aires",
-    "options": ["Buenos Aires", "Cordoba", "Rosario", "Mendoza"],
+    "options": ["Buenos Aires", "Georgetown", "Paramaribo", "Belmopan"],
     "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Chile?",
     "answer": "Santiago",
-    "options": ["Santiago", "Valparaíso", "Concepción", "La Serena"],
+    "options": ["Port of Spain", "Santiago", "Nassau", "Bridgetown"],
     "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Peru?",
     "answer": "Lima",
-    "options": ["Lima", "Cusco", "Arequipa", "Trujillo"],
+    "options": ["Lima", "Basseterre", "Castries", "Washington D.C."],
     "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Colombia?",
     "answer": "Bogotá",
-    "options": ["Bogotá", "Medellín", "Cali", "Barranquilla"],
+    "options": ["Bogotá", "Ottawa", "Mexico City", "Brasília"],
     "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Venezuela?",
     "answer": "Caracas",
-    "options": ["Caracas", "Maracaibo", "Valencia", "Barquisimeto"],
+    "options": ["Buenos Aires", "Caracas", "Santiago", "Lima"],
     "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Cuba?",
     "answer": "Havana",
-    "options": ["Havana", "Santiago de Cuba", "Camagüey", "Holguín"],
+    "options": ["Havana", "Bogotá", "Quito", "Sucre"],
     "difficulty": "easy"
   },
   {
     "continent": "America",
     "question": "What is the capital of Dominican Republic?",
     "answer": "Santo Domingo",
-    "options": ["Santo Domingo", "Santiago de los Caballeros", "La Romana", "San Pedro de Macorís"],
+    "options": ["Santo Domingo", "Asunción", "Montevideo", "Georgetown"],
     "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Haiti?",
     "answer": "Port-au-Prince",
-    "options": ["Port-au-Prince", "Cap-Haïtien", "Gonaïves", "Les Cayes"],
+    "options": ["Paramaribo", "Port-au-Prince", "Belmopan", "Nassau"],
     "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Costa Rica?",
     "answer": "San José",
-    "options": ["San José", "Alajuela", "Cartago", "Heredia"],
+    "options": ["San José", "Port of Spain", "Bridgetown", "Castries"],
     "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Panama?",
     "answer": "Panama City",
-    "options": ["Panama City", "Colón", "David", "La Chorrera"],
+    "options": ["Basseterre", "Panama City", "Washington D.C.", "Ottawa"],
     "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Honduras?",
     "answer": "Tegucigalpa",
-    "options": ["Tegucigalpa", "San Pedro Sula", "La Ceiba", "El Progreso"],
+    "options": ["Tegucigalpa", "Mexico City", "Brasília", "Buenos Aires"],
     "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Guatemala?",
     "answer": "Guatemala City",
-    "options": ["Guatemala City", "Quetzaltenango", "Mixco", "Villa Nueva"],
+    "options": ["Santiago", "Lima", "Guatemala City", "Bogotá"],
     "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Nicaragua?",
     "answer": "Managua",
-    "options": ["Managua", "León", "Masaya", "Estelí"],
+    "options": ["Caracas", "Managua", "Havana", "Quito"],
     "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of El Salvador?",
     "answer": "San Salvador",
-    "options": ["San Salvador", "Santa Ana", "San Miguel", "Mejicanos"],
+    "options": ["San Salvador", "Sucre", "Asunción", "Montevideo"],
     "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Ecuador?",
     "answer": "Quito",
-    "options": ["Quito", "Guayaquil", "Cuenca", "Santo Domingo"],
+    "options": ["Georgetown", "Quito", "Paramaribo", "Belmopan"],
     "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Bolivia?",
     "answer": "Sucre",
-    "options": ["Sucre", "La Paz", "Santa Cruz", "Cochabamba"],
+    "options": ["Nassau", "Port of Spain", "Sucre", "Bridgetown"],
     "difficulty": "medium"
   },
   {
     "continent": "America",
     "question": "What is the capital of Paraguay?",
     "answer": "Asunción",
-    "options": ["Asunción", "Ciudad del Este", "Encarnación", "Luque"],
+    "options": ["Castries", "Asunción", "Basseterre", "Ottawa"],
     "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Uruguay?",
     "answer": "Montevideo",
-    "options": ["Montevideo", "Salto", "Paysandú", "Rivera"],
+    "options": ["Montevideo", "Mexico City", "Washington D.C.", "Lima"],
     "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Suriname?",
     "answer": "Paramaribo",
-    "options": ["Paramaribo", "Lelydorp", "Brokopondo", "Nieuw Nickerie"],
+    "options": ["Brasília", "Paramaribo", "Bogotá", "Santiago"],
     "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Guyana?",
     "answer": "Georgetown",
-    "options": ["Georgetown", "Linden", "New Amsterdam", "Corriverton"],
+    "options": ["Georgetown", "Buenos Aires", "Caracas", "Havana"],
     "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Belize?",
     "answer": "Belmopan",
-    "options": ["Belmopan", "Belize City", "San Ignacio", "Orange Walk Town"],
+    "options": ["Quito", "Sucre", "Belmopan", "Asunción"],
     "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of The Bahamas?",
     "answer": "Nassau",
-    "options": ["Nassau", "Freeport", "Marsh Harbour", "George Town"],
+    "options": ["Montevideo", "Nassau", "Paramaribo", "Georgetown"],
     "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Trinidad and Tobago?",
     "answer": "Port of Spain",
-    "options": ["Port of Spain", "San Fernando", "Chaguanas", "Arima"],
+    "options": ["Belmopan", "Port of Spain", "Nassau", "Bridgetown"],
     "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Barbados?",
     "answer": "Bridgetown",
-    "options": ["Bridgetown", "Speightstown", "Oistins", "Holetown"],
+    "options": ["Bridgetown", "Castries", "Basseterre", "San José"],
     "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Saint Lucia?",
     "answer": "Castries",
-    "options": ["Castries", "Gros Islet", "Vieux Fort", "Soufrière"],
+    "options": ["Port-au-Prince", "Castries", "Santo Domingo", "Panama City"],
     "difficulty": "hard"
   },
   {
     "continent": "America",
     "question": "What is the capital of Saint Kitts and Nevis?",
     "answer": "Basseterre",
-    "options": ["Basseterre", "Charlestown", "Sandy Point", "Fig Tree"],
+    "options": ["Tegucigalpa", "Guatemala City", "Basseterre", "Managua"],
     "difficulty": "hard"
   }
 ]

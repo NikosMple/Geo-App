@@ -1,9 +1,7 @@
-import React from 'react';
 
 const Timer = ({ minutes, seconds, isRunning, isLowTime, isVeryLowTime }) => {
   return (
     <>
-      {/* CSS Styles for Hourglass Animation */}
       <style jsx>{`
         .hourglass-timer {
           --dur: 2s;
