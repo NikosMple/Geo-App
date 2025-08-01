@@ -4,209 +4,239 @@
     "country_code": "US",
     "answer": "United States",
     "options": ["Colombia", "United States", "Peru", "Canada"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Current 50-star design since 1960"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "CA",
     "answer": "Canada",
     "options": ["Canada", "Brazil", "Argentina", "Chile"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Maple leaf flag adopted in 1965 replacing Union Jack"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "MX",
     "answer": "Mexico",
     "options": ["Venezuela", "Cuba", "Mexico", "Ecuador"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Eagle legend dates back to Aztec foundation myth"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "BR",
     "answer": "Brazil",
     "options": ["Bolivia", "Brazil", "Uruguay", "Paraguay"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Globe shows constellations visible from Rio de Janeiro"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "AR",
     "answer": "Argentina",
     "options": ["Argentina", "Guyana", "Suriname", "Belize"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Sun of May represents Inca sun god"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "CL",
     "answer": "Chile",
     "options": ["Trinidad and Tobago", "Chile", "Bahamas", "Barbados"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Star represents guide to progress and honor"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "PE",
     "answer": "Peru",
     "options": ["Peru", "Saint Kitts and Nevis", "Saint Lucia", "United States"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Vicuña and cinchona tree on coat of arms"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "CO",
     "answer": "Colombia",
     "options": ["Colombia", "Canada", "Mexico", "Brazil"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Yellow stripe is double width of others"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "VE",
     "answer": "Venezuela",
     "options": ["Argentina", "Venezuela", "Chile", "Peru"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Arc of stars represents original provinces"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "CU",
     "answer": "Cuba",
     "options": ["Cuba", "Colombia", "Ecuador", "Bolivia"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Triangle represents Masonic symbol of equality"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "DO",
     "answer": "Dominican Republic",
     "options": ["Dominican Republic", "Paraguay", "Uruguay", "Guyana"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Only flag with Bible verse on coat of arms"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "HT",
     "answer": "Haiti",
     "options": ["Suriname", "Haiti", "Belize", "Bahamas"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Coat of arms shows palm tree with liberty cap"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "CR",
     "answer": "Costa Rica",
     "options": ["Costa Rica", "Trinidad and Tobago", "Barbados", "Saint Lucia"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Five stripes represent five Central American nations"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "PA",
     "answer": "Panama",
     "options": ["Saint Kitts and Nevis", "Panama", "United States", "Canada"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Blue represents Conservative party, red Liberal party"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "HN",
     "answer": "Honduras",
     "options": ["Honduras", "Mexico", "Brazil", "Argentina"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Five stars represent failed Central American union"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "GT",
     "answer": "Guatemala",
     "options": ["Chile", "Peru", "Guatemala", "Colombia"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Quetzal bird represents liberty and independence"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "NI",
     "answer": "Nicaragua",
     "options": ["Venezuela", "Nicaragua", "Cuba", "Ecuador"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Triangle represents equality and rainbow represents peace"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "SV",
     "answer": "El Salvador",
     "options": ["El Salvador", "Bolivia", "Paraguay", "Uruguay"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Motto translates to God, Union, Liberty"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "EC",
     "answer": "Ecuador",
     "options": ["Guyana", "Ecuador", "Suriname", "Belize"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Condor represents power and might"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "BO",
     "answer": "Bolivia",
     "options": ["Bahamas", "Trinidad and Tobago", "Bolivia", "Barbados"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Tricolor represents mineral wealth and sacrifice"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "PY",
     "answer": "Paraguay",
     "options": ["Saint Lucia", "Paraguay", "Saint Kitts and Nevis", "Canada"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Only flag with different designs on both sides"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "UY",
     "answer": "Uruguay",
     "options": ["Uruguay", "Mexico", "United States", "Peru"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Sun copied from first Argentine coin"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "SR",
     "answer": "Suriname",
     "options": ["Brazil", "Suriname", "Colombia", "Chile"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Star represents unity of all ethnic groups"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "GY",
     "answer": "Guyana",
     "options": ["Guyana", "Argentina", "Venezuela", "Cuba"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Arrowhead represents forward movement"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "BZ",
     "answer": "Belize",
     "options": ["Ecuador", "Bolivia", "Belize", "Paraguay"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Most complex coat of arms of any country"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "BS",
     "answer": "Bahamas",
     "options": ["Uruguay", "Bahamas", "Suriname", "Guyana"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Triangle represents determination of united people"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "TT",
     "answer": "Trinidad and Tobago",
     "options": ["Belize", "Trinidad and Tobago", "Bahamas", "Barbados"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Flag adopted at independence in 1962"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "BB",
     "answer": "Barbados",
     "options": ["Barbados", "Saint Lucia", "Saint Kitts and Nevis", "Costa Rica"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Trident head represents break from Britain"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "LC",
     "answer": "Saint Lucia",
     "options": ["Haiti", "Saint Lucia", "Dominican Republic", "Panama"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Triangles represent Piton mountains"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "KN",
     "answer": "Saint Kitts and Nevis",
     "options": ["Honduras", "Guatemala", "Saint Kitts and Nevis", "Nicaragua"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Stars represent hope and liberty"
   }
 ]

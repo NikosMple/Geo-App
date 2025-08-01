@@ -4,209 +4,239 @@
     "question": "What is the capital of United States?",
     "answer": "Washington D.C.",
     "options": ["Bogotá", "Washington D.C.", "Lima", "Ottawa"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Has no official national language"
   },
   {
     "continent": "America",
     "question": "What is the capital of Canada?",
     "answer": "Ottawa",
     "options": ["Ottawa", "Brasília", "Buenos Aires", "Santiago"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Contains 20% of world's fresh water"
   },
   {
     "continent": "America",
     "question": "What is the capital of Mexico?",
     "answer": "Mexico City",
     "options": ["Caracas", "Havana", "Mexico City", "Quito"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Chocolate, tomatoes and avocados originated here"
   },
   {
     "continent": "America",
     "question": "What is the capital of Brazil?",
     "answer": "Brasília",
     "options": ["Sucre", "Brasília", "Montevideo", "Asunción"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Contains 60% of the Amazon rainforest"
   },
   {
     "continent": "America",
     "question": "What is the capital of Argentina?",
     "answer": "Buenos Aires",
     "options": ["Buenos Aires", "Georgetown", "Paramaribo", "Belmopan"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Tango dance was born here"
   },
   {
     "continent": "America",
     "question": "What is the capital of Chile?",
     "answer": "Santiago",
     "options": ["Port of Spain", "Santiago", "Nassau", "Bridgetown"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "World's longest and thinnest country"
   },
   {
     "continent": "America",
     "question": "What is the capital of Peru?",
     "answer": "Lima",
     "options": ["Lima", "Basseterre", "Castries", "Washington D.C."],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Home to mysterious Nazca Lines"
   },
   {
     "continent": "America",
     "question": "What is the capital of Colombia?",
     "answer": "Bogotá",
     "options": ["Bogotá", "Ottawa", "Mexico City", "Brasília"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "World's leading source of emeralds"
   },
   {
     "continent": "America",
     "question": "What is the capital of Venezuela?",
     "answer": "Caracas",
     "options": ["Buenos Aires", "Caracas", "Santiago", "Lima"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Has world's highest uninterrupted waterfall"
   },
   {
     "continent": "America",
     "question": "What is the capital of Cuba?",
     "answer": "Havana",
     "options": ["Havana", "Bogotá", "Quito", "Sucre"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Cigars and salsa dancing originated here"
   },
   {
     "continent": "America",
     "question": "What is the capital of Dominican Republic?",
     "answer": "Santo Domingo",
     "options": ["Santo Domingo", "Asunción", "Montevideo", "Georgetown"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Baseball is the national sport"
   },
   {
     "continent": "America",
     "question": "What is the capital of Haiti?",
     "answer": "Port-au-Prince",
     "options": ["Paramaribo", "Port-au-Prince", "Belmopan", "Nassau"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "First independent black republic in history"
   },
   {
     "continent": "America",
     "question": "What is the capital of Costa Rica?",
     "answer": "San José",
     "options": ["San José", "Port of Spain", "Bridgetown", "Castries"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Has no army since 1949"
   },
   {
     "continent": "America",
     "question": "What is the capital of Panama?",
     "answer": "Panama City",
     "options": ["Basseterre", "Panama City", "Washington D.C.", "Ottawa"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Only place to see sunrise and sunset over different oceans"
   },
   {
     "continent": "America",
     "question": "What is the capital of Honduras?",
     "answer": "Tegucigalpa",
     "options": ["Tegucigalpa", "Mexico City", "Brasília", "Buenos Aires"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Ancient Mayan ruins at Copán"
   },
   {
     "continent": "America",
     "question": "What is the capital of Guatemala?",
     "answer": "Guatemala City",
     "options": ["Santiago", "Lima", "Guatemala City", "Bogotá"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Invented blue jeans fabric called denim"
   },
   {
     "continent": "America",
     "question": "What is the capital of Nicaragua?",
     "answer": "Managua",
     "options": ["Caracas", "Managua", "Havana", "Quito"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Has both Pacific and Caribbean coastlines"
   },
   {
     "continent": "America",
     "question": "What is the capital of El Salvador?",
     "answer": "San Salvador",
     "options": ["San Salvador", "Sucre", "Asunción", "Montevideo"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Smallest Central American country"
   },
   {
     "continent": "America",
     "question": "What is the capital of Ecuador?",
     "answer": "Quito",
     "options": ["Georgetown", "Quito", "Paramaribo", "Belmopan"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Named after the equator line"
   },
   {
     "continent": "America",
     "question": "What is the capital of Bolivia?",
     "answer": "Sucre",
     "options": ["Nassau", "Port of Spain", "Sucre", "Bridgetown"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Has two official capital cities"
   },
   {
     "continent": "America",
     "question": "What is the capital of Paraguay?",
     "answer": "Asunción",
     "options": ["Castries", "Asunción", "Basseterre", "Ottawa"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Landlocked country in South America"
   },
   {
     "continent": "America",
     "question": "What is the capital of Uruguay?",
     "answer": "Montevideo",
     "options": ["Montevideo", "Mexico City", "Washington D.C.", "Lima"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "First country to legalize marijuana"
   },
   {
     "continent": "America",
     "question": "What is the capital of Suriname?",
     "answer": "Paramaribo",
     "options": ["Brasília", "Paramaribo", "Bogotá", "Santiago"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Dutch is the official language"
   },
   {
     "continent": "America",
     "question": "What is the capital of Guyana?",
     "answer": "Georgetown",
     "options": ["Georgetown", "Buenos Aires", "Caracas", "Havana"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Only English-speaking South American country"
   },
   {
     "continent": "America",
     "question": "What is the capital of Belize?",
     "answer": "Belmopan",
     "options": ["Quito", "Sucre", "Belmopan", "Asunción"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Barrier reef is world's second largest"
   },
   {
     "continent": "America",
     "question": "What is the capital of The Bahamas?",
     "answer": "Nassau",
     "options": ["Montevideo", "Nassau", "Paramaribo", "Georgetown"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Swimming pigs live on Big Major Cay"
   },
   {
     "continent": "America",
     "question": "What is the capital of Trinidad and Tobago?",
     "answer": "Port of Spain",
     "options": ["Belmopan", "Port of Spain", "Nassau", "Bridgetown"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Invented the steel drum instrument"
   },
   {
     "continent": "America",
     "question": "What is the capital of Barbados?",
     "answer": "Bridgetown",
     "options": ["Bridgetown", "Castries", "Basseterre", "San José"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Birthplace of rum production"
   },
   {
     "continent": "America",
     "question": "What is the capital of Saint Lucia?",
     "answer": "Castries",
     "options": ["Port-au-Prince", "Castries", "Santo Domingo", "Panama City"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Only country named after a woman"
   },
   {
     "continent": "America",
     "question": "What is the capital of Saint Kitts and Nevis?",
     "answer": "Basseterre",
     "options": ["Tegucigalpa", "Guatemala City", "Basseterre", "Managua"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Smallest sovereign state in the Americas"
   }
 ]

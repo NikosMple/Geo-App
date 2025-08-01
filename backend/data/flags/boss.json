@@ -4,69 +4,79 @@
     "country_code": "BJ",
     "answer": "Benin",
     "options": ["Benin", "Togo", "Burkina Faso", "Ghana"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Flag readopted in 1990 after communist era"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "NR",
     "answer": "Nauru",
     "options": ["Nauru", "Kiribati", "Marshall Islands", "Tuvalu"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Star below equator line represents location"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "MM",
     "answer": "Myanmar",
     "options": ["Myanmar", "Thailand", "Cambodia", "Laos"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "White star represents union of states"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "BO",
     "answer": "Bolivia",
     "options": ["Bolivia", "Ecuador", "Paraguay", "Peru"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Tricolor represents mineral wealth and sacrifice"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "GQ",
     "answer": "Equatorial Guinea",
     "options": ["Equatorial Guinea", "Gabon", "Cameroon", "Sao Tome and Principe"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Silk cotton tree featured on coat of arms"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "SM",
     "answer": "San Marino",
     "options": ["San Marino", "Liechtenstein", "Andorra", "Monaco"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Towers represent three fortresses on Mount Titano"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "LK",
     "answer": "Sri Lanka",
     "options": ["Sri Lanka", "Bhutan", "Nepal", "Maldives"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Lion sword represents sovereignty"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "FM",
     "answer": "Federated States of Micronesia",
     "options": ["Micronesia", "Palau", "Papua New Guinea", "Fiji"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Four stars represent four states"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "DJ",
     "answer": "Djibouti",
     "options": ["Djibouti", "Ethiopia", "Eritrea", "Uganda"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Star represents unity of diverse ethnic groups"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "LI",
     "answer": "Liechtenstein",
     "options": ["Liechtenstein", "Switzerland", "Luxembourg", "Austria"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Crown added to distinguish from Haiti"
   }
 ]

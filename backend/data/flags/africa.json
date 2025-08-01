@@ -5,7 +5,8 @@
     "country_code": "EG",
     "answer": "Egypt",
     "options": ["Zambia", "Egypt", "Togo", "Libya"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Current flag adopted in 1984 replacing previous versions"
   },
   {
     "continent": "Africa",
@@ -13,7 +14,8 @@
     "country_code": "ZA",
     "answer": "South Africa",
     "options": ["South Africa", "Senegal", "Rwanda", "Tunisia"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Flag designed in 1994 after end of apartheid"
   },
   {
     "continent": "Africa",
@@ -21,7 +23,8 @@
     "country_code": "NG",
     "answer": "Nigeria",
     "options": ["Morocco", "Nigeria", "Ghana", "Comoros"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Flag adopted at independence in 1960"
   },
   {
     "continent": "Africa",
@@ -29,7 +32,8 @@
     "country_code": "KE",
     "answer": "Kenya",
     "options": ["Kenya", "Sudan", "Eritrea", "Angola"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Traditional Maasai shield and spears featured in center"
   },
   {
     "continent": "Africa",
@@ -37,7 +41,8 @@
     "country_code": "MA",
     "answer": "Morocco",
     "options": ["Mozambique", "Cameroon", "Morocco", "Tanzania"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Green pentagram added in 1915 to red field"
   },
   {
     "continent": "Africa",
@@ -45,7 +50,8 @@
     "country_code": "DZ",
     "answer": "Algeria",
     "options": ["Algeria", "Sierra Leone", "DR Congo", "Uganda"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Flag inspired by nationalist leader Abd al-Qadir"
   },
   {
     "continent": "Africa",
@@ -53,7 +59,8 @@
     "country_code": "ET",
     "answer": "Ethiopia",
     "options": ["Sao Tome and Principe", "Seychelles", "Benin", "Ethiopia"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Only African country never to change flag colors"
   },
   {
     "continent": "Africa",
@@ -61,7 +68,8 @@
     "country_code": "GH",
     "answer": "Ghana",
     "options": ["Madagascar", "Ghana", "Ivory Coast", "Djibouti"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Black star represents African freedom"
   },
   {
     "continent": "Africa",
@@ -69,7 +77,8 @@
     "country_code": "TZ",
     "answer": "Tanzania",
     "options": ["Tanzania", "South Africa", "Egypt", "Kenya"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Flag combines colors from Tanganyika and Zanzibar"
   },
   {
     "continent": "Africa",
@@ -77,7 +86,8 @@
     "country_code": "CD",
     "answer": "Democratic Republic of Congo",
     "options": ["Nigeria", "Libya", "Democratic Republic of Congo", "Zambia"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Flag changed 6 times since independence"
   },
   {
     "continent": "Africa",
@@ -85,7 +95,8 @@
     "country_code": "AO",
     "answer": "Angola",
     "options": ["Angola", "Algeria", "Togo", "Rwanda"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Machete and gear represent workers and peasants"
   },
   {
     "continent": "Africa",
@@ -93,7 +104,8 @@
     "country_code": "SD",
     "answer": "Sudan",
     "options": ["Morocco", "Sudan", "Eritrea", "Senegal"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Flag adopted after independence from Egypt-Britain"
   },
   {
     "continent": "Africa",
@@ -101,7 +113,8 @@
     "country_code": "UG",
     "answer": "Uganda",
     "options": ["Uganda", "Comoros", "Ghana", "Tunisia"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Grey crowned crane is national bird"
   },
   {
     "continent": "Africa",
@@ -109,7 +122,8 @@
     "country_code": "MZ",
     "answer": "Mozambique",
     "options": ["Sierra Leone", "Seychelles", "Mozambique", "Ivory Coast"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Only flag in world featuring a rifle"
   },
   {
     "continent": "Africa",
@@ -117,7 +131,8 @@
     "country_code": "MG",
     "answer": "Madagascar",
     "options": ["Benin", "Madagascar", "Ethiopia", "Tanzania"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Colors represent Malagasy and French colonial heritage"
   },
   {
     "continent": "Africa",
@@ -125,7 +140,8 @@
     "country_code": "TN",
     "answer": "Tunisia",
     "options": ["Tunisia", "Sao Tome and Principe", "DR Congo", "South Africa"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Red field dates back to Ottoman Empire"
   },
   {
     "continent": "Africa",
@@ -133,7 +149,8 @@
     "country_code": "LY",
     "answer": "Libya",
     "options": ["Kenya", "Libya", "Egypt", "Cameroon"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Current flag adopted in 2011 after Gaddafi"
   },
   {
     "continent": "Africa",
@@ -141,7 +158,8 @@
     "country_code": "CM",
     "answer": "Cameroon",
     "options": ["Sudan", "Djibouti", "Cameroon", "Nigeria"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Star added in 1975 to represent unity"
   },
   {
     "continent": "Africa",
@@ -149,7 +167,8 @@
     "country_code": "CI",
     "answer": "Ivory Coast",
     "options": ["Zambia", "Ivory Coast", "Algeria", "Angola"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Inspired by French tricolor design"
   },
   {
     "continent": "Africa",
@@ -157,7 +176,8 @@
     "country_code": "SN",
     "answer": "Senegal",
     "options": ["Senegal", "Mozambique", "Uganda", "Rwanda"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Star represents African unity"
   },
   {
     "continent": "Africa",
@@ -165,7 +185,8 @@
     "country_code": "ZM",
     "answer": "Zambia",
     "options": ["Eritrea", "Togo", "Zambia", "Morocco"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Eagle represents ability to rise above problems"
   },
   {
     "continent": "Africa",
@@ -173,7 +194,8 @@
     "country_code": "RW",
     "answer": "Rwanda",
     "options": ["Ghana", "Rwanda", "Sierra Leone", "Tunisia"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Sun represents enlightenment and transparency"
   },
   {
     "continent": "Africa",
@@ -181,7 +203,8 @@
     "country_code": "BJ",
     "answer": "Benin",
     "options": ["Benin", "Madagascar", "Libya", "Seychelles"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Flag readopted in 1990 after communist era"
   },
   {
     "continent": "Africa",
@@ -189,7 +212,8 @@
     "country_code": "TG",
     "answer": "Togo",
     "options": ["Tanzania", "Togo", "South Africa", "Ivory Coast"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Five stripes represent five regions"
   },
   {
     "continent": "Africa",
@@ -197,7 +221,8 @@
     "country_code": "SL",
     "answer": "Sierra Leone",
     "options": ["DR Congo", "Sao Tome and Principe", "Sierra Leone", "Kenya"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Colors represent three geographical regions"
   },
   {
     "continent": "Africa",
@@ -205,7 +230,8 @@
     "country_code": "ER",
     "answer": "Eritrea",
     "options": ["Eritrea", "Egypt", "Sudan", "Djibouti"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Olive branch represents peace after 30-year war"
   },
   {
     "continent": "Africa",
@@ -213,7 +239,8 @@
     "country_code": "DJ",
     "answer": "Djibouti",
     "options": ["Uganda", "Djibouti", "Comoros", "Nigeria"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Star represents unity of diverse ethnic groups"
   },
   {
     "continent": "Africa",
@@ -221,7 +248,8 @@
     "country_code": "KM",
     "answer": "Comoros",
     "options": ["Angola", "Comoros", "Cameroon", "Ethiopia"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Four stripes represent four main islands"
   },
   {
     "continent": "Africa",
@@ -229,7 +257,8 @@
     "country_code": "SC",
     "answer": "Seychelles",
     "options": ["Seychelles", "Algeria", "Mozambique", "Senegal"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Five colors represent multi-party democracy"
   },
   {
     "continent": "Africa",
@@ -237,6 +266,7 @@
     "country_code": "ST",
     "answer": "Sao Tome and Principe",
     "options": ["Rwanda", "Sao Tome and Principe", "Morocco", "Zambia"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Two stars represent the two main islands"
   }
 ]

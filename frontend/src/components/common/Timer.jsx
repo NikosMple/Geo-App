@@ -1,4 +1,3 @@
-
 const Timer = ({ minutes, seconds, isRunning, isLowTime, isVeryLowTime }) => {
   return (
     <>

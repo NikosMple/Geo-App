@@ -4,69 +4,79 @@
     "country_code": "AU",
     "answer": "Australia",
     "options": ["Australia", "New Zealand", "Papua New Guinea", "Fiji"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Union Jack represents British heritage"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "NZ",
     "answer": "New Zealand",
     "options": ["Tonga", "Samoa", "New Zealand", "Solomon Islands"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Stars represent Southern Cross constellation"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "PG",
     "answer": "Papua New Guinea",
     "options": ["Papua New Guinea", "Australia", "Micronesia", "Vanuatu"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Bird of paradise represents cultural heritage"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "FJ",
     "answer": "Fiji",
     "options": ["Fiji", "Tonga", "Samoa", "New Zealand"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Union Jack and shield of arms combined"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "SB",
     "answer": "Solomon Islands",
     "options": ["Micronesia", "Solomon Islands", "Vanuatu", "Tonga"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Five stars represent five main island groups"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "VU",
     "answer": "Vanuatu",
     "options": ["Vanuatu", "Samoa", "Solomon Islands", "Australia"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Boar's tusk represents prosperity"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "WS",
     "answer": "Samoa",
     "options": ["Samoa", "New Zealand", "Fiji", "Papua New Guinea"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Southern Cross constellation featured"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "TO",
     "answer": "Tonga",
     "options": ["Tonga", "Australia", "Micronesia", "Fiji"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Red cross represents Christianity"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "KI",
     "answer": "Kiribati",
     "options": ["Kiribati", "Samoa", "Vanuatu", "New Zealand"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Frigate bird flies over rising sun"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "FM",
     "answer": "Federated States of Micronesia",
     "options": ["Micronesia", "Tonga", "Papua New Guinea", "Solomon Islands"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Four stars represent four states"
   }
 ]

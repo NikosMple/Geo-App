@@ -4,209 +4,239 @@
     "question": "What is the capital of Egypt?",
     "answer": "Cairo",
     "options": ["Lusaka", "Cairo", "Lomé", "Tripoli"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Has more pyramids than any other country"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of South Africa?",
     "answer": "Pretoria",
     "options": ["Pretoria", "Dakar", "Kigali", "Tunis"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Has 11 official languages"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Nigeria?",
     "answer": "Abuja",
     "options": ["Rabat", "Abuja", "Accra", "Moroni"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Africa's most populous country with 200+ million people"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Kenya?",
     "answer": "Nairobi",
     "options": ["Nairobi", "Khartoum", "Asmara", "Luanda"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Tea is their largest export crop"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Morocco?",
     "answer": "Rabat",
     "options": ["Maputo", "Yaoundé", "Rabat", "Dodoma"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Film location for many Hollywood desert scenes"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Algeria?",
     "answer": "Algiers",
     "options": ["Algiers", "Freetown", "Kinshasa", "Kampala"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "90% of the country is Sahara Desert"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Ethiopia?",
     "answer": "Addis Ababa",
     "options": ["São Tomé", "Victoria", "Porto-Novo", "Addis Ababa"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Never been fully colonized by Europeans"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Ghana?",
     "answer": "Accra",
     "options": ["Antananarivo", "Accra", "Yamoussoukro", "Djibouti City"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "World's second largest cocoa producer"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Tanzania?",
     "answer": "Dodoma",
     "options": ["Dodoma", "Pretoria", "Cairo", "Nairobi"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Mount Kilimanjaro is Africa's highest peak"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Democratic Republic of Congo?",
     "answer": "Kinshasa",
     "options": ["Abuja", "Tripoli", "Kinshasa", "Lusaka"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "World's largest producer of cobalt"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Angola?",
     "answer": "Luanda",
     "options": ["Luanda", "Algiers", "Lomé", "Kigali"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Portuguese is the official language"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Sudan?",
     "answer": "Khartoum",
     "options": ["Rabat", "Khartoum", "Asmara", "Dakar"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Has more ancient pyramids than Egypt"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Uganda?",
     "answer": "Kampala",
     "options": ["Kampala", "Moroni", "Accra", "Tunis"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Source of the Nile River"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Mozambique?",
     "answer": "Maputo",
     "options": ["Freetown", "Victoria", "Maputo", "Yamoussoukro"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Only country with AK-47 on its flag"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Madagascar?",
     "answer": "Antananarivo",
     "options": ["Porto-Novo", "Antananarivo", "Addis Ababa", "Dodoma"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "90% of wildlife found nowhere else"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Tunisia?",
     "answer": "Tunis",
     "options": ["Tunis", "São Tomé", "Kinshasa", "Pretoria"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Star Wars Tatooine scenes filmed here"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Libya?",
     "answer": "Tripoli",
     "options": ["Nairobi", "Tripoli", "Cairo", "Yaoundé"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Has Africa's largest oil reserves"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Cameroon?",
     "answer": "Yaoundé",
     "options": ["Khartoum", "Djibouti City", "Yaoundé", "Abuja"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Over 280 different languages spoken"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Ivory Coast?",
     "answer": "Yamoussoukro",
     "options": ["Lusaka", "Yamoussoukro", "Algiers", "Luanda"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "World's largest cocoa producer"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Senegal?",
     "answer": "Dakar",
     "options": ["Dakar", "Maputo", "Kampala", "Kigali"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Pink Lake Retba is naturally pink colored"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Zambia?",
     "answer": "Lusaka",
     "options": ["Asmara", "Lomé", "Lusaka", "Rabat"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Victoria Falls creates world's largest waterfall curtain"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Rwanda?",
     "answer": "Kigali",
     "options": ["Accra", "Kigali", "Freetown", "Tunis"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Plastic bags are banned nationwide"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Benin?",
     "answer": "Porto-Novo",
     "options": ["Porto-Novo", "Antananarivo", "Tripoli", "Victoria"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Birthplace of the voodoo religion"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Togo?",
     "answer": "Lomé",
     "options": ["Dodoma", "Lomé", "Pretoria", "Yamoussoukro"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "One of Africa's smallest countries"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Sierra Leone?",
     "answer": "Freetown",
     "options": ["Kinshasa", "São Tomé", "Freetown", "Nairobi"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Has the world's largest natural harbor"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Eritrea?",
     "answer": "Asmara",
     "options": ["Asmara", "Cairo", "Khartoum", "Djibouti City"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "No privately owned media allowed"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Djibouti?",
     "answer": "Djibouti City",
     "options": ["Kampala", "Djibouti City", "Moroni", "Abuja"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "One of the hottest countries on Earth"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Comoros?",
     "answer": "Moroni",
     "options": ["Luanda", "Moroni", "Yaoundé", "Addis Ababa"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "World's largest producer of ylang-ylang perfume"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Seychelles?",
     "answer": "Victoria",
     "options": ["Victoria", "Algiers", "Maputo", "Dakar"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Smallest African country by population"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Sao Tome and Principe?",
     "answer": "São Tomé",
     "options": ["Kigali", "São Tomé", "Rabat", "Lusaka"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Major cocoa producer known as chocolate islands"
   }
 ]

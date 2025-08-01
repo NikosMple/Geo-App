@@ -1,5 +1,11 @@
 import express from "express";
-import {loadQuestions, getAvailableContinents, getAvailableCountries, loadFlagQuestion } from "../services/dataService.js";
+import {
+  loadQuestions, 
+  getAvailableContinents, 
+  getAvailableCountries, 
+  loadFlagQuestion,
+  getFunFact  // ← Νέο import
+} from "../services/dataService.js";
 
 const router = express.Router();
 
@@ -86,6 +92,7 @@ router.get("/capitals/:continent/:difficulty", async (req, res) => {
 router.post("/capitals/check", async (req, res) => {
   try {
     const { continent, question: questionText, userAnswer } = req.body;
+    
 
     console.log("=== CHECKING ANSWER ===");
     console.log("Continent:", continent);
@@ -120,6 +127,10 @@ router.post("/capitals/check", async (req, res) => {
       difficulty: question.difficulty,
     });
 
+    // ✨ Get fun fact for the correct answer
+    const funFact = await getFunFact(question.answer, continent);
+    console.log("Fun fact:", funFact);
+
     // Handle case where user didn't answer (time expired)
     if (!userAnswer || userAnswer === null) {
       console.log("No user answer provided (time expired)");
@@ -127,6 +138,7 @@ router.post("/capitals/check", async (req, res) => {
         isCorrect: false,
         correctAnswer: question.answer,
         explanation: question.explanation || null,
+        funFact  // ← Νέο field
       });
     }
 
@@ -144,6 +156,7 @@ router.post("/capitals/check", async (req, res) => {
       isCorrect,
       correctAnswer: question.answer,
       explanation: question.explanation || null,
+      funFact  // ← Νέο field
     });
   } catch (error) {
     console.error("Error checking answer:", error);
@@ -178,7 +191,6 @@ router.get("/:continent", async (req, res) => {
 
 //-------------------- FLAGS -----------------------------//
 
-
 // -- Get specific difficulty for each continent --
 router.get("/flags/:continent/:difficulty", async (req, res) => {
   try {
@@ -212,8 +224,18 @@ router.post("/flags/check", async (req, res) => {
       return res.status(400).json({ error: "Question not found for this flag" });
     }
 
-    if(!question) {
-      return res.status(400).json({error: 'Question not found for this flag'});
+    // ✨ Get fun fact for flags - we need the country name from the answer
+    const funFact = await getFunFact(question.answer, continent);
+    console.log("Flag fun fact:", funFact);
+
+    // Handle case where user didn't answer (time expired)
+    if (!userAnswer || userAnswer === null) {
+      return res.json({
+        isCorrect: false,
+        correctAnswer: question.answer,
+        explanation: question.explanation || null,
+        funFact  // ← Νέο field
+      });
     }
 
     // Check if the answer is correct
@@ -223,6 +245,8 @@ router.post("/flags/check", async (req, res) => {
     res.json({
       isCorrect,
       correctAnswer: question.answer,
+      explanation: question.explanation || null,
+      funFact  // ← Νέο field
     });
   } catch (error) {
     console.log("Error checking flag answer", error);

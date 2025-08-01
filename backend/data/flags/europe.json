@@ -4,209 +4,239 @@
     "country_code": "DE",
     "answer": "Germany",
     "options": ["Austria", "Poland", "Germany", "Switzerland"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Black red gold dates back to Holy Roman Empire"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "FR",
     "answer": "France",
     "options": ["Spain", "France", "Netherlands", "Belgium"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Tricolor inspired revolutions worldwide"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "IT",
     "answer": "Italy",
     "options": ["Greece", "Italy", "Hungary", "Portugal"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Green white red represents hope, faith and charity"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "ES",
     "answer": "Spain",
     "options": ["Ireland", "Norway", "Spain", "Germany"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Coat of arms shows Pillars of Hercules"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "GR",
     "answer": "Greece",
     "options": ["Greece", "Poland", "Czech Republic", "Finland"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Nine stripes represent syllables of freedom motto"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "GB",
     "answer": "United Kingdom",
     "options": ["Scotland", "Ireland", "Wales", "United Kingdom"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Union Jack combines three country crosses"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "NL",
     "answer": "Netherlands",
     "options": ["Netherlands", "Belgium", "Luxembourg", "Denmark"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Orange dynasty color replaced with red"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "PT",
     "answer": "Portugal",
     "options": ["Italy", "Portugal", "Greece", "Spain"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Armillary sphere represents maritime discoveries"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "AT",
     "answer": "Austria",
     "options": ["Czech Republic", "Hungary", "Switzerland", "Austria"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Legend says red-white-red from bloody battle tunic"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "CH",
     "answer": "Switzerland",
     "options": ["Luxembourg", "Slovenia", "Germany", "Switzerland"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Square flag shared only with Vatican"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "PL",
     "answer": "Poland",
     "options": ["Latvia", "Finland", "Slovakia", "Poland"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "White and red represent peace and socialism"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "CZ",
     "answer": "Czech Republic",
     "options": ["Malta", "North Macedonia", "Norway", "Czech Republic"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Blue triangle added to distinguish from Poland"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "HU",
     "answer": "Hungary",
     "options": ["Estonia", "Bulgaria", "Hungary", "Croatia"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Crown of Saint Stephen featured on coat of arms"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "SE",
     "answer": "Sweden",
     "options": ["Norway", "Sweden", "Finland", "Denmark"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Yellow cross on blue dates back to 1442"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "NO",
     "answer": "Norway",
     "options": ["Iceland", "Norway", "Switzerland", "Ireland"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Cross design inspired by Danish flag"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "DK",
     "answer": "Denmark",
     "options": ["Lithuania", "Estonia", "Latvia", "Denmark"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "World's oldest continuously used national flag"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "FI",
     "answer": "Finland",
     "options": ["Sweden", "Finland", "Iceland", "Norway"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Cross represents Nordic heritage"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "RO",
     "answer": "Romania",
     "options": ["Greece", "Romania", "Bulgaria", "Croatia"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Almost identical to Chad's flag"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "HR",
     "answer": "Croatia",
     "options": ["Croatia", "Slovenia", "Bosnia and Herzegovina", "Serbia"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Checkerboard shield has 25 squares"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "IE",
     "answer": "Ireland",
     "options": ["Wales", "Ireland", "Scotland", "England"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Green represents Catholics, orange Protestants"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "EE",
     "answer": "Estonia",
     "options": ["Latvia", "Lithuania", "Estonia", "Finland"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Blue black white represents sky, soil and snow"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "LV",
     "answer": "Latvia",
     "options": ["Estonia", "Belarus", "Latvia", "Lithuania"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Dark red represents blood shed for independence"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "LT",
     "answer": "Lithuania",
     "options": ["Poland", "Lithuania", "Latvia", "Estonia"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Yellow green red represents sun, forests and blood"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "SK",
     "answer": "Slovakia",
     "options": ["Croatia", "Slovakia", "Bosnia and Herzegovina", "Slovenia"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Double cross represents Byzantine Christianity"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "SI",
     "answer": "Slovenia",
     "options": ["Serbia", "Slovenia", "Bosnia and Herzegovina", "Croatia"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Mount Triglav featured on coat of arms"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "BG",
     "answer": "Bulgaria",
     "options": ["North Macedonia", "Greece", "Bulgaria", "Romania"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "White green red represents peace, fertility and courage"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "AL",
     "answer": "Albania",
     "options": ["Kosovo", "Albania", "Montenegro", "North Macedonia"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Double-headed eagle represents north and south"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "MK",
     "answer": "North Macedonia",
     "options": ["Albania", "Montenegro", "North Macedonia", "Kosovo"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Sun design changed due to Greek objection"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "ME",
     "answer": "Montenegro",
     "options": ["Bosnia and Herzegovina", "Montenegro", "Albania", "North Macedonia"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Golden eagle holds scepter and orb"
   },
   {
     "question": "Which country does this flag belong to?",
     "country_code": "MD",
     "answer": "Moldova",
     "options": ["Transnistria", "Gagauzia", "Moldova", "Bender"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Eagle holds cross, olive branch and scepter"
   }
 ]

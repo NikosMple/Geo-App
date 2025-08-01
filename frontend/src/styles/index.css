@@ -118,6 +118,65 @@
   animation: orbFloat3 15s ease-in-out infinite;
 }
 
+/* Flag-specific enhancements */
+.flag-container {
+  position: relative;
+  display: inline-block;
+}
+
+.flag-container::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(45deg, 
+    rgba(59, 130, 246, 0.15), 
+    rgba(16, 185, 129, 0.15), 
+    rgba(239, 68, 68, 0.15), 
+    rgba(245, 158, 11, 0.15)
+  );
+  border-radius: 20px;
+  filter: blur(15px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.flag-container:hover::before {
+  opacity: 1;
+}
+
+/* Flag wave animation */
+@keyframes flagWave {
+  0%, 100% { transform: perspective(400px) rotateY(0deg) rotateX(0deg); }
+  25% { transform: perspective(400px) rotateY(-2deg) rotateX(1deg); }
+  50% { transform: perspective(400px) rotateY(0deg) rotateX(-1deg); }
+  75% { transform: perspective(400px) rotateY(2deg) rotateX(1deg); }
+}
+
+.flag-wave {
+  animation: flagWave 3s ease-in-out infinite;
+}
+
+/* Enhanced flag shadow */
+.flag-enhanced {
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Flag aspect ratio containers */
+.flag-aspect-4-3 {
+  aspect-ratio: 4/3;
+}
+
+.flag-aspect-3-2 {
+  aspect-ratio: 3/2;
+}
+
 @keyframes orbFloat1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
   50% { transform: translate(100px, -50px) scale(1.2); }
@@ -178,3 +237,5 @@
 .animation-delay-400 { animation-delay: 0.4s; }
 .animation-delay-600 { animation-delay: 0.6s; }
 .animation-delay-800 { animation-delay: 0.8s; }
+
+

@@ -15,6 +15,7 @@ module.exports = {
         righteous: ['Righteous', 'sans-serif'],
         bebas: ['Bebas Neue', 'sans-serif'],
       },
+      
     },
   },
   plugins: [ plugin(function({ addUtilities }) {

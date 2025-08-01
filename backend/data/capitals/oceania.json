@@ -4,69 +4,79 @@
     "question": "What is the capital of Australia?",
     "answer": "Canberra",
     "options": ["Canberra", "Wellington", "Port Moresby", "Suva"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Home to world's most deadly creatures"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of New Zealand?",
     "answer": "Wellington",
     "options": ["Nukuʻalofa", "Apia", "Wellington", "Honiara"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Has more sheep than people"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Papua New Guinea?",
     "answer": "Port Moresby",
     "options": ["Port Moresby", "Canberra", "Palikir", "Port Vila"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Most linguistically diverse country worldwide"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Fiji?",
     "answer": "Suva",
     "options": ["Suva", "Nukuʻalofa", "Apia", "Wellington"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Constitutional right to happiness"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Solomon Islands?",
     "answer": "Honiara",
     "options": ["Palikir", "Honiara", "Port Vila", "Nukuʻalofa"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Major WWII Pacific battles fought here"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Vanuatu?",
     "answer": "Port Vila",
     "options": ["Port Vila", "Apia", "Honiara", "Canberra"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Has most active volcanoes per capita"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Samoa?",
     "answer": "Apia",
     "options": ["Apia", "Wellington", "Suva", "Port Moresby"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "First country to see each new day"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Tonga?",
     "answer": "Nukuʻalofa",
     "options": ["Nukuʻalofa", "Canberra", "Palikir", "Suva"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Never been colonized by Europeans"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Kiribati?",
     "answer": "South Tarawa",
     "options": ["South Tarawa", "Apia", "Port Vila", "Wellington"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Only country spanning all four hemispheres"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Federated States of Micronesia?",
     "answer": "Palikir",
     "options": ["Palikir", "Nukuʻalofa", "Port Moresby", "Honiara"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Made up of 607 small islands"
   }
 ]

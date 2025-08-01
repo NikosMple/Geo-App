@@ -4,209 +4,239 @@
     "question": "What is the capital of China?",
     "answer": "Beijing",
     "options": ["Tashkent", "Beijing", "Seoul", "Riyadh"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Great Wall not actually visible from space"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of India?",
     "answer": "New Delhi",
     "options": ["New Delhi", "Tokyo", "Manila", "Ankara"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Invented chess, yoga and shampoo"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Japan?",
     "answer": "Tokyo",
     "options": ["Bangkok", "Tokyo", "Tehran", "Kabul"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Made up of over 6800 islands"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of South Korea?",
     "answer": "Seoul",
     "options": ["Seoul", "Jakarta", "Astana", "Baghdad"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Fastest internet speeds in the world"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Indonesia?",
     "answer": "Jakarta",
     "options": ["Hanoi", "Islamabad", "Jakarta", "Kathmandu"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Consists of over 17,000 islands"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Thailand?",
     "answer": "Bangkok",
     "options": ["Bangkok", "Sri Jayawardenepura Kotte", "Phnom Penh", "Ulaanbaatar"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Only Southeast Asian country never colonized"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Vietnam?",
     "answer": "Hanoi",
     "options": ["Vientiane", "Hanoi", "Muscat", "Amman"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Motorbikes outnumber cars 20 to 1"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Philippines?",
     "answer": "Manila",
     "options": ["Manila", "Baku", "Tbilisi", "Naypyidaw"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Made up of 7,641 islands"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Malaysia?",
     "answer": "Kuala Lumpur",
     "options": ["Sana'a", "Abu Dhabi", "Kuala Lumpur", "Singapore"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "Home to world's oldest tropical rainforest"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Singapore?",
     "answer": "Singapore",
     "options": ["Singapore", "Beijing", "New Delhi", "Tokyo"],
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "explanation": "City-state with no natural resources"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Saudi Arabia?",
     "answer": "Riyadh",
     "options": ["Riyadh", "Seoul", "Jakarta", "Bangkok"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Women only allowed to drive since 2018"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of United Arab Emirates?",
     "answer": "Abu Dhabi",
     "options": ["Hanoi", "Manila", "Abu Dhabi", "Kuala Lumpur"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Dubai has world's tallest building"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Turkey?",
     "answer": "Ankara",
     "options": ["Ankara", "Singapore", "Tehran", "Baghdad"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Only country spanning Europe and Asia"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Iran?",
     "answer": "Tehran",
     "options": ["Islamabad", "Tehran", "Kabul", "Tashkent"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Invented ice cream and windmills"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Iraq?",
     "answer": "Baghdad",
     "options": ["Baghdad", "Astana", "Kathmandu", "Sri Jayawardenepura Kotte"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Birthplace of writing and the wheel"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Pakistan?",
     "answer": "Islamabad",
     "options": ["Naypyidaw", "Phnom Penh", "Islamabad", "Vientiane"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Has world's second largest salt mine"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Afghanistan?",
     "answer": "Kabul",
     "options": ["Ulaanbaatar", "Muscat", "Kabul", "Sana'a"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Never been successfully occupied long-term"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Uzbekistan?",
     "answer": "Tashkent",
     "options": ["Tashkent", "Amman", "Baku", "Tbilisi"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Double landlocked country in Central Asia"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Kazakhstan?",
     "answer": "Astana",
     "options": ["Riyadh", "Astana", "Abu Dhabi", "Ankara"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "World's largest landlocked country"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Nepal?",
     "answer": "Kathmandu",
     "options": ["Beijing", "New Delhi", "Kathmandu", "Tokyo"],
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "explanation": "Mount Everest straddles Nepal-Tibet border"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Sri Lanka?",
     "answer": "Sri Jayawardenepura Kotte",
     "options": ["Seoul", "Sri Jayawardenepura Kotte", "Jakarta", "Bangkok"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Teardrop-shaped island nation"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Myanmar?",
     "answer": "Naypyidaw",
     "options": ["Naypyidaw", "Hanoi", "Manila", "Kuala Lumpur"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Also known as Burma"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Cambodia?",
     "answer": "Phnom Penh",
     "options": ["Singapore", "Phnom Penh", "Riyadh", "Abu Dhabi"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Angkor Wat is world's largest temple"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Laos?",
     "answer": "Vientiane",
     "options": ["Ankara", "Tehran", "Vientiane", "Baghdad"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Only landlocked Southeast Asian country"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Mongolia?",
     "answer": "Ulaanbaatar",
     "options": ["Ulaanbaatar", "Islamabad", "Kabul", "Tashkent"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Least densely populated independent country"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Oman?",
     "answer": "Muscat",
     "options": ["Astana", "Kathmandu", "Muscat", "Sri Jayawardenepura Kotte"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Sultan ruled for 50 years"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Yemen?",
     "answer": "Sana'a",
     "options": ["Sana'a", "Naypyidaw", "Phnom Penh", "Vientiane"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Coffee cultivation originated here"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Jordan?",
     "answer": "Amman",
     "options": ["Ulaanbaatar", "Amman", "Muscat", "Baku"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Petra carved into pink sandstone rock"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Azerbaijan?",
     "answer": "Baku",
     "options": ["Tbilisi", "Sana'a", "Baku", "Amman"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Land of fire with natural gas flames"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Georgia?",
     "answer": "Tbilisi",
     "options": ["Tbilisi", "Beijing", "New Delhi", "Tokyo"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Wine making originated here 8000 years ago"
   }
 ]

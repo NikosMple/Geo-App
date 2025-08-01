@@ -4,69 +4,79 @@
     "question": "What is the capital of Benin?",
     "answer": "Porto-Novo",
     "options": ["Cotonou", "Porto-Novo", "Lomé", "Ouagadougou"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Birthplace of the voodoo religion"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Nauru?",
     "answer": "Yaren",
     "options": ["Bairiki", "Denigomodu", "Yaren", "Majuro"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "World's smallest island nation"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Myanmar?",
     "answer": "Naypyidaw",
     "options": ["Yangon", "Naypyidaw", "Phnom Penh", "Vientiane"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Also known as Burma"
   },
   {
     "continent": "America",
     "question": "What is the capital of Bolivia?",
     "answer": "Sucre",
     "options": ["Sucre", "Quito", "Asunción", "La Paz"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Has two official capital cities"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Equatorial Guinea?",
     "answer": "Malabo",
     "options": ["Libreville", "Bata", "Malabo", "São Tomé"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Only Spanish-speaking African country"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of San Marino?",
     "answer": "San Marino",
     "options": ["San Marino", "Vaduz", "Andorra la Vella", "Monaco"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "World's oldest surviving republic"
   },
   {
     "continent": "Asia",
     "question": "What is the capital of Sri Lanka?",
     "answer": "Sri Jayawardenepura Kotte",
     "options": ["Colombo", "Sri Jayawardenepura Kotte", "Thimphu", "Kathmandu"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Teardrop-shaped island nation"
   },
   {
     "continent": "Oceania",
     "question": "What is the capital of Federated States of Micronesia?",
     "answer": "Palikir",
     "options": ["Koror", "Palikir", "Port Moresby", "Suva"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Made up of 607 small islands"
   },
   {
     "continent": "Africa",
     "question": "What is the capital of Djibouti?",
     "answer": "Djibouti City",
     "options": ["Addis Ababa", "Djibouti City", "Asmara", "Kampala"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "One of the hottest countries on Earth"
   },
   {
     "continent": "Europe",
     "question": "What is the capital of Liechtenstein?",
     "answer": "Vaduz",
     "options": ["Vaduz", "Bern", "Luxembourg", "Vienna"],
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "explanation": "Double landlocked Alpine microstate"
   }
 ]
