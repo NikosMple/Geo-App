@@ -1,235 +1,255 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
-// Component για την επιλογή δυσκολίας του quiz
-const DifficultyLevels = () => {
-  // ===== HOOKS & STATE =====
-  const { continent } = useParams(); // Παίρνουμε την ήπειρο από το URL
-  const navigate = useNavigate(); // Hook για navigation
-  const [mounted, setMounted] = useState(false); // Για animations
-  const [selectedDifficulty, setSelectedDifficulty] = useState(null); // Επιλεγμένη δυσκολία
+const DifficultyLevels = ({ gameMode }) => {
+  const { continent } = useParams();
+  const navigate = useNavigate();
+  const [mounted, setMounted] = useState(false);
+  const [selectedDifficulty, setSelectedDifficulty] = useState(null);
 
-  // ===== EFFECTS =====
-  // Animation effect - σημαίνει ότι το component έχει φορτώσει
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // ===== EVENT HANDLERS =====
-  // Χειρισμός κλικ σε επίπεδο δυσκολίας
   const handleDifficultyClick = (difficulty) => {
-    setSelectedDifficulty(difficulty); // Σημείωση της επιλογής
-
-    // Μικρή καθυστέρηση για animation και μετά navigation στο quiz
+    setSelectedDifficulty(difficulty);
     setTimeout(() => {
-      navigate(`/quiz/capitals/${continent}/${difficulty}`);
+      navigate(`/quiz/${gameMode}/${continent}/${difficulty}`);
     }, 300);
   };
 
-  // ===== STATIC DATA =====
-  // Διαθέσιμα επίπεδα δυσκολίας
   const difficultyOptions = [
     {
-      id: 'easy', // Unique identifier
-      title: 'Easy', // Τίτλος
-      icon: '🟢', // Εικονίδιο
-      description: 'Perfect for beginners', // Περιγραφή
-      color: 'from-emerald-500 to-green-600', // Gradient χρώματα
-      borderColor: 'border-emerald-400/30', // Χρώμα περιγράμματος
-      hoverColor: 'hover:border-emerald-400/60', // Χρώμα hover
-      bgColor: 'from-emerald-900/20 to-green-900/20', // Background gradient
+      id: 'easy',
+      title: 'Easy',
+      icon: '🟢',
+      description: 'Perfect for beginners',
+      longDescription: 'Start your journey with basic questions',
+      color: 'from-emerald-400 to-green-500',
+      shadowColor: 'shadow-emerald-500/25',
+      bgColor: 'from-emerald-900/10 to-green-900/10',
+      difficulty: '★☆☆☆'
     },
     {
       id: 'medium',
       title: 'Medium',
       icon: '🟡',
       description: 'Good challenge level',
-      color: 'from-yellow-500 to-orange-500',
-      borderColor: 'border-yellow-400/30',
-      hoverColor: 'hover:border-yellow-400/60',
-      bgColor: 'from-yellow-900/20 to-orange-900/20',
+      longDescription: 'Test your intermediate knowledge',
+      color: 'from-yellow-400 to-orange-500',
+      shadowColor: 'shadow-yellow-500/25',
+      bgColor: 'from-yellow-900/10 to-orange-900/10',
+      difficulty: '★★☆☆'
     },
     {
       id: 'hard',
       title: 'Hard',
       icon: '🔴',
       description: 'For geography experts',
-      color: 'from-red-500 to-red-600',
-      borderColor: 'border-red-400/30',
-      hoverColor: 'hover:border-red-400/60',
-      bgColor: 'from-red-900/20 to-red-900/20',
+      longDescription: 'Challenge yourself with tough questions',
+      color: 'from-red-400 to-red-600',
+      shadowColor: 'shadow-red-500/25',
+      bgColor: 'from-red-900/10 to-red-900/10',
+      difficulty: '★★★☆'
     },
     {
       id: 'random',
       title: 'Random',
-      icon: '🌈',
+      icon: '🎲',
       description: 'Mix of all difficulty levels',
-      color: 'from-purple-500 via-pink-500 to-red-500',
-      borderColor: 'border-purple-400/30',
-      hoverColor: 'hover:border-purple-400/60',
-      bgColor: 'from-purple-900/20 to-pink-900/20',
+      longDescription: 'Unpredictable mix for ultimate challenge',
+      color: 'from-purple-400 via-pink-400 to-indigo-500',
+      shadowColor: 'shadow-purple-500/25',
+      bgColor: 'from-purple-900/10 to-pink-900/10',
+      difficulty: '★★★★'
     },
   ];
 
-  // ===== MAIN RENDER =====
+  const gameInfo = {
+    capitals: { title: 'Capitals', icon: '🏛️' },
+    flags: { title: 'Flags', icon: '🏳️'}
+  }[gameMode];
+
   return (
-    <div className={`app-background min-h-screen ${mounted ? 'mounted' : ''}`}>
-      {/* ===== BACKGROUND DECORATIONS ===== */}
+    <div className={`premium-dashboard ${mounted ? 'mounted' : ''}`}>
+      {/* Background */}
       <div className="bg-decoration">
-        <div className="floating-globe"></div> {/* Floating globe animation */}
-        <div className="grid-pattern"></div> {/* Grid pattern overlay */}
+        <div className="floating-globe"></div>
+        <div className="grid-pattern"></div>
         <div className="gradient-orbs">
-          {' '}
-          {/* Floating colored orbs */}
           <div className="orb orb-1"></div>
           <div className="orb orb-2"></div>
           <div className="orb orb-3"></div>
         </div>
       </div>
 
-      {/* ===== MAIN CONTENT ===== */}
-      <div className="relative z-10 p-6 sm:p-8 max-w-6xl mx-auto min-h-screen">
-        {/* ===== HEADER SECTION ===== */}
-        <header className="flex flex-col md:flex-row justify-between items-center mb-12 gap-4">
-          {/* Back Button */}
-          <Link
-            to="/choose-continent"
-            className="inline-flex items-center gap-2 text-white bg-white/10 border border-white/20 px-6 py-3 rounded-full cursor-pointer transition-all duration-300 backdrop-blur-lg text-base no-underline hover:bg-white/20 hover:-translate-y-1 hover:text-white hover:shadow-lg hover:shadow-white/10"
-          >
-            <span className="text-xl transition-transform duration-300">←</span>
-            <span>Back to Continents</span>
-          </Link>
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto min-h-screen">
+          
+          {/* Header */}
+          <header className="flex flex-col md:flex-row justify-between items-center pt-8 pb-12 gap-6">
+            <Link
+              to={`/${gameMode}/choose-continent`}
+              className="group inline-flex items-center gap-3 text-white bg-white/10 backdrop-blur-xl border border-white/20 px-6 py-3.5 rounded-2xl transition-all duration-300 hover:bg-white/20 hover:-translate-y-1 hover:shadow-xl hover:shadow-white/10 no-underline"
+            >
+              <span className="text-xl group-hover:-translate-x-1 transition-transform duration-300">←</span>
+              <span className="font-medium">Back to Continents</span>
+            </Link>
 
-          {/* Current Selection Indicator */}
-          <div className="flex items-center gap-2 bg-white/10 backdrop-blur-lg border border-white/20 px-6 py-3 rounded-full text-white font-medium hover:bg-white/15 transition-all duration-300">
-            <span className="text-xl">🏛️</span>
-            <span className="capitalize">{continent} Capitals</span>{' '}
-            {/* Δείχνει την επιλεγμένη ήπειρο */}
-          </div>
-        </header>
-
-        {/* ===== TITLE SECTION ===== */}
-        <section className="text-center mb-16 animate-slide-up animation-delay-200">
-          {/* Main Title */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 bg-gradient-to-r from-white via-blue-400 to-purple-400 bg-clip-text text-transparent leading-tight font-righteous">
-            Choose Difficulty Level
-          </h1>
-
-          {/* Subtitle */}
-          <p className="text-lg sm:text-xl text-white/80 mb-8 font-light max-w-2xl mx-auto">
-            Select your preferred challenge level for {continent} capitals
-          </p>
-
-          {/* Info Badges */}
-          <div className="flex justify-center gap-4 sm:gap-8 flex-wrap">
-            <div className="flex items-center gap-2 text-white/70 text-sm bg-white/5 px-4 py-2 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
-              <span className="text-lg">🎯</span>
-              <span>4 Difficulty Levels</span>
+            <div className="flex items-center gap-3 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-xl border border-white/20 px-6 py-3.5 rounded-2xl">
+              <div className="relative">
+                <span className="text-2xl">{gameInfo.icon}</span>
+                <span className="absolute -top-1 -right-1 text-sm">{gameInfo.emoji}</span>
+              </div>
+              <div className="text-white">
+                <span className="capitalize font-bold">{continent}</span>
+                <span className="text-white/70 ml-2">{gameInfo.title}</span>
+              </div>
             </div>
-          </div>
-        </section>
+          </header>
 
-        {/* ===== DIFFICULTY CARDS GRID ===== */}
-        <section className="animate-slide-up animation-delay-400">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {/* Render κάθε επίπεδο δυσκολίας */}
-            {difficultyOptions.map((option, index) => (
-              <div
-                key={option.id}
-                className={`group relative bg-gradient-to-br ${
-                  option.bgColor
-                } backdrop-blur-xl border-2 ${option.borderColor} ${
-                  option.hoverColor
-                } rounded-3xl p-8 cursor-pointer transition-all duration-500 ease-out hover:-translate-y-4 hover:shadow-2xl hover:shadow-black/30 transform hover:scale-[1.02] ${
-                  selectedDifficulty === option.id ? 'scale-95 opacity-75' : '' // Styling για επιλεγμένη κάρτα
-                }`}
-                style={{
-                  animationDelay: `${index * 0.1}s`, // Staggered animation για κάθε κάρτα
-                }}
-                onClick={() => handleDifficultyClick(option.id)}
-              >
-                {/* Shimmer Effect - Λαμπερό εφέ που περνάει από την κάρτα */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/5 to-transparent rounded-3xl pointer-events-none"></div>
+          {/* Hero Section */}
+          <section className="text-center mb-16 animate-slide-up animation-delay-200">
+            <div className="mb-8">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl border border-white/20 px-6 py-3 rounded-full text-sm font-medium text-white/90 mb-6">
+                <span className="relative">
+                  <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-blue-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                </span>
+                <span>Choose Your Challenge Level</span>
+              </div>
+              
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+              <span className="text-white font-righteous">Difficulty </span>
+              <span className="bg-gradient-to-r from-white via-blue-300 to-purple-400 bg-clip-text text-transparent">
+                Selection
+              </span>
+            </h1>
+              
+              <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Choose the perfect challenge level for your 
+                <span className="text-cyan-400 font-semibold"> {continent} {gameInfo.title.toLowerCase()} </span>
+                adventure
+              </p>
+            </div>
 
-                {/* Glow Effect - Φωτεινό εφέ γύρω από την κάρτα */}
+            {/* Quick Stats */}
+            <div className="flex justify-center gap-6 flex-wrap mb-8">
+              <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-xl">
+                <span className="text-lg">🎯</span>
+                <span className="text-white/70 text-sm">4 Difficulty Levels</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-xl">
+                <span className="text-lg">⏱️</span>
+                <span className="text-white/70 text-sm">10 Seconds per Question</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-xl">
+                <span className="text-lg">🏆</span>
+                <span className="text-white/70 text-sm">Instant Scoring</span>
+              </div>
+            </div>
+          </section>
+
+          {/* Difficulty Cards */}
+          <section className="animate-slide-up animation-delay-400 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
+              {difficultyOptions.map((option, index) => (
                 <div
-                  className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-25 transition-opacity duration-500 blur-lg bg-gradient-to-r ${option.color} pointer-events-none`}
-                ></div>
-
-                {/* ===== CARD CONTENT ===== */}
-                <div className="relative z-10 text-center">
-                  {/* Difficulty Icon */}
-                  <div className="text-6xl mb-6 transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
-                    {option.icon}
-                  </div>
-
-                  {/* Difficulty Title */}
-                  <h3
-                    className={`text-2xl font-black mb-3 bg-gradient-to-r ${option.color} bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300`}
-                  >
-                    {option.title}
-                  </h3>
-
-                  {/* Difficulty Description */}
-                  <p className="text-white/70 text-base mb-4 group-hover:text-white/90 transition-colors duration-300">
-                    {option.description}
-                  </p>
-
-                  {/* Points Badge */}
-                  <div
-                    className={`inline-flex items-center gap-2 bg-gradient-to-r ${option.color} bg-opacity-20 border border-white/20 px-4 py-2 rounded-full text-white text-sm font-medium mb-6`}
-                  >
-                
-                  </div>
-
-                  {/* Call to Action */}
-                  <div className="flex justify-center items-center text-white/80 font-medium group-hover:text-white transition-colors duration-300">
-                    <span className="text-lg">Start Challenge</span>
-                    <span className="ml-2 text-xl transform transition-transform duration-300 group-hover:translate-x-1">
-                      →
-                    </span>
-                  </div>
-                </div>
-
-                {/* Animated Border - Περίγραμμα που εμφανίζεται στο hover */}
-                <div
-                  className={`absolute inset-0 rounded-3xl border-2 border-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r ${option.color} p-[2px] pointer-events-none`}
+                  key={option.id}
+                  className={`group relative cursor-pointer transition-all duration-500 ${
+                    selectedDifficulty === option.id ? 'scale-95 opacity-75' : 'hover:-translate-y-6 hover:scale-105'
+                  }`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                  onClick={() => handleDifficultyClick(option.id)}
                 >
-                  <div
-                    className={`w-full h-full rounded-3xl bg-gradient-to-br ${option.bgColor} backdrop-blur-xl`}
-                  ></div>
+                  {/* Card Background */}
+                  <div className="relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden group-hover:border-white/20 transition-all duration-500">
+                    
+                    {/* Animated Background Gradient */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${option.bgColor} opacity-0 group-hover:opacity-100 transition-all duration-500`}></div>
+                    
+                    {/* Shine Effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="relative p-8">
+                      {/* Icon */}
+                      <div className="text-center mb-6">
+                        <div className="relative inline-block">
+                          <div className={`absolute inset-0 bg-gradient-to-r ${option.color} rounded-2xl blur-xl opacity-30 group-hover:opacity-60 transition-all duration-500 scale-110`}></div>
+                          <div className="relative w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                            <span className="text-4xl">{option.icon}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Title & Description */}
+                      <div className="text-center mb-6">
+                        <h3 className={`text-2xl font-bold mb-3 bg-gradient-to-r ${option.color} bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300`}>
+                          {option.title}
+                        </h3>
+                        <p className="text-white/70 text-base mb-2 group-hover:text-white/90 transition-colors duration-300">
+                          {option.description}
+                        </p>
+                        <p className="text-white/50 text-sm group-hover:text-white/70 transition-colors duration-300">
+                          {option.longDescription}
+                        </p>
+                      </div>
+
+                      {/* Stats */}
+                      <div className="flex justify-center items-center mb-6 text-sm">
+                        <div className="text-center">
+                          <div className="text-white/80">{option.difficulty}</div>
+                          <div className="text-white/50">Difficulty</div>
+                        </div>
+                      </div>
+
+                      {/* Action Button */}
+                      <div className="text-center">
+                        <div className={`inline-flex items-center gap-3 bg-gradient-to-r ${option.color} px-6 py-3 rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl ${option.shadowColor}`}>
+                          <span className="text-white font-semibold">Start Challenge</span>
+                          <span className="text-white text-lg group-hover:translate-x-1 transition-transform duration-300">→</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Outer Glow */}
+                    <div className={`absolute -inset-1 bg-gradient-to-r ${option.color} rounded-3xl blur-2xl opacity-0 group-hover:opacity-20 transition-all duration-700 -z-10`}></div>
+                  </div>
                 </div>
+              ))}
+            </div>
+          </section>
+
+          {/* How It Works */}
+          <section className="animate-slide-up animation-delay-600 pb-16">
+            <div className="bg-gradient-to-r from-white/5 to-white/0 backdrop-blur-xl border border-white/10 rounded-3xl p-8 max-w-4xl mx-auto">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-white mb-2">How It Works</h3>
+                <p className="text-white/60">Simple steps to start your geography challenge</p>
               </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ===== INFO SECTION ===== */}
-        <section className="mt-16 animate-slide-up animation-delay-600">
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 text-center">
-            {/* Section Title */}
-            <h3 className="text-2xl font-bold text-white mb-4">How it works</h3>
-
-            {/* Steps Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white/70">
-              {/* Step 1: Choose Level */}
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-2xl">
-                  🎯
-                </div>
-                <span className="font-medium">Choose your level</span>
-              </div>
-
-              {/* Step 2: Answer Questions */}
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-2xl">
-                  📝
-                </div>
-                <span className="font-medium">Answer questions</span>
+              
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                {[
+                  { icon: '🎯', title: 'Choose Level', desc: 'Select your preferred difficulty' },
+                  { icon: '📝', title: 'Answer Questions', desc: 'Test your knowledge with timed questions' },
+                  { icon: '⚡', title: 'Get Instant Feedback', desc: 'See results immediately after each answer' },
+                  { icon: '🏆', title: 'Track Progress', desc: 'View your final score and improve' }
+                ].map((step, index) => (
+                  <div key={index} className="text-center group">
+                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-2xl">{step.icon}</span>
+                    </div>
+                    <h4 className="text-white font-semibold mb-2">{step.title}</h4>
+                    <p className="text-white/60 text-sm leading-relaxed">{step.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
     </div>
   );

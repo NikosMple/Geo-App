@@ -1,11 +1,9 @@
 import express from "express";
-import {
-  loadQuestions,
-  getAvailableContinents,
-  getAvailableCountries,
-} from "../services/dataService.js";
+import {loadQuestions, getAvailableContinents, getAvailableCountries, loadFlagQuestion } from "../services/dataService.js";
 
 const router = express.Router();
+
+//-------------------- CAPITALS -----------------------------//
 
 // -- Get all Continents --
 router.get("/continents", async (req, res) => {
@@ -30,7 +28,7 @@ router.get("/countries", async (req, res) => {
 });
 
 // -- Get specific difficulty for each continent --
-router.get("/:continent/:difficulty", async (req, res) => {
+router.get("/capitals/:continent/:difficulty", async (req, res) => {
   try {
     const { continent, difficulty } = req.params;
 
@@ -85,7 +83,7 @@ router.get("/:continent/:difficulty", async (req, res) => {
 });
 
 // -- Check the answer --
-router.post("/check", async (req, res) => {
+router.post("/capitals/check", async (req, res) => {
   try {
     const { continent, question: questionText, userAnswer } = req.body;
 
@@ -153,7 +151,7 @@ router.post("/check", async (req, res) => {
   }
 });
 
-// -- Specific continent --
+// -- Specific continent -- //
 router.get("/:continent", async (req, res) => {
   try {
     const continent = req.params.continent;
@@ -175,6 +173,60 @@ router.get("/:continent", async (req, res) => {
   } catch (error) {
     console.error("Error loading questions:", error);
     res.status(500).json({ error: "Could not load questions" });
+  }
+});
+
+//-------------------- FLAGS -----------------------------//
+
+
+// -- Get specific difficulty for each continent --
+router.get("/flags/:continent/:difficulty", async (req, res) => {
+  try {
+    const { continent, difficulty } = req.params;
+    const questions = await loadFlagQuestion(continent);
+    let filteredQuestions;
+
+    if (difficulty === "random") {
+      filteredQuestions = questions.sort(() => Math.random() - 0.5);
+    } else {
+      filteredQuestions = questions.filter((q) => q.difficulty === difficulty);
+    }
+
+    res.json(filteredQuestions.slice(0, 10));
+  } catch (error) {
+    res.status(500).json({ error: "Could not load flag questions" });
+  }
+});
+
+// -- Check the answer --
+router.post("/flags/check", async (req, res) => {
+  try {
+    const { continent, userAnswer, country_code } = req.body;
+
+    // Load questions from the correct flag file
+    const questions = await loadFlagQuestion(continent);
+
+    //Find question by country_code
+    const question = questions.find((q) => q.country_code === country_code);
+    if (!question) {
+      return res.status(400).json({ error: "Question not found for this flag" });
+    }
+
+    if(!question) {
+      return res.status(400).json({error: 'Question not found for this flag'});
+    }
+
+    // Check if the answer is correct
+    const isCorrect = question.answer.toLowerCase().trim() === userAnswer.toLowerCase().trim();
+
+    //Return the result
+    res.json({
+      isCorrect,
+      correctAnswer: question.answer,
+    });
+  } catch (error) {
+    console.log("Error checking flag answer", error);
+    res.status(500).json({ error: "Could not check flag answer" });
   }
 });
 

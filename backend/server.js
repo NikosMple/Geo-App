@@ -1,9 +1,12 @@
 import express from 'express';
 import cors from 'cors';
-import Capitals from './routes/capitals.js'
+import QuizRoutes from './routes/quiz.js'
+import helmet from 'helmet';
+
 
 const app = express();
 const port = 3001;
+app.use(helmet());
 
 // Fixed CORS configuration - allow both ports
 app.use(cors({
@@ -14,7 +17,7 @@ app.use(cors({
 
 app.use(express.json());
 
-app.use('/api', Capitals);
+app.use('/api', QuizRoutes);
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`)

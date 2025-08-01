@@ -9,7 +9,8 @@ const Score = () => {
     score = 0, 
     totalQuestions = 10, 
     continent = 'world', 
-    difficulty = 'normal' 
+    difficulty = 'normal',
+    gameMode = 'capitals' // Default to capitals
   } = location.state || {};
 
   const [mounted, setMounted] = useState(false);
@@ -110,12 +111,12 @@ const Score = () => {
             <LaunchButton
               text="Try Again"
               variant="info"
-              onClick={() => navigate(`/quiz/capitals/${continent}/${difficulty}`)}
+              onClick={() => navigate(`/quiz/${gameMode}/${continent}/${difficulty}`)}
             />
             <LaunchButton
               text="Change Difficulty"
               variant="dark"
-              onClick={() => navigate(`/difficulty/${continent}`)}
+              onClick={() => navigate(`/${gameMode}/difficulty/${continent}`)}
             />
             <LaunchButton
               text="New Game"

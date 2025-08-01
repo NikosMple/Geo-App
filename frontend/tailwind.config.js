@@ -1,4 +1,5 @@
 const { fontFamily } = require('tailwindcss/defaultTheme');
+const plugin = require('tailwindcss/plugin');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -16,5 +17,11 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [ plugin(function({ addUtilities }) {
+      addUtilities({
+        '.[transform-style\\:preserve-3d]': {
+          'transform-style': 'preserve-3d',
+        },
+      })
+    })],
 }

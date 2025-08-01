@@ -4,7 +4,7 @@ import { useTimer } from 'react-timer-hook';
 import api from '../services/api';
 import Timer from '../components/Timer';
 
-const CapitalsQuiz = () => {
+const FlagsQuiz = () => {
   const { continent, difficulty } = useParams();
   const navigate = useNavigate();
 
@@ -39,7 +39,6 @@ const CapitalsQuiz = () => {
   } = useTimer({
     expiryTimestamp: getTimerExpiry(),
     onExpire: () => {
-      console.log('⏰ Timer expired!');
       handleTimeExpired();
     }
   });
@@ -47,12 +46,11 @@ const CapitalsQuiz = () => {
   const handleTimeExpired = async () => {
     if (selectedAnswer !== null) return;
     
-    console.log('⏰ Time expired - no answer selected');
     pause();
     setSelectedAnswer('TIME_EXPIRED');
     
     try {
-      const result = await api.checkAnswer(continent, currentQuestion.question, null);
+      const result = await api.checkFlagAnswer(continent, currentQuestion.country_code, null);
       setCorrectAnswer(result.correctAnswer);
     } catch (error) {
       console.error('Error getting correct answer after time expiry:', error);
@@ -63,13 +61,11 @@ const CapitalsQuiz = () => {
   };
 
   useEffect(() => {
-    console.log(`Fetching questions for ${continent} - ${difficulty}`);
     setLoading(true);
     setError(null);
     
-    api.getCapitalsQuizQuestions(continent, difficulty)
+    api.getFlagsQuizQuestions(continent, difficulty)
       .then(data => {
-        console.log(`Received ${data.length} questions:`, data);
         if (data.length === 0) {
           setError(`No questions found for ${continent} - ${difficulty}`);
         } else {
@@ -78,7 +74,6 @@ const CapitalsQuiz = () => {
         setLoading(false);
       })
       .catch(err => {
-        console.error("❌ Error fetching questions:", err);
         setError(`Failed to load questions: ${err.message}`);
         setLoading(false);
       });
@@ -90,7 +85,6 @@ const CapitalsQuiz = () => {
 
   useEffect(() => {
     if (!loading && questions.length > 0 && currentQuestionIndex < questions.length && !selectedAnswer) {
-      console.log(`🔄 Restarting timer for question ${currentQuestionIndex + 1}`);
       const newExpiry = getTimerExpiry();
       restart(newExpiry);
       setTimerKey(prev => prev + 1);
@@ -100,40 +94,33 @@ const CapitalsQuiz = () => {
   const handleAnswerSelect = async (answer) => {
     if (selectedAnswer !== null) return;
     
-    console.log(`👆 User selected: ${answer}`);
     pause();
-    setSelectedAnswer(answer); // Set selected answer immediately for pending state
+    setSelectedAnswer(answer);
     
     try {
-      const result = await api.checkAnswer(continent, currentQuestion.question, answer);
-      console.log('📝 Answer check result:', result);
+      const result = await api.checkFlagAnswer(continent, currentQuestion.country_code, answer);
       
       if (result.isCorrect) {
-        console.log('✅ Correct answer!');
         setScore(score + 1);
-      } else {
-        console.log('❌ Wrong answer!');
       }
       
       setCorrectAnswer(result.correctAnswer);
       
     } catch (error) {
-      console.error("❌ Error checking answer:", error);
+      console.error("Error checking answer:", error);
       setCorrectAnswer(currentQuestion.answer);
     } finally {
-      setIsRevealed(true); // Reveal the result after API call is complete
+      setIsRevealed(true);
     }
   };
 
   const nextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
-      console.log(`➡️ Moving to question ${currentQuestionIndex + 2}`);
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedAnswer(null);
       setCorrectAnswer(null);
       setIsRevealed(false);
     } else {
-      console.log('🏁 Quiz completed!');
       pause();
       navigate('/score', { 
         state: { 
@@ -141,14 +128,12 @@ const CapitalsQuiz = () => {
           totalQuestions: questions.length, 
           continent, 
           difficulty,
-          gameMode: 'capitals' // Pass gameMode to score page
+          gameMode: 'flags' // Pass gameMode to score page
         } 
       });
     }
   };
 
-
-  // Calculate timer state for Timer component
   const timeLeft = minutes * 60 + seconds;
   const isLowTime = timeLeft <= 10;
   const isVeryLowTime = timeLeft <= 5;
@@ -156,9 +141,7 @@ const CapitalsQuiz = () => {
   if (loading) {
     return (
       <div className="app-background min-h-screen flex items-center justify-center">
-        <div className="text-white text-xl animate-pulse">
-          Loading {continent} {difficulty} questions...
-        </div>
+        <div className="text-white text-xl animate-pulse">Loading Flag Quiz...</div>
       </div>
     );
   }
@@ -167,30 +150,13 @@ const CapitalsQuiz = () => {
     return (
       <div className="app-background min-h-screen flex items-center justify-center">
         <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 text-center">
-          <h2 className="text-2xl font-bold text-red-400 mb-4">❌ Error</h2>
+          <h2 className="text-2xl font-bold text-red-400 mb-4">Error</h2>
           <p className="text-white mb-6">{error}</p>
           <Link 
-            to={`/capitals/difficulty/${continent}`}
+            to={`/flags/difficulty/${continent}`}
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 no-underline"
           >
             Try Again
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  if (questions.length === 0) {
-    return (
-      <div className="app-background min-h-screen flex items-center justify-center">
-        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 text-center">
-          <h2 className="text-2xl font-bold text-yellow-400 mb-4">⚠️ No Questions</h2>
-          <p className="text-white mb-6">No questions available for {continent} - {difficulty}</p>
-          <Link 
-            to={`/capitals/difficulty/${continent}`}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 no-underline"
-          >
-            Choose Different Difficulty
           </Link>
         </div>
       </div>
@@ -212,7 +178,7 @@ const CapitalsQuiz = () => {
       <div className="relative z-10 p-6 sm:p-8 max-w-4xl mx-auto min-h-screen">
         <header className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
         <Link
-          to={continent === 'boss' ? '/capitals/choose-continent' : `/capitals/difficulty/${continent}`}
+          to={continent === 'boss' ? '/flags/choose-continent' : `/flags/difficulty/${continent}`}
           className="inline-flex items-center gap-2 text-white bg-white/10 border border-white/20 px-6 py-3 rounded-full cursor-pointer transition-all duration-300 backdrop-blur-lg text-base no-underline hover:bg-white/20 hover:-translate-y-1"
         >
           <span className="text-xl">←</span>
@@ -220,7 +186,6 @@ const CapitalsQuiz = () => {
         </Link>
           
           <div className="flex items-center gap-4">
-            {/* Use the imported Timer component */}
             <Timer 
               minutes={minutes}
               seconds={seconds}
@@ -235,7 +200,7 @@ const CapitalsQuiz = () => {
             </div>
             
             <div className="bg-white/10 backdrop-blur-lg border border-white/20 px-6 py-3 rounded-full text-white font-medium">
-              <span className="text-xl">🏛️</span>
+              <span className="text-xl">🏳️</span>
               <span className="ml-2 capitalize">{continent} - {difficulty}</span>
             </div>
           </div>
@@ -262,9 +227,15 @@ const CapitalsQuiz = () => {
           <div className="w-full max-w-2xl">
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 mb-8 text-center">
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                {currentQuestion?.question}
+                Which country does this flag belong to?
               </h2>
-              <p className="text-white/60 text-lg">Select the correct capital</p>
+              {currentQuestion?.country_code && (
+                <img 
+                  src={`https://flagsapi.com/${currentQuestion.country_code}/shiny/64.png`} 
+                  alt="Country Flag"
+                  className="mx-auto h-24 w-auto object-contain my-4 border-2 border-white/20 rounded-lg p-2 bg-white/10"
+                />
+              )}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -356,4 +327,4 @@ const CapitalsQuiz = () => {
   );
 };
 
-export default CapitalsQuiz;
+export default FlagsQuiz;

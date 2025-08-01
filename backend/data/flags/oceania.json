@@ -1,0 +1,72 @@
+[
+  {
+    "question": "Which country does this flag belong to?",
+    "country_code": "AU",
+    "answer": "Australia",
+    "options": ["Australia", "New Zealand", "Papua New Guinea", "Fiji"],
+    "difficulty": "easy"
+  },
+  {
+    "question": "Which country does this flag belong to?",
+    "country_code": "NZ",
+    "answer": "New Zealand",
+    "options": ["Tonga", "Samoa", "New Zealand", "Solomon Islands"],
+    "difficulty": "easy"
+  },
+  {
+    "question": "Which country does this flag belong to?",
+    "country_code": "PG",
+    "answer": "Papua New Guinea",
+    "options": ["Papua New Guinea", "Australia", "Micronesia", "Vanuatu"],
+    "difficulty": "easy"
+  },
+  {
+    "question": "Which country does this flag belong to?",
+    "country_code": "FJ",
+    "answer": "Fiji",
+    "options": ["Fiji", "Tonga", "Samoa", "New Zealand"],
+    "difficulty": "easy"
+  },
+  {
+    "question": "Which country does this flag belong to?",
+    "country_code": "SB",
+    "answer": "Solomon Islands",
+    "options": ["Micronesia", "Solomon Islands", "Vanuatu", "Tonga"],
+    "difficulty": "medium"
+  },
+  {
+    "question": "Which country does this flag belong to?",
+    "country_code": "VU",
+    "answer": "Vanuatu",
+    "options": ["Vanuatu", "Samoa", "Solomon Islands", "Australia"],
+    "difficulty": "medium"
+  },
+  {
+    "question": "Which country does this flag belong to?",
+    "country_code": "WS",
+    "answer": "Samoa",
+    "options": ["Samoa", "New Zealand", "Fiji", "Papua New Guinea"],
+    "difficulty": "medium"
+  },
+  {
+    "question": "Which country does this flag belong to?",
+    "country_code": "TO",
+    "answer": "Tonga",
+    "options": ["Tonga", "Australia", "Micronesia", "Fiji"],
+    "difficulty": "hard"
+  },
+  {
+    "question": "Which country does this flag belong to?",
+    "country_code": "KI",
+    "answer": "Kiribati",
+    "options": ["Kiribati", "Samoa", "Vanuatu", "New Zealand"],
+    "difficulty": "hard"
+  },
+  {
+    "question": "Which country does this flag belong to?",
+    "country_code": "FM",
+    "answer": "Federated States of Micronesia",
+    "options": ["Micronesia", "Tonga", "Papua New Guinea", "Solomon Islands"],
+    "difficulty": "hard"
+  }
+]
