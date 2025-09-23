@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api.js';
+import FirebaseTest from '../components/FirebaseTest.jsx';
 
 const GAME_MODES = [
   {
@@ -219,6 +220,15 @@ const Dashboard = () => {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* ===== FIREBASE TEST SECTION ===== */}
+          <div className="mb-24 animate-slide-up-large animation-delay-300">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-white mb-2">🔥 Firebase Connection</h2>
+              <p className="text-white/70">Testing database connection</p>
+            </div>
+            <FirebaseTest />
           </div>
 
           {/* ===== GAME MODES SECTION ===== */}

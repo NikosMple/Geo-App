@@ -4,7 +4,6 @@ import {
   getAvailableContinents, 
   getAvailableCountries, 
   loadFlagQuestion,
-  getFunFact  // ← Νέο import
 } from "../services/dataService.js";
 
 const router = express.Router();
@@ -127,20 +126,20 @@ router.post("/capitals/check", async (req, res) => {
       difficulty: question.difficulty,
     });
 
-    // ✨ Get fun fact for the correct answer
-    const funFact = await getFunFact(question.answer, continent);
-    console.log("Fun fact:", funFact);
+    // // ✨ Get fun fact for the correct answer
+    // const funFact = await getFunFact(question.answer, continent);
+    // console.log("Fun fact:", funFact);
 
-    // Handle case where user didn't answer (time expired)
-    if (!userAnswer || userAnswer === null) {
-      console.log("No user answer provided (time expired)");
-      return res.json({
-        isCorrect: false,
-        correctAnswer: question.answer,
-        explanation: question.explanation || null,
-        funFact  // ← Νέο field
-      });
-    }
+    // // Handle case where user didn't answer (time expired)
+    // if (!userAnswer || userAnswer === null) {
+    //   console.log("No user answer provided (time expired)");
+    //   return res.json({
+    //     isCorrect: false,
+    //     correctAnswer: question.answer,
+    //     explanation: question.explanation || null,
+    //     funFact  // ← Νέο field
+    //   });
+    // }
 
     // Check if answer is correct (case-insensitive comparison)
     const isCorrect =
@@ -155,8 +154,7 @@ router.post("/capitals/check", async (req, res) => {
     res.json({
       isCorrect,
       correctAnswer: question.answer,
-      explanation: question.explanation || null,
-      funFact  // ← Νέο field
+      explanation: question.explanation || null
     });
   } catch (error) {
     console.error("Error checking answer:", error);
@@ -225,18 +223,18 @@ router.post("/flags/check", async (req, res) => {
     }
 
     // ✨ Get fun fact for flags - we need the country name from the answer
-    const funFact = await getFunFact(question.answer, continent);
-    console.log("Flag fun fact:", funFact);
+    // const funFact = await getFunFact(question.answer, continent);
+    // console.log("Flag fun fact:", funFact);
 
-    // Handle case where user didn't answer (time expired)
-    if (!userAnswer || userAnswer === null) {
-      return res.json({
-        isCorrect: false,
-        correctAnswer: question.answer,
-        explanation: question.explanation || null,
-        funFact  // ← Νέο field
-      });
-    }
+    // // Handle case where user didn't answer (time expired)
+    // if (!userAnswer || userAnswer === null) {
+    //   return res.json({
+    //     isCorrect: false,
+    //     correctAnswer: question.answer,
+    //     explanation: question.explanation || null,
+    //     funFact  // ← Νέο field
+    //   });
+    // }
 
     // Check if the answer is correct
     const isCorrect = question.answer.toLowerCase().trim() === userAnswer.toLowerCase().trim();
@@ -245,8 +243,7 @@ router.post("/flags/check", async (req, res) => {
     res.json({
       isCorrect,
       correctAnswer: question.answer,
-      explanation: question.explanation || null,
-      funFact  // ← Νέο field
+      explanation: question.explanation || null
     });
   } catch (error) {
     console.log("Error checking flag answer", error);

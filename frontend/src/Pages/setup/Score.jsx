@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import LaunchButton from '../components/common/LaunchButton';
+import LaunchButton from '../../components/common/LaunchButton';
 
 const Score = () => {
   const location = useLocation();
