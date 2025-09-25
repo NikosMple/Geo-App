@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTimer } from 'react-timer-hook';
-import api from '../../services/api';
-import QuizHeader from '../../components/quiz/QuizHeader';
-import QuestionSection from '../../components/quiz/QuestionSection';
+import api from '@/api/api';
+import QuizHeader from '@/components/quiz/QuizHeader';
+import QuestionSection from '@/components/quiz/QuestionSection';
 
 const CapitalsQuiz = () => {
   const { continent, difficulty } = useParams();

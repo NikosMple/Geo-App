@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Timer from '../common/Timer';
+import Timer from '@/components/ui/Timer';
 
 const QuizHeader = ({ 
   continent, 

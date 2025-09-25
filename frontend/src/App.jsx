@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './hooks/useAuth';
+import { AuthProvider } from '@/hooks/useAuth';
 
 // Components
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from '@/components/auth/ProtectedRoute';
 
 // Pages
-import LoginScreen from './Pages/LoginScreen';
-import Dashboard from './Pages/Dashboard';
-import ChooseContinent from './Pages/setup/ChooseContinent';
-import DifficultyLevels from './Pages/setup/DifficultyLevels';
-import CapitalsQuiz from './Pages/quiz/CapitalsQuiz';
-import FlagsQuiz from './Pages/quiz/FlagsQuiz';
-import Score from './Pages/setup/Score';
+import LoginScreen from '@/Pages/LoginScreen';
+import Dashboard from '@/Pages/Dashboard';
+import ChooseContinent from '@/Pages/quiz/ChooseContinent';
+import DifficultyLevels from '@/Pages/quiz/DifficultyLevels';
+import CapitalsQuiz from '@/Pages/quiz/CapitalsQuiz';
+import FlagsQuiz from '@/Pages/quiz/FlagsQuiz';
+import Score from '@/Pages/quiz/Score';
 
 function App() {
   return (

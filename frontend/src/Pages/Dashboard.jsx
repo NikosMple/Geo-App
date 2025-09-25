@@ -1,8 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
-import api from '../services/api.js';
-import FirebaseTest from '../components/FirebaseTest.jsx';
+import { useAuth } from '@/hooks/useAuth';
+import api from '@/api/api.js';
 
 const GAME_MODES = [
   {

@@ -1,4 +1,3 @@
-// Firebase service functions for authentication and database operations
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -9,7 +8,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   getRedirectResult,
-} from "firebase/auth";
+} from 'firebase/auth';
 import {
   collection,
   addDoc,
@@ -22,31 +21,27 @@ import {
   orderBy,
   limit,
   serverTimestamp,
-} from "firebase/firestore";
-import { auth, db } from "./firebase";
+  setDoc,
+} from 'firebase/firestore';
+import { auth, db } from '@/services/FirebaseInit';
 
 // ==================== AUTHENTICATION ====================
 
-// Register new user with email and password
 export const registerUser = async (email, password, displayName) => {
   try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // Create user profile in Firestore
-    await addDoc(collection(db, "users"), {
+    // Create/overwrite user doc with uid as doc id (single doc per user)
+    await setDoc(doc(db, 'users', user.uid), {
       uid: user.uid,
       email: user.email,
-      displayName: displayName,
+      displayName: displayName || null,
       createdAt: serverTimestamp(),
       totalGames: 0,
       totalScore: 0,
       level: 1,
-    });
+    }, { merge: true });
 
     return user;
   } catch (error) {
@@ -54,73 +49,58 @@ export const registerUser = async (email, password, displayName) => {
   }
 };
 
-// Login with Google using popup (more reliable)
+// Login with Google using popup (recommended for SPA)
 export const loginWithGoogle = async () => {
   try {
     const provider = new GoogleAuthProvider();
-    
-    // Configure provider
-    provider.setCustomParameters({
-      prompt: 'select_account'
-    });
+    provider.setCustomParameters({ prompt: 'select_account' });
     provider.addScope('profile');
     provider.addScope('email');
-    
+
     console.log('🚀 Attempting Google popup authentication...');
-    
-    // Use popup method
+
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
-    
+
     console.log('✅ Google popup login successful:', user.email);
-    
-    // Handle user profile creation
-    const existingProfile = await getUserProfile(user.uid);
-    if (!existingProfile) {
-      console.log('📝 Creating new user profile for Google user...');
-      const docRef = await addDoc(collection(db, "users"), {
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName || "Google User",
-        photoURL: user.photoURL || null,
-        createdAt: serverTimestamp(),
-        totalGames: 0,
-        totalScore: 0,
-        level: 1,
-        provider: "google",
-      });
-      console.log('✅ New user profile created with ID:', docRef.id);
-    } else {
-      console.log('✅ Existing user profile found:', existingProfile.displayName);
-    }
-    
+
+    // Ensure single user doc keyed by UID
+    await setDoc(doc(db, 'users', user.uid), {
+      uid: user.uid,
+      email: user.email || null,
+      displayName: user.displayName || 'Google User',
+      photoURL: user.photoURL || null,
+      provider: 'google',
+      createdAt: serverTimestamp(),
+      totalGames: 0,
+      totalScore: 0,
+      level: 1,
+    }, { merge: true });
+
     return user;
   } catch (error) {
     console.error('❌ Error in loginWithGoogle:', error);
-    
-    // Provide more helpful error messages
+
     if (error.code === 'auth/popup-blocked') {
       throw new Error('Popup was blocked by your browser. Please allow popups for this site and try again.');
     } else if (error.code === 'auth/popup-closed-by-user') {
       throw new Error('Sign-in was cancelled. Please try again.');
     } else if (error.code === 'auth/unauthorized-domain') {
-      throw new Error('This domain is not authorized for Google sign-in. Please contact support.');
+      throw new Error('This domain is not authorized for Google sign-in. Please check your Firebase Console (Authorized domains).');
     }
-    
+
     throw error;
   }
 };
 
-// Handle the redirect result - keeping for compatibility but not actively used
+// Keep handleGoogleRedirectResult for compatibility (not used in popup flow)
 export const handleGoogleRedirectResult = async () => {
   try {
-    console.log('🔍 Getting redirect result...');
+    console.log('🔍 getRedirectResult called (but you are using popup)');
     const result = await getRedirectResult(auth);
     if (result) {
       console.log('🎉 Redirect result found for user:', result.user.email);
       return result.user;
-    } else {
-      console.log('ℹ️ No redirect result found');
     }
     return null;
   } catch (error) {
@@ -129,35 +109,29 @@ export const handleGoogleRedirectResult = async () => {
   }
 };
 
-// Sign in user with email and password
 export const loginUser = async (email, password) => {
   try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
     return userCredential.user;
   } catch (error) {
     throw error;
   }
 };
 
-// Sign in anonymously (guest user)
 export const loginAnonymously = async () => {
   try {
     const userCredential = await signInAnonymously(auth);
 
-    // Create anonymous user profile
-    await addDoc(collection(db, "users"), {
+    // Write a single anonymous user doc keyed by uid
+    await setDoc(doc(db, 'users', userCredential.user.uid), {
       uid: userCredential.user.uid,
-      displayName: "Guest User",
+      displayName: 'Guest User',
       isAnonymous: true,
       createdAt: serverTimestamp(),
       totalGames: 0,
       totalScore: 0,
       level: 1,
-    });
+    }, { merge: true });
 
     return userCredential.user;
   } catch (error) {
@@ -165,7 +139,6 @@ export const loginAnonymously = async () => {
   }
 };
 
-// Sign out user
 export const logoutUser = async () => {
   try {
     await signOut(auth);
@@ -174,12 +147,10 @@ export const logoutUser = async () => {
   }
 };
 
-// Listen to auth state changes
 export const onAuthStateChange = (callback) => {
   return onAuthStateChanged(auth, callback);
 };
 
-// Send password reset email
 export const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
@@ -190,18 +161,17 @@ export const sendPasswordReset = async (email) => {
 
 // ==================== USER PROFILE ====================
 
-// Get user profile from Firestore
 export const getUserProfile = async (uid) => {
   try {
-    console.log('🔍 Searching for user profile with UID:', uid);
-    const q = query(collection(db, "users"), where("uid", "==", uid));
-    const querySnapshot = await getDocs(q);
+    console.log('🔍 getUserProfile for UID:', uid);
 
-    console.log('📊 Query results:', querySnapshot.size, 'documents found');
-    
-    if (!querySnapshot.empty) {
-      const profile = { id: querySnapshot.docs[0].id, ...querySnapshot.docs[0].data() };
-      console.log('✅ User profile found:', profile.displayName, 'with doc ID:', profile.id);
+    // Since we now use uid as doc id, getDoc is simple
+    const userDocRef = doc(db, 'users', uid);
+    const userDoc = await getDoc(userDocRef);
+
+    if (userDoc.exists()) {
+      const profile = { id: userDoc.id, ...userDoc.data() };
+      console.log('✅ User profile found:', profile.displayName);
       return profile;
     } else {
       console.log('❌ No user profile found for UID:', uid);
@@ -213,19 +183,17 @@ export const getUserProfile = async (uid) => {
   }
 };
 
-// Update user profile
 export const updateUserProfile = async (userDocId, data) => {
   try {
-    const userRef = doc(db, "users", userDocId);
+    const userRef = doc(db, 'users', userDocId);
     await updateDoc(userRef, data);
   } catch (error) {
     throw error;
   }
 };
 
-// ==================== GAME SESSIONS ====================
+// Remaining game/session/leaderboard helpers left unchanged (copy from your original file)
 
-// Save game session result
 export const saveGameSession = async (gameData) => {
   try {
     const sessionData = {
@@ -241,20 +209,19 @@ export const saveGameSession = async (gameData) => {
       wrongAnswers: gameData.wrongAnswers || [],
     };
 
-    const docRef = await addDoc(collection(db, "gameSessions"), sessionData);
+    const docRef = await addDoc(collection(db, 'gameSessions'), sessionData);
     return docRef.id;
   } catch (error) {
     throw error;
   }
 };
 
-// Get user's game history
 export const getUserGameHistory = async (uid, limitCount = 10) => {
   try {
     const q = query(
-      collection(db, "gameSessions"),
-      where("userId", "==", uid),
-      orderBy("completedAt", "desc"),
+      collection(db, 'gameSessions'),
+      where('userId', '==', uid),
+      orderBy('completedAt', 'desc'),
       limit(limitCount)
     );
 
@@ -265,14 +232,11 @@ export const getUserGameHistory = async (uid, limitCount = 10) => {
   }
 };
 
-// ==================== LEADERBOARDS ====================
-
-// Get top players (global leaderboard)
 export const getGlobalLeaderboard = async (limitCount = 10) => {
   try {
     const q = query(
-      collection(db, "users"),
-      orderBy("totalScore", "desc"),
+      collection(db, 'users'),
+      orderBy('totalScore', 'desc'),
       limit(limitCount)
     );
 
@@ -283,12 +247,9 @@ export const getGlobalLeaderboard = async (limitCount = 10) => {
   }
 };
 
-// ==================== STATISTICS ====================
-
-// Update user statistics after game
 export const updateUserStats = async (userDocId, gameScore, gameType) => {
   try {
-    const userRef = doc(db, "users", userDocId);
+    const userRef = doc(db, 'users', userDocId);
     const userDoc = await getDoc(userRef);
 
     if (userDoc.exists()) {

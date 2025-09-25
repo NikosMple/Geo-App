@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import api from "../../services/api";
+import api from "@/api/api";
 import { Link, useNavigate } from "react-router-dom";
 
 const ChooseContinent = ({ gameMode }) => {

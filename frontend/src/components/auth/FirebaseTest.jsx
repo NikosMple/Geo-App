@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { onAuthStateChange, loginAnonymously, logoutUser } from '../services/firebaseService';
+import { onAuthStateChange, loginAnonymously, logoutUser } from '@/services/firebaseService';
 
 const FirebaseTest = () => {
   const [user, setUser] = useState(null);
