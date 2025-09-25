@@ -8,6 +8,7 @@ import {
   sendPasswordResetEmail,
   GoogleAuthProvider,
   signInWithPopup,
+  getRedirectResult,
 } from "firebase/auth";
 import {
   collection,
@@ -23,7 +24,6 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { auth, db } from "./firebase";
-import {} from "firebase/auth";
 
 // ==================== AUTHENTICATION ====================
 
@@ -53,19 +53,32 @@ export const registerUser = async (email, password, displayName) => {
     throw error;
   }
 };
-// Add this function to your AUTHENTICATION section
+
+// Login with Google using popup (more reliable)
 export const loginWithGoogle = async () => {
   try {
     const provider = new GoogleAuthProvider();
-    const userCredential = await signInWithPopup(auth, provider);
-    const user = userCredential.user;
-
-    // Check if user profile already exists
+    
+    // Configure provider
+    provider.setCustomParameters({
+      prompt: 'select_account'
+    });
+    provider.addScope('profile');
+    provider.addScope('email');
+    
+    console.log('🚀 Attempting Google popup authentication...');
+    
+    // Use popup method
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    
+    console.log('✅ Google popup login successful:', user.email);
+    
+    // Handle user profile creation
     const existingProfile = await getUserProfile(user.uid);
-
     if (!existingProfile) {
-      // Create user profile for new Google user
-      await addDoc(collection(db, "users"), {
+      console.log('📝 Creating new user profile for Google user...');
+      const docRef = await addDoc(collection(db, "users"), {
         uid: user.uid,
         email: user.email,
         displayName: user.displayName || "Google User",
@@ -76,10 +89,42 @@ export const loginWithGoogle = async () => {
         level: 1,
         provider: "google",
       });
+      console.log('✅ New user profile created with ID:', docRef.id);
+    } else {
+      console.log('✅ Existing user profile found:', existingProfile.displayName);
     }
-
+    
     return user;
   } catch (error) {
+    console.error('❌ Error in loginWithGoogle:', error);
+    
+    // Provide more helpful error messages
+    if (error.code === 'auth/popup-blocked') {
+      throw new Error('Popup was blocked by your browser. Please allow popups for this site and try again.');
+    } else if (error.code === 'auth/popup-closed-by-user') {
+      throw new Error('Sign-in was cancelled. Please try again.');
+    } else if (error.code === 'auth/unauthorized-domain') {
+      throw new Error('This domain is not authorized for Google sign-in. Please contact support.');
+    }
+    
+    throw error;
+  }
+};
+
+// Handle the redirect result - keeping for compatibility but not actively used
+export const handleGoogleRedirectResult = async () => {
+  try {
+    console.log('🔍 Getting redirect result...');
+    const result = await getRedirectResult(auth);
+    if (result) {
+      console.log('🎉 Redirect result found for user:', result.user.email);
+      return result.user;
+    } else {
+      console.log('ℹ️ No redirect result found');
+    }
+    return null;
+  } catch (error) {
+    console.error('❌ Error in handleGoogleRedirectResult:', error);
     throw error;
   }
 };
@@ -148,14 +193,22 @@ export const sendPasswordReset = async (email) => {
 // Get user profile from Firestore
 export const getUserProfile = async (uid) => {
   try {
+    console.log('🔍 Searching for user profile with UID:', uid);
     const q = query(collection(db, "users"), where("uid", "==", uid));
     const querySnapshot = await getDocs(q);
 
+    console.log('📊 Query results:', querySnapshot.size, 'documents found');
+    
     if (!querySnapshot.empty) {
-      return { id: querySnapshot.docs[0].id, ...querySnapshot.docs[0].data() };
+      const profile = { id: querySnapshot.docs[0].id, ...querySnapshot.docs[0].data() };
+      console.log('✅ User profile found:', profile.displayName, 'with doc ID:', profile.id);
+      return profile;
+    } else {
+      console.log('❌ No user profile found for UID:', uid);
+      return null;
     }
-    return null;
   } catch (error) {
+    console.error('❌ Error in getUserProfile:', error);
     throw error;
   }
 };
@@ -177,12 +230,12 @@ export const saveGameSession = async (gameData) => {
   try {
     const sessionData = {
       userId: auth.currentUser.uid,
-      gameType: gameData.gameType, // 'capitals' or 'flags'
+      gameType: gameData.gameType,
       continent: gameData.continent,
       difficulty: gameData.difficulty,
       score: gameData.score,
       totalQuestions: gameData.totalQuestions,
-      timeSpent: gameData.timeSpent, // in seconds
+      timeSpent: gameData.timeSpent,
       completedAt: serverTimestamp(),
       correctAnswers: gameData.correctAnswers || [],
       wrongAnswers: gameData.wrongAnswers || [],
