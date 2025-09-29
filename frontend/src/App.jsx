@@ -7,6 +7,7 @@ import ProtectedRoute from '@/components/auth/ProtectedRoute';
 // Pages
 import LoginScreen from '@/Pages/LoginScreen';
 import Dashboard from '@/Pages/Dashboard';
+import Profile from '@/Pages/quiz/ProfileUser';
 import ChooseContinent from '@/Pages/quiz/ChooseContinent';
 import DifficultyLevels from '@/Pages/quiz/DifficultyLevels';
 import CapitalsQuiz from '@/Pages/quiz/CapitalsQuiz';
@@ -24,6 +25,14 @@ function App() {
             <Route path="/login" element={<LoginScreen />} />
             
             {/* PROTECTED ROUTES - Authentication required */}
+            <Route 
+              path="/profile" 
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              } 
+            />
             <Route 
               path="/score" 
               element={

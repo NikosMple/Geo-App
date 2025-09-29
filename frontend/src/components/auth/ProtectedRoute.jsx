@@ -17,7 +17,7 @@ const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
 
-  console.log('🛡️ ProtectedRoute - Loading:', loading, 'User:', user?.email || 'No user');
+  //console.log('🛡️ ProtectedRoute - Loading:', loading, 'User:', user?.email || 'No user');
 
   // Show loading while checking auth status
   if (loading) {
@@ -37,7 +37,7 @@ const ProtectedRoute = ({ children }) => {
   }
 
   // User is authenticated, render the protected component
-  console.log('✅ ProtectedRoute - User authenticated, rendering children');
+  //console.log('✅ ProtectedRoute - User authenticated, rendering children');
   return children;
 };
 

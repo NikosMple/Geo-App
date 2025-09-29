@@ -1,141 +1,286 @@
-# Geo-Quiz Application Documentation
+## Geo-Quiz Application Documentation
 
-This document provides a complete overview of the Geo-Quiz application, detailing the architecture, data flow, and component responsibilities. 
+This document provides a complete, up-to-date reference for the Geo-Quiz project: setup, configuration, architecture, APIs, data flow, and troubleshooting.
 
 ## Table of Contents
 
-1.  **High-Level Overview**
-2.  **Backend Architecture**
-    -   Data Storage
-    -   API Endpoints & Routing
-    -   Services
-3.  **Frontend Architecture**
-    -   Component-Based Structure
-    -   Routing
-    -   State Management
-4.  **Application Flow (User Journey)**
-    -   Starting a Quiz (Capitals or Flags)
-    -   Playing the Quiz
-    -   Finishing and Scoring
+1.  High-Level Overview
+2.  Local Development Setup
+3.  Project Structure
+4.  Backend Architecture
+    - Data Storage
+    - API Endpoints & Routing
+    - Services
+    - Security & Validation
+5.  Frontend Architecture
+    - Routing
+    - Pages and Components
+    - State and Data Flow
+    - Authentication
+6.  Application Flow (User Journey)
+7.  Data Models and JSON Formats
+8.  Environment Variables
+9.  Deployment Notes
+10. Troubleshooting
 
 ---
 
 ## 1. High-Level Overview
 
-The application is a full-stack quiz game with a **React frontend** and a **Node.js (Express) backend**.
+The app is a full-stack quiz game with a React frontend and a Node.js (Express) backend.
 
--   **Backend**: Serves quiz questions from JSON files and validates user answers.
--   **Frontend**: Provides the user interface for selecting and playing the quizzes, and displays the final score.
+- **Backend**: Serves quiz questions from JSON files and validates answers.
+- **Frontend**: Handles UI for selecting and playing quizzes, authentication, and showing results.
 
-The two parts communicate via a RESTful API.
+The two communicate via REST endpoints under the `/api` namespace.
 
 ---
 
-## 2. Backend Architecture
+## 2. Local Development Setup
 
-The backend is responsible for the game's logic and data management.
+### Prerequisites
+- Node.js 18+
+- npm 9+
+
+### Install and run
+- Backend
+  - Navigate to `backend/`
+  - Install: `npm i`
+  - Run: `npm run dev` (or `node server.js`)
+  - Server URL: `http://localhost:3001`
+
+- Frontend
+  - Navigate to `frontend/`
+  - Install: `npm i`
+  - Run: `npm run start`
+  - App URL: `http://localhost:3000`
+
+The frontend `package.json` includes a proxy to `http://localhost:3001`, so calls to `/api/*` are forwarded to the backend during development.
+
+---
+
+## 3. Project Structure
+
+```
+geo/
+  backend/
+    data/
+      capitals/*.json
+      flags/*.json
+    routes/quiz.js
+    services/dataService.js
+    server.js
+    package.json
+  frontend/
+    src/
+      api/api.js
+      App.jsx
+      hooks/useAuth.js
+      services/FirebaseInit.js
+      services/firebaseService.js
+      Pages/
+        Dashboard.jsx
+        LoginScreen.jsx
+        quiz/
+          ChooseContinent.jsx
+          DifficultyLevels.jsx
+          CapitalsQuiz.jsx
+          FlagsQuiz.jsx
+          Score.jsx
+    package.json
+  DOCUMENTATION.md
+```
+
+---
+
+## 4. Backend Architecture
+
+The backend is an Express server exposing quiz endpoints and reading data from JSON.
 
 ### Data Storage
-
--   Quiz questions are stored in static **JSON files** located in the `backend/data/` directory.
--   The data is organized by game mode (`capitals`, `flags`) and then by continent (`africa.json`, `asia.json`, etc.).
-
-    -   **Capitals Data (`/data/capitals/*.json`):** Each object contains a `question` (e.g., "What is the capital of..."), an `answer`, and an array of `options`.
-    -   **Flags Data (`/data/flags/*.json`):** Each object contains a `country_code` (e.g., "US", "FR"), which is used by the frontend to fetch the flag image, an `answer` (the country name), and an array of `options`.
+- Static JSON under `backend/data/` grouped by game mode and continent:
+  - `data/capitals/*.json`
+  - `data/flags/*.json`
 
 ### API Endpoints & Routing
+All routes are mounted under `/api` in `backend/server.js`. Main router: `backend/routes/quiz.js`.
 
-Routing is handled by Express. The main router file is `backend/routes/quiz.js`, which defines all the API endpoints under the `/api/` prefix.
+- `GET /api/continents`
+  - Returns the available continents by listing `data/capitals/*.json`.
 
-**Key Endpoints:**
+- `GET /api/countries`
+  - Returns the contents of `backend/all.json` (auxiliary list of countries).
 
--   `GET /api/continents`
-    -   **Purpose**: Fetches a list of all available continents by reading the filenames in the data directory.
-    -   **Used by**: `ChooseContinent.jsx` page.
+- `GET /api/capitals/:continent/:difficulty`
+  - Returns up to 10 questions filtered by `difficulty` (`easy|medium|hard|random`).
+  - `random` shuffles all questions before slicing to 10.
 
--   `GET /api/capitals/:continent/:difficulty`
-    -   **Purpose**: Gets 10 questions for the Capitals quiz based on the selected continent and difficulty.
-    -   **Used by**: `CapitalsQuiz.jsx`.
+- `POST /api/capitals/check`
+  - Body: `{ continent, question, userAnswer }`
+  - Returns `{ isCorrect, correctAnswer, explanation }`.
 
--   `GET /api/flags/:continent/:difficulty`
-    -   **Purpose**: Gets 10 questions for the Flags quiz based on the selected continent and difficulty.
-    -   **Used by**: `FlagsQuiz.jsx`.
+- `GET /api/flags/:continent/:difficulty`
+  - Returns up to 10 flag questions filtered by `difficulty` (or shuffled for `random`).
 
--   `POST /api/capitals/check`
-    -   **Purpose**: Validates a user's answer for a capitals question.
-    -   **Used by**: `CapitalsQuiz.jsx`.
-
--   `POST /api/flags/check`
-    -   **Purpose**: Validates a user's answer for a flags question.
-    -   **Used by**: `FlagsQuiz.jsx`.
+- `POST /api/flags/check`
+  - Body: `{ continent, country_code, userAnswer }`
+  - Returns `{ isCorrect, correctAnswer, explanation }`.
 
 ### Services
+`backend/services/dataService.js` provides the data access layer with in-memory caching:
+- `loadQuestions(continent)` → capitals
+- `loadFlagQuestion(continent)` → flags
+- `getAvailableContinents()` → list from `data/capitals/`
+- `getAvailableCountries()` → parse `all.json`
 
--   **`dataService.js`**: This is a crucial service that acts as a data access layer. It contains functions to read the JSON files from the disk.
-    -   `loadQuestions(continent)`: Reads and returns capital questions for a given continent.
-    -   `loadFlagQuestion(continent)`: Reads and returns flag questions for a given continent.
-    -   It uses an in-memory cache (`dataCache`, `dataFlagCache`) to avoid re-reading files from the disk on every request, which improves performance.
+### Security & Validation
+- `helmet` is used for basic security headers.
+- `cors` is configured to allow `http://localhost:3000` and `http://localhost:3001` during development.
+- Input validation in handlers (e.g., validating `continent`, allowed `difficulty`).
 
 ---
 
-## 3. Frontend Architecture
+## 5. Frontend Architecture
 
-The frontend is a single-page application (SPA) built with **React** and **React Router**.
-
-### Component-Based Structure
-
-The UI is broken down into reusable components and pages, located in `frontend/src/`.
-
--   **Pages (`/Pages`):** These are the main screens of the application.
-    -   `Dashboard.jsx`: The main landing page where users select a game mode (Capitals or Flags).
-    -   `ChooseContinent.jsx`: A dynamic page that allows users to select a continent for the chosen game mode.
-    -   `DifficultyLevels.jsx`: A dynamic page for selecting the quiz difficulty.
-    -   `CapitalsQuiz.jsx` & `FlagsQuiz.jsx`: The actual quiz screens. They handle the timer, question display, answer selection, and communication with the backend.
-    -   `Score.jsx`: Displays the final score and provides options to play again.
-
--   **Components (`/components`):** Reusable UI elements.
-    -   `Timer.jsx`: The visual hourglass timer used in the quiz screens.
-    -   `LaunchButton.jsx`: A styled, reusable button.
+SPA built with React 18 and React Router. Backend communication via Axios (`frontend/src/api/api.js`).
 
 ### Routing
+Defined in `frontend/src/App.jsx` with protected routes via `components/auth/ProtectedRoute.jsx` and `AuthProvider` from `hooks/useAuth.js`.
 
--   **`App.jsx`** is the heart of the frontend routing. It uses `react-router-dom` to define the URL paths for each page.
--   It passes a `gameMode` prop (`capitals` or `flags`) to the `ChooseContinent` and `DifficultyLevels` pages. This is the key to making them reusable.
+- Public routes
+  - `/` → `Dashboard`
+  - `/login` → `LoginScreen`
 
-### State Management
+- Protected routes
+  - `/score` → `Score`
+  - Capitals flow
+    - `/capitals/choose-continent` → `ChooseContinent gameMode="capitals"`
+    - `/capitals/difficulty/:continent` → `DifficultyLevels gameMode="capitals"`
+    - `/quiz/capitals/:continent/:difficulty` → `CapitalsQuiz`
+  - Flags flow
+    - `/flags/choose-continent` → `ChooseContinent gameMode="flags"`
+    - `/flags/difficulty/:continent` → `DifficultyLevels gameMode="flags"`
+    - `/quiz/flags/:continent/:difficulty` → `FlagsQuiz`
 
--   State is managed locally within each component using React hooks (`useState`, `useEffect`).
--   Data is passed between routes using the `navigate` function's `state` object (from `react-router-dom`). For example, the quiz pages pass the final score, continent, and `gameMode` to the `Score.jsx` page.
+### Pages and Components
+- Pages
+  - `Dashboard.jsx`: Entry point to select game mode.
+  - `LoginScreen.jsx`: Email/password, Google popup login, and guest login.
+  - `ChooseContinent.jsx`, `DifficultyLevels.jsx`: Reusable for both game modes via `gameMode` prop.
+  - `CapitalsQuiz.jsx`, `FlagsQuiz.jsx`: Fetch questions, handle timer and answers.
+  - `Score.jsx`: Displays results and actions.
+
+- Components
+  - `components/ui/Timer.jsx`, `components/ui/LaunchButton.jsx`
+  - `components/auth/ProtectedRoute.jsx`: Guards protected routes.
+
+### State and Data Flow
+- Local component state via React hooks.
+- Navigation state (via `react-router-dom`) passes quiz context (score, continent, difficulty, gameMode) to `Score.jsx`.
+- API client `src/api/api.js` wraps Axios calls to backend endpoints.
+
+### Authentication
+Firebase Web SDK initialized in `services/FirebaseInit.js` using environment variables. Helper methods in `services/firebaseService.js`:
+- Email/password register and login
+- Google sign-in via popup
+- Anonymous guest login
+- Profile management and stats in Firestore (`users`, `gameSessions` collections)
+
+Auth context in `hooks/useAuth.js` exposes `login`, `register`, `loginWithGoogle`, `loginAsGuest`, and `user` state; `ProtectedRoute` uses it to guard routes.
 
 ---
 
-## 4. Application Flow (User Journey)
+## 6. Application Flow (User Journey)
 
-Here is the step-by-step flow of how a user interacts with the application.
-
-### Starting a Quiz (Capitals or Flags)
-
-1.  **User lands on `Dashboard.jsx`**. They see two options: "Capitals Quiz" and "Flags Quiz".
-2.  User clicks on a game mode. The `onClick` handler calls `navigate` with the specific path (e.g., `/capitals/choose-continent` or `/flags/choose-continent`).
-3.  The router in **`App.jsx`** renders the **`ChooseContinent.jsx`** component, passing it the correct `gameMode` prop.
-4.  The user clicks on a continent. The `handleContinentClick` function in `ChooseContinent.jsx` uses the `gameMode` prop to navigate to the correct difficulty page (e.g., `/flags/difficulty/asia`).
-5.  The router in **`App.jsx`** renders the **`DifficultyLevels.jsx`** component, again passing the `gameMode`.
-6.  The user clicks a difficulty. The `handleDifficultyClick` function navigates to the final quiz URL (e.g., `/quiz/flags/asia/hard`).
+### Starting a Quiz
+1. User lands on `Dashboard.jsx` and selects Capitals or Flags.
+2. App routes to `ChooseContinent` with `gameMode` set.
+3. User selects a continent → routes to `DifficultyLevels` for that game mode.
+4. User selects difficulty → routes to `/quiz/<mode>/<continent>/<difficulty>`.
 
 ### Playing the Quiz
-
-1.  The router in **`App.jsx`** renders the correct quiz component (`CapitalsQuiz.jsx` or `FlagsQuiz.jsx`).
-2.  The quiz component's `useEffect` hook fires. It calls the appropriate API function from **`api.js`** (e.g., `api.getFlagsQuizQuestions(...)`).
-3.  The frontend API service sends a `GET` request to the backend (e.g., `GET /api/flags/asia/hard`).
-4.  The backend's **`quiz.js`** route handler receives the request. It uses **`dataService.js`** to load the correct JSON file, filters the questions, and sends back a list of 10 questions.
-5.  The quiz component receives the questions and stores them in its state. The timer starts.
-6.  The user clicks an answer. The `handleAnswerSelect` function sends a `POST` request to the backend's check endpoint (e.g., `/api/flags/check`) with the answer and question details.
-7.  The backend validates the answer and returns `{ isCorrect: true/false, correctAnswer: '...' }`.
-8.  The frontend updates the UI to show the result and increments the score if correct.
+1. Quiz component loads questions via `api.js` (GET request to backend).
+2. User selects an answer → component calls `check` endpoint (POST).
+3. Backend responds with correctness and the correct answer; UI updates score and feedback.
 
 ### Finishing and Scoring
+1. After last question, component navigates to `/score` with state `{ score, totalQuestions, continent, difficulty, gameMode }`.
+2. `Score.jsx` renders the summary and allows replay or difficulty change while preserving the mode/continent.
 
-1.  After the last question, the `nextQuestion` function in the quiz component calls `navigate('/score', ...)`.
-2.  Crucially, it passes the `score`, `totalQuestions`, `continent`, `difficulty`, and `gameMode` in the navigation state.
-3.  The **`Score.jsx`** page renders. It retrieves the state using the `useLocation` hook.
-4.  It uses the `gameMode` from the state to build the correct URLs for the "Try Again" and "Change Difficulty" buttons, ensuring the user is sent back to the correct quiz flow.
+---
+
+## 7. Data Models and JSON Formats
+
+### Capitals question (data/capitals/<continent>.json)
+```json
+{
+  "question": "What is the capital of France?",
+  "answer": "Paris",
+  "options": ["Paris", "Lyon", "Marseille", "Nice"],
+  "difficulty": "easy",
+  "explanation": "Paris is the capital and most populous city of France."
+}
+```
+
+### Flags question (data/flags/<continent>.json)
+```json
+{
+  "country_code": "FR",
+  "answer": "France",
+  "options": ["France", "Italy", "Belgium", "Spain"],
+  "difficulty": "easy",
+  "explanation": "The French flag is blue, white, and red."
+}
+```
+
+---
+
+## 8. Environment Variables
+
+### Backend (`backend/.env`)
+Not strictly required for local JSON reading; included packages (`dotenv`, `mongoose`) allow future DB usage. For current endpoints, none are required by default.
+
+### Frontend (`frontend/.env`)
+Firebase configuration expected as environment variables (prefixed with `REACT_APP_`):
+- `REACT_APP_FIREBASE_API_KEY`
+- `REACT_APP_FIREBASE_AUTH_DOMAIN`
+- `REACT_APP_FIREBASE_PROJECT_ID`
+- `REACT_APP_FIREBASE_STORAGE_BUCKET`
+- `REACT_APP_FIREBASE_MESSAGING_SENDER_ID`
+- `REACT_APP_FIREBASE_APP_ID`
+
+Create `frontend/.env.local` with these keys for local development.
+
+---
+
+## 9. Deployment Notes
+
+- Serve the built frontend (CRA build) behind a web server or CDN.
+- Host the backend as a Node service (ensure `helmet` and strict CORS in production).
+- Set `CORS` origin to your deployed frontend domain(s).
+- Provide production Firebase environment variables to the frontend build environment.
+
+---
+
+## 10. Troubleshooting
+
+- Frontend cannot reach backend
+  - Ensure backend is running on `3001` and frontend proxy is set to `http://localhost:3001` in `frontend/package.json`.
+  - Check browser console/network tab for failed requests to `/api/*`.
+
+- 404 on quiz endpoints
+  - Verify continent filename exists in `backend/data/capitals` or `backend/data/flags` (e.g., `asia.json`).
+  - Ensure you are using one of the allowed difficulties: `easy`, `medium`, `hard`, `random`.
+
+- Firebase auth fails
+  - Confirm `.env` variables match Firebase project settings and the domain is authorized in Firebase Console.
+  - Popup blocked: allow popups or use a different browser.
+
+- Incorrect or missing questions
+  - Validate JSON structure and `difficulty` fields; backend slices to 10 items after filtering.
+
+---
+
+This documentation reflects the current codebase and endpoints in `backend/routes/quiz.js`, the data access layer in `backend/services/dataService.js`, and the frontend routing and API usage in `frontend/src`.
+
+

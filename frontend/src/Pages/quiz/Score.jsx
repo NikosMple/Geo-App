@@ -25,6 +25,7 @@ const Score = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  console.log('Testing security: User can only access own data');
   const percentage = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0;
 
   const getScoreMessage = () => {

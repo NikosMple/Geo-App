@@ -8,7 +8,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   getRedirectResult,
-} from 'firebase/auth';
+} from "firebase/auth";
 import {
   collection,
   addDoc,
@@ -22,26 +22,33 @@ import {
   limit,
   serverTimestamp,
   setDoc,
-} from 'firebase/firestore';
-import { auth, db } from '@/services/FirebaseInit';
+} from "firebase/firestore";
+import { auth, db } from "@/services/FirebaseInit";
 
 // ==================== AUTHENTICATION ====================
 
 export const registerUser = async (email, password, displayName) => {
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
     const user = userCredential.user;
 
-    // Create/overwrite user doc with uid as doc id (single doc per user)
-    await setDoc(doc(db, 'users', user.uid), {
-      uid: user.uid,
-      email: user.email,
-      displayName: displayName || null,
-      createdAt: serverTimestamp(),
-      totalGames: 0,
-      totalScore: 0,
-      level: 1,
-    }, { merge: true });
+    await setDoc(
+      doc(db, "users", user.uid),
+      {
+        uid: user.uid,
+        email: user.email,
+        displayName: displayName || null,
+        createdAt: serverTimestamp(),
+        totalGames: 0,
+        totalScore: 0,
+        level: 1,
+      },
+      { merge: true }
+    );
 
     return user;
   } catch (error) {
@@ -53,40 +60,48 @@ export const registerUser = async (email, password, displayName) => {
 export const loginWithGoogle = async () => {
   try {
     const provider = new GoogleAuthProvider();
-    provider.setCustomParameters({ prompt: 'select_account' });
-    provider.addScope('profile');
-    provider.addScope('email');
+    provider.setCustomParameters({ prompt: "select_account" });
+    provider.addScope("profile");
+    provider.addScope("email");
 
-    console.log('🚀 Attempting Google popup authentication...');
+    console.log("🚀 Attempting Google popup authentication...");
 
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
 
-    console.log('✅ Google popup login successful:', user.email);
+    console.log("✅ Google popup login successful:", user.email);
 
     // Ensure single user doc keyed by UID
-    await setDoc(doc(db, 'users', user.uid), {
-      uid: user.uid,
-      email: user.email || null,
-      displayName: user.displayName || 'Google User',
-      photoURL: user.photoURL || null,
-      provider: 'google',
-      createdAt: serverTimestamp(),
-      totalGames: 0,
-      totalScore: 0,
-      level: 1,
-    }, { merge: true });
+    await setDoc(
+      doc(db, "users", user.uid),
+      {
+        uid: user.uid,
+        email: user.email || null,
+        displayName: user.displayName || "Google User",
+        photoURL: user.photoURL || null,
+        provider: "google",
+        createdAt: serverTimestamp(),
+        totalGames: 0,
+        totalScore: 0,
+        level: 1,
+      },
+      { merge: true }
+    );
 
     return user;
   } catch (error) {
-    console.error('❌ Error in loginWithGoogle:', error);
+    console.error("❌ Error in loginWithGoogle:", error);
 
-    if (error.code === 'auth/popup-blocked') {
-      throw new Error('Popup was blocked by your browser. Please allow popups for this site and try again.');
-    } else if (error.code === 'auth/popup-closed-by-user') {
-      throw new Error('Sign-in was cancelled. Please try again.');
-    } else if (error.code === 'auth/unauthorized-domain') {
-      throw new Error('This domain is not authorized for Google sign-in. Please check your Firebase Console (Authorized domains).');
+    if (error.code === "auth/popup-blocked") {
+      throw new Error(
+        "Popup was blocked by your browser. Please allow popups for this site and try again."
+      );
+    } else if (error.code === "auth/popup-closed-by-user") {
+      throw new Error("Sign-in was cancelled. Please try again.");
+    } else if (error.code === "auth/unauthorized-domain") {
+      throw new Error(
+        "This domain is not authorized for Google sign-in. Please check your Firebase Console (Authorized domains)."
+      );
     }
 
     throw error;
@@ -96,42 +111,69 @@ export const loginWithGoogle = async () => {
 // Keep handleGoogleRedirectResult for compatibility (not used in popup flow)
 export const handleGoogleRedirectResult = async () => {
   try {
-    console.log('🔍 getRedirectResult called (but you are using popup)');
+    console.log("🔍 getRedirectResult called (but you are using popup)");
     const result = await getRedirectResult(auth);
     if (result) {
-      console.log('🎉 Redirect result found for user:', result.user.email);
+      console.log("🎉 Redirect result found for user:", result.user.email);
       return result.user;
     }
     return null;
   } catch (error) {
-    console.error('❌ Error in handleGoogleRedirectResult:', error);
+    console.error("❌ Error in handleGoogleRedirectResult:", error);
     throw error;
   }
 };
 
 export const loginUser = async (email, password) => {
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    return userCredential.user;
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
+
+    // Check if user document exists, create if not
+    const userRef = doc(db, "users", user.uid);
+    const userDoc = await getDoc(userRef);
+
+    if (!userDoc.exists()) {
+      console.log("User document missing, creating...");
+      await setDoc(userRef, {
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName || user.email?.split("@")[0] || "User",
+        createdAt: serverTimestamp(),
+        totalGames: 0,
+        totalScore: 0,
+        level: 1,
+      });
+    }
+
+    return user;
   } catch (error) {
     throw error;
   }
-};
+};  
 
 export const loginAnonymously = async () => {
   try {
     const userCredential = await signInAnonymously(auth);
 
     // Write a single anonymous user doc keyed by uid
-    await setDoc(doc(db, 'users', userCredential.user.uid), {
-      uid: userCredential.user.uid,
-      displayName: 'Guest User',
-      isAnonymous: true,
-      createdAt: serverTimestamp(),
-      totalGames: 0,
-      totalScore: 0,
-      level: 1,
-    }, { merge: true });
+    await setDoc(
+      doc(db, "users", userCredential.user.uid),
+      {
+        uid: userCredential.user.uid,
+        displayName: "Guest User",
+        isAnonymous: true,
+        createdAt: serverTimestamp(),
+        totalGames: 0,
+        totalScore: 0,
+        level: 1,
+      },
+      { merge: true }
+    );
 
     return userCredential.user;
   } catch (error) {
@@ -163,29 +205,29 @@ export const sendPasswordReset = async (email) => {
 
 export const getUserProfile = async (uid) => {
   try {
-    console.log('🔍 getUserProfile for UID:', uid);
+    console.log("🔍 getUserProfile for UID:", uid);
 
     // Since we now use uid as doc id, getDoc is simple
-    const userDocRef = doc(db, 'users', uid);
+    const userDocRef = doc(db, "users", uid);
     const userDoc = await getDoc(userDocRef);
 
     if (userDoc.exists()) {
       const profile = { id: userDoc.id, ...userDoc.data() };
-      console.log('✅ User profile found:', profile.displayName);
+      console.log("✅ User profile found:", profile.displayName);
       return profile;
     } else {
-      console.log('❌ No user profile found for UID:', uid);
+      console.log("❌ No user profile found for UID:", uid);
       return null;
     }
   } catch (error) {
-    console.error('❌ Error in getUserProfile:', error);
+    console.error("❌ Error in getUserProfile:", error);
     throw error;
   }
 };
 
 export const updateUserProfile = async (userDocId, data) => {
   try {
-    const userRef = doc(db, 'users', userDocId);
+    const userRef = doc(db, "users", userDocId);
     await updateDoc(userRef, data);
   } catch (error) {
     throw error;
@@ -209,7 +251,7 @@ export const saveGameSession = async (gameData) => {
       wrongAnswers: gameData.wrongAnswers || [],
     };
 
-    const docRef = await addDoc(collection(db, 'gameSessions'), sessionData);
+    const docRef = await addDoc(collection(db, "gameSessions"), sessionData);
     return docRef.id;
   } catch (error) {
     throw error;
@@ -219,9 +261,9 @@ export const saveGameSession = async (gameData) => {
 export const getUserGameHistory = async (uid, limitCount = 10) => {
   try {
     const q = query(
-      collection(db, 'gameSessions'),
-      where('userId', '==', uid),
-      orderBy('completedAt', 'desc'),
+      collection(db, "gameSessions"),
+      where("userId", "==", uid),
+      orderBy("completedAt", "desc"),
       limit(limitCount)
     );
 
@@ -235,8 +277,8 @@ export const getUserGameHistory = async (uid, limitCount = 10) => {
 export const getGlobalLeaderboard = async (limitCount = 10) => {
   try {
     const q = query(
-      collection(db, 'users'),
-      orderBy('totalScore', 'desc'),
+      collection(db, "users"),
+      orderBy("totalScore", "desc"),
       limit(limitCount)
     );
 
@@ -249,7 +291,7 @@ export const getGlobalLeaderboard = async (limitCount = 10) => {
 
 export const updateUserStats = async (userDocId, gameScore, gameType) => {
   try {
-    const userRef = doc(db, 'users', userDocId);
+    const userRef = doc(db, "users", userDocId);
     const userDoc = await getDoc(userRef);
 
     if (userDoc.exists()) {
