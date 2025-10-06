@@ -27,17 +27,14 @@ import { auth, db } from "@/services/FirebaseInit";
 
 // ==================== AUTHENTICATION ====================
 
+
+// ------------- Create new user with email and password --------------------------------//
 export const registerUser = async (email, password, displayName) => {
   try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    await setDoc(
-      doc(db, "users", user.uid),
+    await setDoc(doc(db, "users", user.uid),
       {
         uid: user.uid,
         email: user.email,
@@ -56,7 +53,7 @@ export const registerUser = async (email, password, displayName) => {
   }
 };
 
-// Login with Google using popup (recommended for SPA)
+// -------------------------- Login with Google -------------------------------//
 export const loginWithGoogle = async () => {
   try {
     const provider = new GoogleAuthProvider();
@@ -64,12 +61,12 @@ export const loginWithGoogle = async () => {
     provider.addScope("profile");
     provider.addScope("email");
 
-    console.log("🚀 Attempting Google popup authentication...");
+    console.log("Attempting Google popup authentication...");
 
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
 
-    console.log("✅ Google popup login successful:", user.email);
+    console.log("Google popup login successful:", user.email);
 
     // Ensure single user doc keyed by UID
     await setDoc(
@@ -90,7 +87,7 @@ export const loginWithGoogle = async () => {
 
     return user;
   } catch (error) {
-    console.error("❌ Error in loginWithGoogle:", error);
+    console.error("Error in loginWithGoogle:", error);
 
     if (error.code === "auth/popup-blocked") {
       throw new Error(
@@ -108,29 +105,10 @@ export const loginWithGoogle = async () => {
   }
 };
 
-// Keep handleGoogleRedirectResult for compatibility (not used in popup flow)
-export const handleGoogleRedirectResult = async () => {
-  try {
-    console.log("🔍 getRedirectResult called (but you are using popup)");
-    const result = await getRedirectResult(auth);
-    if (result) {
-      console.log("🎉 Redirect result found for user:", result.user.email);
-      return result.user;
-    }
-    return null;
-  } catch (error) {
-    console.error("❌ Error in handleGoogleRedirectResult:", error);
-    throw error;
-  }
-};
-
+// ----------------- Login user with email & password --------------------------//
 export const loginUser = async (email, password) => {
   try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
     // Check if user document exists, create if not
@@ -156,6 +134,7 @@ export const loginUser = async (email, password) => {
   }
 };  
 
+// ----------------- Login Anonumously --------------------------//
 export const loginAnonymously = async () => {
   try {
     const userCredential = await signInAnonymously(auth);
@@ -181,6 +160,7 @@ export const loginAnonymously = async () => {
   }
 };
 
+// ----------------- Logout --------------------------//
 export const logoutUser = async () => {
   try {
     await signOut(auth);
@@ -189,10 +169,13 @@ export const logoutUser = async () => {
   }
 };
 
+// ----------------- ? --------------------------//
+
 export const onAuthStateChange = (callback) => {
   return onAuthStateChanged(auth, callback);
 };
 
+// ----------------- Send email for password reset --------------------------//
 export const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
@@ -203,28 +186,30 @@ export const sendPasswordReset = async (email) => {
 
 // ==================== USER PROFILE ====================
 
+
+// -----------------Take the userID --------------------------//
 export const getUserProfile = async (uid) => {
   try {
-    console.log("🔍 getUserProfile for UID:", uid);
+    console.log("getUserProfile for UID:", uid);
 
-    // Since we now use uid as doc id, getDoc is simple
     const userDocRef = doc(db, "users", uid);
     const userDoc = await getDoc(userDocRef);
 
     if (userDoc.exists()) {
       const profile = { id: userDoc.id, ...userDoc.data() };
-      console.log("✅ User profile found:", profile.displayName);
+      console.log("User profile found:", profile.displayName);
       return profile;
     } else {
-      console.log("❌ No user profile found for UID:", uid);
+      console.log("No user profile found for UID:", uid);
       return null;
     }
   } catch (error) {
-    console.error("❌ Error in getUserProfile:", error);
+    console.error("Error in getUserProfile:", error);
     throw error;
   }
 };
 
+// ----------------- Update doc --------------------------//
 export const updateUserProfile = async (userDocId, data) => {
   try {
     const userRef = doc(db, "users", userDocId);
