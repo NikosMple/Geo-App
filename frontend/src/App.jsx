@@ -1,105 +1,38 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from '@/hooks/useAuth';
+import { BrowserRouter as Router } from "react-router-dom";
+import { AuthProvider } from "@/hooks/useAuth";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-// Components
-import ProtectedRoute from '@/components/auth/ProtectedRoute';
+import AppRoutes from "@/components/AppRoutes";
 
-// Pages
-import LoginScreen from '@/Pages/LoginScreen';
-import Dashboard from '@/Pages/Dashboard';
-import Profile from '@/Pages/quiz/ProfileUser';
-import ChooseContinent from '@/Pages/quiz/ChooseContinent';
-import DifficultyLevels from '@/Pages/quiz/DifficultyLevels';
-import CapitalsQuiz from '@/Pages/quiz/CapitalsQuiz';
-import FlagsQuiz from '@/Pages/quiz/FlagsQuiz';
-import Score from '@/Pages/quiz/Score';
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 min
+      cacheTime: 1000 * 60 * 10, // 10 min
+      retry: 1,
+    },
+  },
+});
 
 function App() {
   return (
-    <AuthProvider>
+    <QueryClientProvider client={queryClient}>
       <Router>
-        <div className="App">
-          <Routes>
-            {/* PUBLIC ROUTES - No authentication required */}
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/login" element={<LoginScreen />} />
-            
-            {/* PROTECTED ROUTES - Authentication required */}
-            <Route 
-              path="/profile" 
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/score" 
-              element={
-                <ProtectedRoute>
-                  <Score />
-                </ProtectedRoute>
-              } 
-            />
-             
-            {/* Capitals Game Routes - All Protected */}
-            <Route 
-              path="/capitals/choose-continent" 
-              element={
-                <ProtectedRoute>
-                  <ChooseContinent gameMode="capitals" />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/capitals/difficulty/:continent" 
-              element={
-                <ProtectedRoute>
-                  <DifficultyLevels gameMode="capitals" />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/quiz/capitals/:continent/:difficulty" 
-              element={
-                <ProtectedRoute>
-                  <CapitalsQuiz />
-                </ProtectedRoute>
-              } 
-            />
-             
-            {/* Flags Game Routes - All Protected */}
-            <Route 
-              path="/flags/choose-continent" 
-              element={
-                <ProtectedRoute>
-                  <ChooseContinent gameMode="flags" />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/flags/difficulty/:continent" 
-              element={
-                <ProtectedRoute>
-                  <DifficultyLevels gameMode="flags" />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/quiz/flags/:continent/:difficulty" 
-              element={
-                <ProtectedRoute>
-                  <FlagsQuiz />
-                </ProtectedRoute>
-              } 
-            />
-
-            {/* Catch-all route */}
-            <Route path="*" element={<Dashboard />} />
-          </Routes>
-        </div>
+        <AuthProvider>
+          <div
+            className="App min-h-screen"
+            style={{
+              background:
+                "linear-gradient(135deg, #0c0c1e 0%, #1a1a2e 50%, #16213e 100%)",
+            }}
+          >
+            <AppRoutes />
+          </div>
+        </AuthProvider>
       </Router>
-    </AuthProvider>
+      <ReactQueryDevtools initialIsOpen={true} />
+    </QueryClientProvider>
   );
 }
 

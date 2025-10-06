@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { Mail, Lock, User as UserIcon, Loader2, ArrowLeft } from "lucide-react";
-import '@/styles/index.css';
+import "@/styles/index.css";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +11,7 @@ const LoginScreen = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const {
     login,
@@ -55,7 +56,6 @@ const LoginScreen = () => {
     <div className="min-h-screen flex items-center justify-center bg-slate-900 p-4 sm:p-6">
       {/* IMPROVEMENT: Added a subtle glow effect to the main container */}
       <div className="w-full max-w-5xl grid md:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/10 bg-white/5 border border-white/10">
-        
         {/* Left Branding */}
         <div className="hidden md:flex flex-col justify-center items-center relative overflow-hidden">
           {/* IMPROVEMENT: Image now has a slow-zooming animation */}
@@ -97,20 +97,41 @@ const LoginScreen = () => {
             // IMPROVEMENT: Enhanced transitions and hover effects
             className="w-full flex items-center justify-center gap-3 bg-white text-gray-800 font-medium py-3 px-4 rounded-lg shadow hover:bg-gray-200 transition-all duration-300 mb-6 transform hover:scale-102"
           >
+            <div className="hidden md:flex flex-col justify-center items-center relative overflow-hidden">
+              {!imageLoaded && (
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-blue-900 to-emerald-800 animate-pulse" />
+              )}
+              <img
+                src="/3d-rendering-planet-earth.jpg"
+                alt="Earth"
+                className={`absolute inset-0 w-full h-full object-cover animate-slow-zoom transition-opacity duration-500 ${
+                  imageLoaded ? "opacity-100" : "opacity-0"
+                }`}
+                onLoad={() => setImageLoaded(true)}
+              />
+              {/* rest of your content */}
+            </div>
             <img
               src="https://www.svgrepo.com/show/475656/google-color.svg"
               alt="Google"
               className="w-5 h-5"
             />
-            <span>{loading || authLoading ? "Loading..." : "Continue with Google"}</span>
+            <span>
+              {loading || authLoading ? "Loading..." : "Continue with Google"}
+            </span>
           </button>
 
           <div className="relative mb-6">
-            <div className="absolute inset-0 flex items-center" aria-hidden="true">
+            <div
+              className="absolute inset-0 flex items-center"
+              aria-hidden="true"
+            >
               <div className="w-full border-t border-white/20"></div>
             </div>
             <div className="relative flex justify-center">
-              <span className="bg-slate-800 px-3 text-white/50 text-sm">Or</span>
+              <span className="bg-slate-800 px-3 text-white/50 text-sm">
+                Or
+              </span>
             </div>
           </div>
 
@@ -131,7 +152,7 @@ const LoginScreen = () => {
                 />
               </div>
             )}
-            
+
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 w-5 h-5" />
               <input
@@ -144,7 +165,7 @@ const LoginScreen = () => {
                 required
               />
             </div>
-            
+
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 w-5 h-5" />
               <input
@@ -181,22 +202,25 @@ const LoginScreen = () => {
           <p className="mt-6 text-center text-white/70">
             {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
             <button
-              onClick={() => { setIsSignUp(!isSignUp); setError(""); }}
+              onClick={() => {
+                setIsSignUp(!isSignUp);
+                setError("");
+              }}
               disabled={loading || authLoading}
               className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
             >
               {isSignUp ? "Sign In" : "Sign Up"}
             </button>
           </p>
-          
-           <div className="mt-6 text-center">
-             <button
-               onClick={() => navigate("/")}
-               className="text-white/50 hover:text-white/70 text-sm flex items-center gap-1 mx-auto transition-colors"
-             >
-               <ArrowLeft className="w-4 h-4" /> Back to Home
-             </button>
-           </div>
+
+          <div className="mt-6 text-center">
+            <button
+              onClick={() => navigate("/")}
+              className="text-white/50 hover:text-white/70 text-sm flex items-center gap-1 mx-auto transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" /> Back to Home
+            </button>
+          </div>
         </div>
       </div>
     </div>
