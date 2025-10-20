@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import QuizRoutes from './routes/quiz.js'
+import StatsRoutes from './routes/stats.js'
 import helmet from 'helmet';
 
 
@@ -18,6 +19,7 @@ app.use(cors({
 app.use(express.json());
 
 app.use('/api', QuizRoutes);
+app.use('/api/stats', StatsRoutes);
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`)

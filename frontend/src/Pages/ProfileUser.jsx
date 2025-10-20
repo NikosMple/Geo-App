@@ -1,16 +1,59 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import api from '@/api/api';
 
 const Profile = () => {
   const { user, userProfile, loading } = useAuth();
   const navigate = useNavigate();
   const [mounted, setMounted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('capitals');
+  const [userStats, setUserStats] = useState(null);
+  const [statsError, setStatsError] = useState(null);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    const loadStats = async () => {
+      if (!user?.uid) return;
+      try {
+        const data = await api.getUserStats(user.uid, { includeHistory: true, historyLimit: 10 });
+        setUserStats(data || {});
+      } catch (e) {
+        setStatsError('Failed to load stats');
+      }
+    };
+    loadStats();
+  }, [user?.uid]);
+
+  useEffect(() => { setMounted(true); }, []);
+
+  const derived = useMemo(() => {
+    if (!userStats) return null;
+    const categories = { capitals: { continents: {} }, flags: { continents: {} } };
+    Object.entries(userStats)
+      .filter(([key]) => !key.startsWith('_'))
+      .forEach(([gameType, s]) => {
+        const [category, continent] = String(gameType).split('_');
+        if (!category || !continent) return;
+        const cat = category === 'flags' ? 'flags' : 'capitals';
+        const totalQuestions = typeof s?.totalQuestions === 'number' ? s.totalQuestions : null;
+        const score = typeof s?.score === 'number' ? s.score : null;
+        const percentage = totalQuestions && score !== null && totalQuestions > 0
+          ? Math.round((score / totalQuestions) * 100)
+          : null;
+        categories[cat].continents[continent] = {
+          score,
+          totalQuestions,
+          updatedAt: s?.updatedAt || null,
+          percentage,
+        };
+      });
+
+    const history = Array.isArray(userStats._history) ? userStats._history : [];
+    const totalGames = history.length;
+    const totalScore = history.reduce((acc, h) => acc + (typeof h.score === 'number' ? h.score : 0), 0);
+    const averageScore = totalGames > 0 ? Math.round((totalScore / totalGames) * 100) / 100 : 0;
+    return { categories, totals: { totalGames, totalScore, averageScore }, history };
+  }, [userStats]);
 
   if (loading) {
     return (
@@ -25,17 +68,8 @@ const Profile = () => {
     return null;
   }
 
-  const categoryStats = userProfile?.categoryStats || {
-    capitals: { totalGames: 0, totalScore: 0, bestScore: 0, averageScore: 0, continentStats: {} },
-    flags: { totalGames: 0, totalScore: 0, bestScore: 0, averageScore: 0, continentStats: {} }
-  };
-
-  const currentCategoryStats = categoryStats[selectedCategory];
-  const continentStats = currentCategoryStats?.continentStats || {};
-
-  const getCategoryIcon = (category) => {
-    return category === 'capitals' ? '🏛️' : '🏳️';
-  };
+  const currentCategoryData = derived?.categories?.[selectedCategory] || { continents: {} };
+  const continentStats = currentCategoryData.continents;
 
   const getStatCard = (title, value, subtitle, colorClass = 'text-white') => (
     <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-white/5">
@@ -45,17 +79,15 @@ const Profile = () => {
     </div>
   );
 
+  const getCategoryIcon = (category) => (category === 'capitals' ? '🌍' : '🚩');
+
   const getContinentFlag = (continent) => {
-    const flags = {
-      europe: '🇪🇺',
-      asia: '🌏',
-      africa: '🌍',
-      america: '🌎',
-      oceania: '🇦🇺',
-      boss: '👑'
-    };
-    return flags[continent.toLowerCase()] || '🌍';
+    const c = String(continent).toLowerCase();
+    const map = { europe: '🇪🇺', asia: '🌏', africa: '🌍', america: '🌎', oceania: '🗺️', boss: '⭐' };
+    return map[c] || '🗺️';
   };
+
+  const formatDateTime = (iso) => { try { return iso ? new Date(iso).toLocaleString() : ''; } catch { return ''; } };
 
   return (
     <div className={`app-background min-h-screen ${mounted ? 'mounted' : ''}`}>
@@ -91,63 +123,40 @@ const Profile = () => {
           </div>
         </header>
 
-        {/* Overall Stats Summary */}
+        {/* Overall Stats Summary (from stats history) */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-white mb-6 text-center">Your Geography Journey</h2>
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
-            {getStatCard('Total Games', userProfile?.totalGames || 0, 'All categories', 'text-blue-400')}
-            {getStatCard('Total Score', userProfile?.totalScore || 0, 'Points earned', 'text-emerald-400')}
-            {getStatCard('Average Score', 
-              userProfile?.totalGames > 0 ? 
-                Math.round(((userProfile?.totalScore || 0) / (userProfile?.totalGames || 1)) * 100) / 100 : 0, 
-              'Per game', 'text-yellow-400')}
+            {getStatCard('Total Games', derived?.totals?.totalGames || 0, 'All categories', 'text-blue-400')}
+            {getStatCard('Total Score', derived?.totals?.totalScore || 0, 'Points earned', 'text-emerald-400')}
+            {getStatCard('Average Score', derived?.totals?.averageScore || 0, 'Per game', 'text-yellow-400')}
             {getStatCard('Profile Level', userProfile?.level || 1, 'Current level', 'text-purple-400')}
           </div>
         </div>
 
-        {/* Category Selection */}
-        <div className="mb-8">
-          <div className="flex justify-center">
-            <div className="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-2 flex gap-2">
-              {Object.keys(categoryStats).map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-300 font-medium ${
-                    selectedCategory === category
-                      ? 'bg-white/20 text-white shadow-lg'
-                      : 'text-white/70 hover:bg-white/10 hover:text-white'
-                  }`}
-                >
-                  <span className="text-2xl">{getCategoryIcon(category)}</span>
-                  <span className="capitalize">{category}</span>
-                </button>
-              ))}
-            </div>
+        {/* Category Toggle */}
+        <div className="mb-6 flex justify-center">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-2 flex gap-2">
+            {['capitals', 'flags'].map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-xl transition-all duration-200 ${
+                  selectedCategory === category ? 'bg-white/20 text-white' : 'text-white/70 hover:text-white'
+                }`}
+              >
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Category-Specific Stats */}
-        <div className="mb-12">
-          <h3 className="text-2xl font-bold text-white mb-6 text-center flex items-center justify-center gap-3">
-            <span className="text-3xl">{getCategoryIcon(selectedCategory)}</span>
-            {selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)} Statistics
-          </h3>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-8">
-            {getStatCard('Total Games', currentCategoryStats?.totalGames || 0, selectedCategory, 'text-cyan-400')}
-            {getStatCard('Total Score', currentCategoryStats?.totalScore || 0, 'Points earned', 'text-emerald-400')}
-            {getStatCard('Best Score', `${currentCategoryStats?.bestScore || 0}%`, 'Best percentage', 'text-yellow-400')}
-            {getStatCard('Average Score', currentCategoryStats?.averageScore || 0, 'Per game average', 'text-purple-400')}
-          </div>
-        </div>
-
-        {/* Continent Breakdown */}
+        {/* Per-Continent latest */}
         {Object.keys(continentStats).length > 0 && (
           <div className="mb-12">
             <h3 className="text-xl font-bold text-white mb-6 text-center">Continent Performance</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Object.entries(continentStats).map(([continent, stats]) => (
+              {Object.entries(continentStats).map(([continent, s]) => (
                 <div
                   key={continent}
                   className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-white/5"
@@ -156,43 +165,26 @@ const Profile = () => {
                     <span className="text-2xl">{getContinentFlag(continent)}</span>
                     <h4 className="text-lg font-bold text-white capitalize">{continent}</h4>
                   </div>
-                  
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-white/60">Games Played:</span>
-                      <span className="text-white font-medium">{stats.totalGames || 0}</span>
+                      <span className="text-white/60">Latest Score:</span>
+                      <span className="text-white font-medium">
+                        {s?.score ?? '-'}{typeof s?.totalQuestions === 'number' ? ` / ${s.totalQuestions}` : ''}
+                      </span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-white/60">Total Score:</span>
-                      <span className="text-emerald-400 font-medium">{stats.totalScore || 0}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-white/60">Best Score:</span>
-                      <span className="text-yellow-400 font-medium">{stats.bestScore || 0}%</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-white/60">Average:</span>
-                      <span className="text-purple-400 font-medium">{stats.averageScore || 0}</span>
-                    </div>
-                  </div>
-
-                  {/* Difficulty Breakdown */}
-                  {stats.difficulties && Object.keys(stats.difficulties).length > 0 && (
-                    <div className="mt-4 pt-4 border-t border-white/10">
-                      <p className="text-white/60 text-sm mb-2">Difficulty Breakdown:</p>
-                      <div className="space-y-2">
-                        {Object.entries(stats.difficulties).map(([difficulty, diffStats]) => (
-                          <div key={difficulty} className="flex items-center justify-between text-sm">
-                            <span className="text-white/70 capitalize">{difficulty}:</span>
-                            <div className="flex gap-2">
-                              <span className="text-white/60">{diffStats.totalGames}g</span>
-                              <span className="text-yellow-400">{diffStats.bestScore}%</span>
-                            </div>
-                          </div>
-                        ))}
+                    {typeof s?.percentage === 'number' && (
+                      <div className="flex justify-between">
+                        <span className="text-white/60">Accuracy:</span>
+                        <span className="text-emerald-400 font-medium">{s.percentage}%</span>
                       </div>
-                    </div>
-                  )}
+                    )}
+                    {s?.updatedAt && (
+                      <div className="flex justify-between">
+                        <span className="text-white/60">Updated:</span>
+                        <span className="text-white/70">{formatDateTime(s.updatedAt)}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -211,6 +203,36 @@ const Profile = () => {
             >
               Start Playing {selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}
             </button>
+          </div>
+        )}
+
+        {/* Recent Games */}
+        {derived?.history && (
+          <div className="mb-12">
+            <h3 className="text-2xl font-semibold text-white mb-4 text-center">Recent Games</h3>
+            {derived.history.length === 0 ? (
+              <div className="text-white/70 text-center">No recent games yet.</div>
+            ) : (
+              <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                {derived.history.map((h) => {
+                  const when = h.createdAt ? formatDateTime(h.createdAt) : '';
+                  const outOf = typeof h.totalQuestions === 'number' ? `/ ${h.totalQuestions}` : '';
+                  const label = String(h.gameType || '').replaceAll('_', ' ');
+                  const diff = h?.metadata?.difficulty ? ` • ${h.metadata.difficulty}` : '';
+                  return (
+                    <div key={h.id} className="flex items-center justify-between px-4 py-3 border-b border-white/10 last:border-b-0">
+                      <div className="text-white/80">
+                        <div className="font-medium capitalize">{label}{diff}</div>
+                        <div className="text-xs text-white/50">{when}</div>
+                      </div>
+                      <div className="text-white font-semibold">
+                        {typeof h.score === 'number' ? h.score : '-'}{outOf}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
 
@@ -237,3 +259,4 @@ const Profile = () => {
 };
 
 export default Profile;
+

@@ -14,6 +14,42 @@ const api = {
 
   //-----------------------------------------------------------------------------------------------//
   
+  // Player stats: save a finished game
+  saveStats: async ({ userId, gameType, score, totalQuestions, correctAnswers, durationSec, metadata }) => {
+    try {
+      const response = await axios.post("/api/stats", {
+        userId,
+        gameType,
+        score,
+        totalQuestions,
+        correctAnswers,
+        durationSec,
+        metadata,
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(
+        `HTTP error! status: ${error.response?.status || "Network Error"}`
+      );
+    }
+  },
+
+  //-----------------------------------------------------------------------------------------------//
+  
+  // Player stats: fetch latest per game type (optionally include history)
+  getUserStats: async (userId, { includeHistory = false, historyLimit = 10 } = {}) => {
+    try {
+      const response = await axios.get(`/api/stats/${userId}`, {
+        params: { includeHistory, historyLimit },
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(
+        `HTTP error! status: ${error.response?.status || "Network Error"}`
+      );
+    }
+  },
+  
   // Add this method for getting available difficulties for a continent
   getContinentQuestions: async (continent) => {
     try {

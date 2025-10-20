@@ -1,8 +1,8 @@
 import express from "express";
 import {
-  loadQuestions, 
-  getAvailableContinents, 
-  getAvailableCountries, 
+  loadQuestions,
+  getAvailableContinents,
+  getAvailableCountries,
   loadFlagQuestion,
 } from "../services/dataService.js";
 
@@ -68,10 +68,8 @@ router.get("/capitals/:continent/:difficulty", async (req, res) => {
       );
     }
 
-    // Take only first 10 questions to avoid overwhelming the user
     filteredQuestions = filteredQuestions.slice(0, 10);
 
-    // Debug: Show first question
     if (filteredQuestions.length > 0) {
       console.log(`First question:`, {
         question: filteredQuestions[0].question,
@@ -91,7 +89,6 @@ router.get("/capitals/:continent/:difficulty", async (req, res) => {
 router.post("/capitals/check", async (req, res) => {
   try {
     const { continent, question: questionText, userAnswer } = req.body;
-    
 
     console.log("=== CHECKING ANSWER ===");
     console.log("Continent:", continent);
@@ -126,22 +123,7 @@ router.post("/capitals/check", async (req, res) => {
       difficulty: question.difficulty,
     });
 
-    // // ✨ Get fun fact for the correct answer
-    // const funFact = await getFunFact(question.answer, continent);
-    // console.log("Fun fact:", funFact);
-
-    // // Handle case where user didn't answer (time expired)
-    // if (!userAnswer || userAnswer === null) {
-    //   console.log("No user answer provided (time expired)");
-    //   return res.json({
-    //     isCorrect: false,
-    //     correctAnswer: question.answer,
-    //     explanation: question.explanation || null,
-    //     funFact  // ← Νέο field
-    //   });
-    // }
-
-    // Check if answer is correct (case-insensitive comparison)
+    // Check if answer is correct
     const isCorrect =
       question.answer.toLowerCase().trim() === userAnswer.toLowerCase().trim();
 
@@ -154,7 +136,7 @@ router.post("/capitals/check", async (req, res) => {
     res.json({
       isCorrect,
       correctAnswer: question.answer,
-      explanation: question.explanation || null
+      explanation: question.explanation || null,
     });
   } catch (error) {
     console.error("Error checking answer:", error);
@@ -219,31 +201,20 @@ router.post("/flags/check", async (req, res) => {
     //Find question by country_code
     const question = questions.find((q) => q.country_code === country_code);
     if (!question) {
-      return res.status(400).json({ error: "Question not found for this flag" });
+      return res
+        .status(400)
+        .json({ error: "Question not found for this flag" });
     }
 
-    // ✨ Get fun fact for flags - we need the country name from the answer
-    // const funFact = await getFunFact(question.answer, continent);
-    // console.log("Flag fun fact:", funFact);
-
-    // // Handle case where user didn't answer (time expired)
-    // if (!userAnswer || userAnswer === null) {
-    //   return res.json({
-    //     isCorrect: false,
-    //     correctAnswer: question.answer,
-    //     explanation: question.explanation || null,
-    //     funFact  // ← Νέο field
-    //   });
-    // }
-
     // Check if the answer is correct
-    const isCorrect = question.answer.toLowerCase().trim() === userAnswer.toLowerCase().trim();
+    const isCorrect =
+      question.answer.toLowerCase().trim() === userAnswer.toLowerCase().trim();
 
     //Return the result
     res.json({
       isCorrect,
       correctAnswer: question.answer,
-      explanation: question.explanation || null
+      explanation: question.explanation || null,
     });
   } catch (error) {
     console.log("Error checking flag answer", error);
