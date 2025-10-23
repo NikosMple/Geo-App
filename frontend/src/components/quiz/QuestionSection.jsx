@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 // Animation variants for Framer Motion to keep the JSX clean.
 const containerVariants = {
@@ -26,9 +27,8 @@ const QuestionSection = ({
   onAnswerSelect,
   onNextQuestion,
   gameMode = 'capitals',
-  explanation = null
+  explanation = null,
 }) => {
-
   // Helper to extract country name from a "What is the capital of X?" string
   const getCountryFromQuestion = (questionString) => {
     if (!questionString || !questionString.includes(' of ')) return '';
@@ -37,9 +37,45 @@ const QuestionSection = ({
   };
 
   // Determine the country name based on game mode
-  const countryName = gameMode === 'capitals' 
-    ? getCountryFromQuestion(currentQuestion?.question)
-    : (correctAnswer || currentQuestion?.answer);
+  const countryName =
+    gameMode === 'capitals'
+      ? getCountryFromQuestion(currentQuestion?.question)
+      : correctAnswer || currentQuestion?.answer;
+
+  // Focus the Next/Finish button when result is revealed
+  const nextButtonRef = useRef(null);
+  useEffect(() => {
+    if (isRevealed && nextButtonRef.current) {
+      nextButtonRef.current.focus();
+    }
+  }, [isRevealed]);
+
+  // Keyboard shortcuts: A-D to select options; Enter/Space to continue when revealed
+  useEffect(() => {
+    const handler = (e) => {
+      const tag = (e.target?.tagName || '').toLowerCase();
+      if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+
+      const key = e.key.toLowerCase();
+      if (!isRevealed) {
+        if (['a', 'b', 'c', 'd'].includes(key)) {
+          const index = key.charCodeAt(0) - 'a'.charCodeAt(0);
+          const option = currentQuestion?.options?.[index];
+          if (option) {
+            e.preventDefault();
+            onAnswerSelect(option);
+          }
+        }
+      } else {
+        if (key === 'enter' || key === ' ') {
+          e.preventDefault();
+          onNextQuestion();
+        }
+      }
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [isRevealed, currentQuestion, onAnswerSelect, onNextQuestion]);
 
   // Dynamically determines the Tailwind CSS classes for each answer button based on the quiz state.
   const getButtonClass = (option) => {
@@ -66,10 +102,10 @@ const QuestionSection = ({
       // Answer selected, but not yet revealed (pending state)
       return 'bg-white/20 border-white/40 animate-pulse';
     }
-    
+
     // Time expired: highlight the correct answer
     if (selectedAnswer === 'TIME_EXPIRED' && isCorrect) {
-        return 'bg-emerald-500/30 border-emerald-400 text-white shadow-lg shadow-emerald-500/20';
+      return 'bg-emerald-500/30 border-emerald-400 text-white shadow-lg shadow-emerald-500/20';
     }
 
     return baseClass;
@@ -77,9 +113,10 @@ const QuestionSection = ({
 
   // Generates the result message after an answer is revealed
   const getResultMessage = () => {
-    if (selectedAnswer === 'TIME_EXPIRED') return `⏰ Time's up! The correct answer was ${correctAnswer}.`;
+    if (selectedAnswer === 'TIME_EXPIRED')
+      return `⏰ Time's up! The correct answer was ${correctAnswer}.`;
     if (selectedAnswer === correctAnswer) return '✅ Correct!';
-    return `❌ Wrong! The correct answer is ${correctAnswer}.`;
+    return `✖️ Wrong! The correct answer is ${correctAnswer}.`;
   };
 
   // Determines the color of the result message
@@ -92,27 +129,40 @@ const QuestionSection = ({
   // Renders the question card, adapting for 'flags' or 'capitals' game modes
   const renderQuestion = () => {
     if (gameMode === 'flags') {
+      const rawCode = currentQuestion?.country_code || '';
+      const code = rawCode.toLowerCase();
+      const fiCode = code === 'uk' ? 'gb' : code; // normalize common exception
+
       return (
-        <motion.div variants={itemVariants} className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 mb-8 text-center">
+        <motion.div
+          variants={itemVariants}
+          className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 mb-8 text-center"
+        >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Which country does this flag belong to?
           </h2>
-          {currentQuestion?.country_code && (
-            <img 
-              src={`https://flagsapi.com/${currentQuestion.country_code}/shiny/64.png`} 
-              alt="Country Flag"
-              className="mx-auto h-24 w-auto object-contain my-6 border-2 border-white/20 rounded-lg p-2 bg-white/10"
-            />
-          )}
+          {rawCode ? (
+            <div className="mx-auto my-6 inline-flex items-center justify-center rounded-xl border-2 border-white/20 bg-white/10 p-4">
+              <span
+                className={`fi fi-${fiCode}`}
+                aria-label={`Flag of ${countryName || 'Unknown country'}`}
+                title={countryName || 'Flag'}
+                style={{ fontSize: '6rem', lineHeight: 1 }}
+              />
+            </div>
+          ) : null}
         </motion.div>
       );
     }
-    
+
     // For capitals mode, highlights the country name
     const questionText = currentQuestion?.question || '';
     const parts = countryName ? questionText.split(countryName) : [questionText, ''];
     return (
-      <motion.div variants={itemVariants} className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 mb-8 text-center">
+      <motion.div
+        variants={itemVariants}
+        className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 mb-8 text-center"
+      >
         <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
           {parts[0]}
           <span className="text-cyan-400 font-extrabold mx-2">{countryName}</span>
@@ -123,7 +173,7 @@ const QuestionSection = ({
   };
 
   return (
-    <motion.div 
+    <motion.div
       key={currentQuestionIndex} // Animate each new question
       className="w-full max-w-3xl mx-auto px-4"
       variants={containerVariants}
@@ -140,7 +190,7 @@ const QuestionSection = ({
           </span>
         </div>
         <div className="w-full bg-white/10 rounded-full h-2.5">
-          <div 
+          <div
             className="bg-gradient-to-r from-emerald-400 to-cyan-500 h-2.5 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${((currentQuestionIndex + 1) / totalQuestions) * 100}%` }}
           ></div>
@@ -166,6 +216,9 @@ const QuestionSection = ({
                 ${buttonClass}
                 ${!isRevealed ? 'cursor-pointer transform hover:-translate-y-1' : 'cursor-not-allowed'}
               `}
+              aria-pressed={isSelected}
+              aria-disabled={isRevealed}
+              aria-label={`Answer ${String.fromCharCode(65 + index)}: ${option}`}
               whileHover={!isRevealed ? { scale: 1.03 } : {}}
               whileTap={!isRevealed ? { scale: 0.98 } : {}}
             >
@@ -176,8 +229,28 @@ const QuestionSection = ({
                 {option}
               </span>
               <AnimatePresence>
-                {isRevealed && isCorrect && <motion.span initial={{scale:0}} animate={{scale:1}} className="text-2xl">✅</motion.span>}
-                {isRevealed && isSelected && !isCorrect && <motion.span initial={{scale:0}} animate={{scale:1}} className="text-2xl">❌</motion.span>}
+                {isRevealed && isCorrect && (
+                  <motion.span
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="text-2xl"
+                    role="img"
+                    aria-label="Correct"
+                  >
+                    ✅
+                  </motion.span>
+                )}
+                {isRevealed && isSelected && !isCorrect && (
+                  <motion.span
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="text-2xl"
+                    role="img"
+                    aria-label="Wrong"
+                  >
+                    ✖️
+                  </motion.span>
+                )}
               </AnimatePresence>
             </motion.button>
           );
@@ -193,14 +266,17 @@ const QuestionSection = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            <div className={`text-xl font-bold ${getResultClass()}`}>
+            <div className={`text-xl font-bold ${getResultClass()}`} role="status" aria-live="polite">
               {getResultMessage()}
             </div>
-            
+
             {explanation && (
               <div className="mt-4 bg-cyan-900/40 p-4 rounded-xl border border-cyan-500/30">
                 <h3 className="text-cyan-300 font-semibold text-lg flex items-center justify-center gap-2 mb-2">
-                  <span className="text-xl">💡</span> Fun Fact
+                  <span className="text-xl" role="img" aria-label="Light bulb">
+                    💡
+                  </span>
+                  Fun fact
                 </h3>
                 <p className="text-white/90 text-center text-base">
                   <span className="font-bold text-cyan-400">{countryName}</span>: {explanation}
@@ -212,10 +288,11 @@ const QuestionSection = ({
               <motion.button
                 onClick={onNextQuestion}
                 className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-12 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-cyan-500/40 focus:outline-none focus:ring-4 focus:ring-cyan-500/50"
+                ref={nextButtonRef}
                 whileHover={{ scale: 1.05, y: -4 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {currentQuestionIndex >= totalQuestions - 1 ? 'Finish Quiz 🏁' : 'Next Question →'}
+                {currentQuestionIndex >= totalQuestions - 1 ? 'Finish Quiz 🎉' : 'Next Question →'}
               </motion.button>
             </div>
           </motion.div>

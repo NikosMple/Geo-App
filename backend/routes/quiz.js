@@ -145,29 +145,29 @@ router.post("/capitals/check", async (req, res) => {
 });
 
 // -- Specific continent -- //
-router.get("/:continent", async (req, res) => {
-  try {
-    const continent = req.params.continent;
+// router.get("/:continent", async (req, res) => {
+//   try {
+//     const continent = req.params.continent;
 
-    if (!/^[a-zA-Z]+$/.test(continent)) {
-      return res.status(400).json({ error: "Invalid continent name" });
-    }
+//     if (!/^[a-zA-Z]+$/.test(continent)) {
+//       return res.status(400).json({ error: "Invalid continent name" });
+//     }
 
-    const questions = await loadQuestions(continent);
+//     const questions = await loadQuestions(continent);
 
-    let filteredQuestions = questions;
+//     let filteredQuestions = questions;
 
-    if (req.query.difficulty) {
-      filteredQuestions = questions.filter(
-        (q) => q.difficulty === req.query.difficulty
-      );
-    }
-    res.json(filteredQuestions);
-  } catch (error) {
-    console.error("Error loading questions:", error);
-    res.status(500).json({ error: "Could not load questions" });
-  }
-});
+//     if (req.query.difficulty) {
+//       filteredQuestions = questions.filter(
+//         (q) => q.difficulty === req.query.difficulty
+//       );
+//     }
+//     res.json(filteredQuestions);
+//   } catch (error) {
+//     console.error("Error loading questions:", error);
+//     res.status(500).json({ error: "Could not load questions" });
+//   }
+// });
 
 //-------------------- FLAGS -----------------------------//
 

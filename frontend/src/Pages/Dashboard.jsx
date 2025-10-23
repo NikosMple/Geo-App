@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import api from "@/api/api.js";
+import Icon from "@/components/ui/Icon";
+import AnimatedButton from "@/components/ui/AnimatedButton";
 
 const GAME_MODES = [
   {
     name: "Capitals Quiz",
-    icon: "🏛️",
     path: "/capitals/choose-continent",
     description: "Test your knowledge of world capitals across all continents",
     longDescription:
@@ -19,7 +20,6 @@ const GAME_MODES = [
   },
   {
     name: "Flags Quiz",
-    icon: "🏳️",
     path: "/flags/choose-continent",
     description: "Identify countries by their unique national flags",
     longDescription:
@@ -52,6 +52,8 @@ const Dashboard = () => {
     queryFn: api.getCountries,
     staleTime: 1000 * 60 * 60, // 1 hour
     gcTime: 1000 * 60 * 60 * 24, // 24 hours
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   });
 
   const countriesCount = countries.length;
@@ -215,30 +217,34 @@ const Dashboard = () => {
                 <div className="flex gap-3 items-center">
                   <button
                     onClick={() => navigate("/profile")}
-                    className="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-white/90 hover:bg-white/20 transition-all duration-300"
+                    className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-white/90 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
                   >
-                    Profile
+                    <Icon name="user" className="w-4 h-4" />
+                    <span>Profile</span>
                   </button>
                   <button
                     onClick={handleLogout}
-                    className="bg-red-500/20 backdrop-blur-md border border-red-400/30 px-4 py-2 rounded-full text-red-300 hover:bg-red-500/30 transition-all duration-300"
+                    className="inline-flex items-center gap-2 bg-red-500/20 backdrop-blur-md border border-red-400/30 px-4 py-2 rounded-full text-red-300 hover:bg-red-500/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-400/40"
                   >
-                    Sign Out
+                    <Icon name="logout" className="w-4 h-4" />
+                    <span>Sign Out</span>
                   </button>
                 </div>
               ) : (
                 <div className="flex gap-3">
                   <button
                     onClick={() => navigate("/login")}
-                    className="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-white/90 hover:bg-white/20 transition-all duration-300"
+                    className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-white/90 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
                   >
-                    Sign In
+                    <Icon name="login" className="w-4 h-4" />
+                    <span>Sign In</span>
                   </button>
                   <button
                     onClick={() => navigate("/login")}
-                    className="bg-emerald-500/80 backdrop-blur-md border border-emerald-400/30 px-4 py-2 rounded-full text-white hover:bg-emerald-500 transition-all duration-300"
+                    className="inline-flex items-center gap-2 bg-emerald-500/80 backdrop-blur-md border border-emerald-400/30 px-4 py-2 rounded-full text-white hover:bg-emerald-500 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-400/60"
                   >
-                    Sign Up
+                    <Icon name="user" className="w-4 h-4" />
+                    <span>Sign Up</span>
                   </button>
                 </div>
               ))}
@@ -280,13 +286,15 @@ const Dashboard = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button
                 onClick={handleStartPlaying}
-                className="group inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/40 transform -rotate-2 hover:rotate-0"
+                className="group inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/40 transform -rotate-2 hover:rotate-0 focus:outline-none focus:ring-2 focus:ring-emerald-400/60"
               >
                 <span>{user ? "Start Playing" : "Sign In to Play"}</span>
                 <span className="group-hover:translate-x-1 transition-transform duration-300">
                   {user ? "🚀" : "🔒"}
                 </span>
               </button>
+
+              <AnimatedButton onClick={() => navigate("/map")} />
 
               {!user && (
                 <p className="text-white/50 text-sm max-w-xs">
@@ -313,7 +321,13 @@ const Dashboard = () => {
                         className={`absolute inset-0 bg-gradient-to-r ${stat.color} rounded-2xl blur-xl opacity-30`}
                       ></div>
                       <div className="relative w-full h-full bg-white/10 rounded-2xl flex items-center justify-center border border-white/20 transform group-hover:scale-105 transition-transform duration-300">
-                        <span className="text-4xl">{stat.icon}</span>
+                        <span className="text-4xl">
+                          {stat.label === "Countries"
+                            ? "🌍"
+                            : stat.label === "Game Modes"
+                            ? "🎮"
+                            : "⏱️"}
+                        </span>
                       </div>
                     </div>
                     <div
@@ -356,6 +370,14 @@ const Dashboard = () => {
                     !user ? "opacity-75" : ""
                   }`}
                   onClick={() => handleGameLaunch(gameMode.path)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      handleGameLaunch(gameMode.path);
+                    }
+                  }}
                 >
                   <div
                     className="relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 group-hover:scale-105 transform group-hover:[transform:rotateY(var(--rotate-y))_rotateX(var(--rotate-x))_scale(1.05)] shadow-lg hover:shadow-2xl"
@@ -370,7 +392,13 @@ const Dashboard = () => {
                             className={`absolute inset-0 bg-gradient-to-r ${gameMode.color} rounded-2xl blur-xl opacity-50`}
                           ></div>
                           <div className="relative w-20 h-20 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center">
-                            <span className="text-4xl">{gameMode.icon}</span>
+                            <span className="text-4xl">
+                              {gameMode.name === "Capitals Quiz"
+                                ? "🏙️"
+                                : gameMode.name === "Flags Quiz"
+                                ? "🏳️"
+                                : "🧭"}
+                            </span>
                           </div>
                         </div>
 
@@ -446,90 +474,22 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="pb-24 animate-slide-up-large animation-delay-600">
-            <div className="text-center mb-12">
+          <div className="pb-16 animate-slide-up-large animation-delay-600">
+            <div className="text-center mb-16">
               <p className="text-white/60 text-lg font-light">
                 Built for learners, designed for fun
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {[
-                {
-                  icon: "⚡",
-                  title: "Lightning Fast",
-                  desc: "Instant feedback and real-time scoring system",
-                  color: "from-yellow-400 to-orange-500",
-                },
-                {
-                  icon: "🏆",
-                  title: "Track Progress",
-                  desc: user
-                    ? "Monitor your improvement across all difficulty levels"
-                    : "Sign in to track your improvement and compete",
-                  color: "from-purple-400 to-pink-500",
-                },
-                {
-                  icon: "🌍",
-                  title: "Global Coverage",
-                  desc: "Every continent, every country, comprehensive content",
-                  color: "from-emerald-400 to-teal-500",
-                  onClick: () => {
-                    navigate("/map");
-                  },
-                },
-              ].map((feature, index) => (
-                <div
-                  key={index}
-                  onClick={feature.onClick}
-                  className="group bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-white/5 relative overflow-hidden"
-                >
-                  <div
-                    className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                  ></div>
-                  <div className="relative z-10 flex items-start gap-4">
-                    <div
-                      className={`w-12 h-12 rounded-xl bg-gradient-to-r ${feature.color} bg-opacity-20 flex items-center justify-center flex-shrink-0 border border-white/20 transform group-hover:scale-105 transition-transform duration-300`}
-                    >
-                      <span className="text-2xl">{feature.icon}</span>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold text-white mb-2">
-                        {feature.title}
-                      </h4>
-                      <p className="text-white/60">{feature.desc}</p>
-                      {feature.onClick && (
-                        <div className="mt-3 flex items-center text-emerald-400 text-sm font-medium">
-                          <span>Click to explore</span>
-
-                          <svg
-                            className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M9 5l7 7-7 7"
-                            />
-                          </svg>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="text-center py-16 text-white/50 text-sm">
-            <p>
-              &copy; {new Date().getFullYear()} Geography Master. All rights
-              reserved.
-            </p>
-            <p className="mt-2">Made with 💙 for learning.</p>
+            <footer className="max-w-3xl mx-auto pt-8 border-t border-white/5 text-center space-y-3">
+              <p className="text-white/40 text-sm">
+                Master geography • Learn countries • Challenge yourself
+              </p>
+              <p className="text-white/25 text-xs">
+                &copy; {new Date().getFullYear()} Geography Master • Made with
+                💙
+              </p>
+            </footer>
           </div>
         </div>
       </div>

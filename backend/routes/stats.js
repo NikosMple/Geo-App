@@ -3,6 +3,8 @@ import { db } from "../config/firebase.js";
 
 const router = express.Router();
 
+
+// Remove any properties whose values is undefind
 function pruneUndefined(obj) {
   if (!obj || typeof obj !== "object") return obj;
   const out = {};

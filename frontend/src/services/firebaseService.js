@@ -219,8 +219,6 @@ export const updateUserProfile = async (userDocId, data) => {
   }
 };
 
-// Remaining game/session/leaderboard helpers left unchanged (copy from your original file)
-
 export const saveGameSession = async (gameData) => {
   try {
     const sessionData = {

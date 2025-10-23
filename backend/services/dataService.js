@@ -8,7 +8,6 @@ const __dirname = path.dirname(__filename);
 // ----- CACHES ------//
 const dataCache = {}; // In-memory cache for loaded questions
 const dataFlagCache = {};
-let funFactsCache = null; // Cache for fun facts
 
 // ----- CAPITALS ------//
 
