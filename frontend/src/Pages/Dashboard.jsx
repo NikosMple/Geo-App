@@ -46,12 +46,12 @@ const Dashboard = () => {
     }
   };
 
-  // React Query: Fetch countries count
+  // Fetch countries count
   const { data: countries = [] } = useQuery({
     queryKey: ["countries"],
     queryFn: api.getCountries,
-    staleTime: 1000 * 60 * 60, // 1 hour
-    gcTime: 1000 * 60 * 60 * 24, // 24 hours
+    staleTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60 * 24,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
   });
@@ -62,7 +62,7 @@ const Dashboard = () => {
     setMounted(true);
   }, []);
 
-  // Magnetic spotlight effect handler
+  // Magnetic spotlight
   useEffect(() => {
     const handleMouseMove = (e) => {
       cardRefs.current.forEach((card) => {

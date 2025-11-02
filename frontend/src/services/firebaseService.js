@@ -192,10 +192,11 @@ export const getUserProfile = async (uid) => {
   try {
     console.log("getUserProfile for UID:", uid);
 
-    const userDocRef = doc(db, "users", uid);
-    const userDoc = await getDoc(userDocRef);
+    const userDocRef = doc(db, "users", uid); // Creates a reference (a pointer) to /users/<uid>, so we take the fullpath for the firebase document
+    const userDoc = await getDoc(userDocRef); // Fetches the document from Firestore, using the reference. getDoc check if the data exists
 
     if (userDoc.exists()) {
+      // data() method gives you only the content of the document. Metadata is what firebase store automatically (like the id, timestamps, etc). Remember like a file system.
       const profile = { id: userDoc.id, ...userDoc.data() };
       console.log("User profile found:", profile.displayName);
       return profile;

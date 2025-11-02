@@ -96,7 +96,6 @@ const ChooseContinent = ({ gameMode }) => {
 
   const gameInfo = getGameModeInfo();
 
-  // ## CHANGE: Combine continents and boss level into a single array for mapping. ##
   const allLevels = [...continents, ...(bossLevel ? [bossLevel] : [])];
 
   if (loading) {
@@ -166,7 +165,6 @@ const ChooseContinent = ({ gameMode }) => {
           </div>
         </section>
 
-        {/* ## CHANGE: A single grid section to render all cards. ## */}
         <section className="animate-slide-up animation-delay-400">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {allLevels.map((level, index) => {
@@ -174,7 +172,6 @@ const ChooseContinent = ({ gameMode }) => {
               const isBoss = level.value === "boss";
 
               if (isBoss) {
-                // ## RENDER BOSS CARD ##
                 return (
                   <div
                     key={level.value}
@@ -212,7 +209,6 @@ const ChooseContinent = ({ gameMode }) => {
                   </div>
                 );
               } else {
-                // ## RENDER CONTINENT CARD ##
                 return (
                   <div
                     key={level.value}

@@ -1,11 +1,10 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { useTimer } from 'react-timer-hook';
-import api from '@/api/api';
-import QuizHeader from '@/components/quiz/QuizHeader';
-import QuestionSection from '@/components/quiz/QuestionSection';
+import { useState, useEffect, useCallback } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { useTimer } from "react-timer-hook";
+import api from "@/api/api";
+import QuizHeader from "@/components/quiz/QuizHeader";
+import QuestionSection from "@/components/quiz/QuestionSection";
 
-// Generic quiz page used by both capitals and flags
 const QuizPage = ({ gameMode }) => {
   const { continent, difficulty } = useParams();
   const navigate = useNavigate();
@@ -35,31 +34,38 @@ const QuizPage = ({ gameMode }) => {
     expiryTimestamp: getTimerExpiry(),
     onExpire: () => {
       handleTimeExpired();
-    }
+    },
   });
 
   const getQuestionKey = (q) => {
-    // For capitals use the text question; for flags use country_code
-    return gameMode === 'flags' ? q?.country_code : q?.question;
+    return gameMode === "flags" ? q?.country_code : q?.question;
   };
 
   const handleTimeExpired = async () => {
     if (selectedAnswer !== null) return;
 
     pause();
-    setSelectedAnswer('TIME_EXPIRED');
+    setSelectedAnswer("TIME_EXPIRED");
 
     try {
       let result;
-      if (gameMode === 'flags') {
-        result = await api.checkFlagAnswer(continent, getQuestionKey(currentQuestion), null);
+      if (gameMode === "flags") {
+        result = await api.checkFlagAnswer(
+          continent,
+          getQuestionKey(currentQuestion),
+          null
+        );
       } else {
-        result = await api.checkAnswer(continent, getQuestionKey(currentQuestion), null);
+        result = await api.checkAnswer(
+          continent,
+          getQuestionKey(currentQuestion),
+          null
+        );
       }
       setCorrectAnswer(result.correctAnswer);
       setExplanation(result.explanation || null);
     } catch (error) {
-      console.error('Error getting correct answer after time expiry:', error);
+      console.error("Error getting correct answer after time expiry:", error);
       setCorrectAnswer(currentQuestion?.answer);
     } finally {
       setIsRevealed(true);
@@ -74,10 +80,18 @@ const QuizPage = ({ gameMode }) => {
 
     try {
       let result;
-      if (gameMode === 'flags') {
-        result = await api.checkFlagAnswer(continent, getQuestionKey(currentQuestion), answer);
+      if (gameMode === "flags") {
+        result = await api.checkFlagAnswer(
+          continent,
+          getQuestionKey(currentQuestion),
+          answer
+        );
       } else {
-        result = await api.checkAnswer(continent, getQuestionKey(currentQuestion), answer);
+        result = await api.checkAnswer(
+          continent,
+          getQuestionKey(currentQuestion),
+          answer
+        );
       }
 
       if (result.isCorrect) {
@@ -87,7 +101,7 @@ const QuizPage = ({ gameMode }) => {
       setCorrectAnswer(result.correctAnswer);
       setExplanation(result.explanation || null);
     } catch (error) {
-      console.error('Error checking answer:', error);
+      console.error("Error checking answer:", error);
       setCorrectAnswer(currentQuestion?.answer);
     } finally {
       setIsRevealed(true);
@@ -103,14 +117,14 @@ const QuizPage = ({ gameMode }) => {
       setExplanation(null);
     } else {
       pause();
-      navigate('/score', {
+      navigate("/score", {
         state: {
           score,
           totalQuestions: questions.length,
           continent,
           difficulty,
           gameMode,
-        }
+        },
       });
     }
   };
@@ -121,7 +135,7 @@ const QuizPage = ({ gameMode }) => {
     setError(null);
     try {
       const data =
-        gameMode === 'flags'
+        gameMode === "flags"
           ? await api.getFlagsQuizQuestions(continent, difficulty)
           : await api.getCapitalsQuizQuestions(continent, difficulty);
 
@@ -149,11 +163,22 @@ const QuizPage = ({ gameMode }) => {
 
   // Restart timer for new questions
   useEffect(() => {
-    if (!loading && questions.length > 0 && currentQuestionIndex < questions.length && !selectedAnswer) {
+    if (
+      !loading &&
+      questions.length > 0 &&
+      currentQuestionIndex < questions.length &&
+      !selectedAnswer
+    ) {
       const newExpiry = getTimerExpiry();
       restart(newExpiry);
     }
-  }, [currentQuestionIndex, loading, questions.length, restart, selectedAnswer]);
+  }, [
+    currentQuestionIndex,
+    loading,
+    questions.length,
+    restart,
+    selectedAnswer,
+  ]);
 
   const timeLeft = minutes * 60 + seconds;
   const isLowTime = timeLeft <= 10;
@@ -161,7 +186,9 @@ const QuizPage = ({ gameMode }) => {
 
   if (loading) {
     return (
-      <div className={`app-background min-h-screen ${mounted ? 'mounted' : ''}`}>
+      <div
+        className={`app-background min-h-screen ${mounted ? "mounted" : ""}`}
+      >
         <div className="bg-decoration">
           <div className="floating-globe"></div>
           <div className="grid-pattern"></div>
@@ -187,7 +214,10 @@ const QuizPage = ({ gameMode }) => {
           {/* Options skeleton */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="p-4 rounded-2xl border-2 border-white/20 bg-white/5 h-16 animate-pulse" />
+              <div
+                key={i}
+                className="p-4 rounded-2xl border-2 border-white/20 bg-white/5 h-16 animate-pulse"
+              />
             ))}
           </div>
         </div>
@@ -196,12 +226,12 @@ const QuizPage = ({ gameMode }) => {
   }
 
   if (error || questions.length === 0) {
-    const basePath = gameMode === 'flags' ? '/flags' : '/capitals';
+    const basePath = gameMode === "flags" ? "/flags" : "/capitals";
     return (
       <div className="app-background min-h-screen flex items-center justify-center">
         <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 text-center">
           <h2 className="text-2xl font-bold text-red-400 mb-4">
-            {questions.length === 0 ? 'No Questions' : 'Error loading quiz'}
+            {questions.length === 0 ? "No Questions" : "Error loading quiz"}
           </h2>
           <p className="text-white/90 mb-6">
             {error || `No questions available for ${continent} - ${difficulty}`}
@@ -226,7 +256,7 @@ const QuizPage = ({ gameMode }) => {
   }
 
   return (
-    <div className={`app-background min-h-screen ${mounted ? 'mounted' : ''}`}>
+    <div className={`app-background min-h-screen ${mounted ? "mounted" : ""}`}>
       <div className="bg-decoration">
         <div className="floating-globe"></div>
         <div className="grid-pattern"></div>

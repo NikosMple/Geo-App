@@ -1,7 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 
-// Loading component 
 const LoadingScreen = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 flex items-center justify-center">
@@ -17,14 +16,15 @@ const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
 
-  // Show loading while checking auth status
   if (loading) {
     return <LoadingScreen />;
   }
 
-  // If not authenticated, redirect to login
   if (!user) {
-    console.log('🚫 ProtectedRoute - Redirecting to login, from:', location.pathname);
+    console.log(
+      "🚫 ProtectedRoute - Redirecting to login, from:",
+      location.pathname
+    );
     return (
       <Navigate
         to="/login"
@@ -33,7 +33,7 @@ const ProtectedRoute = ({ children }) => {
       />
     );
   }
-  
+
   return children;
 };
 

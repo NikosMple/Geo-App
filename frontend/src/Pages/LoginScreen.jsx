@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
 import { Mail, Lock, User as UserIcon, Loader2, ArrowLeft } from "lucide-react";
 import "@/styles/index.css";
+
+import { useAuth } from "@/hooks/useAuth";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -31,7 +32,6 @@ const LoginScreen = () => {
     }
   }, [user, authLoading, navigate, from]);
 
-  // FIX: Added 'e' parameter to prevent form submission error
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -47,25 +47,21 @@ const LoginScreen = () => {
     } catch (err) {
       setError(err.message || "Authentication failed");
     } finally {
-      // Added finally block to ensure loading is always set to false
       setLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-900 p-4 sm:p-6">
-      {/* IMPROVEMENT: Added a subtle glow effect to the main container */}
       <div className="w-full max-w-5xl grid md:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/10 bg-white/5 border border-white/10">
         {/* Left Branding */}
         <div className="hidden md:flex flex-col justify-center items-center relative overflow-hidden">
-          {/* IMPROVEMENT: Image now has a slow-zooming animation */}
           <img
             src="/3d-rendering-planet-earth.jpg"
             alt="Earth"
             className="absolute inset-0 w-full h-full object-cover animate-slow-zoom"
           />
 
-          {/* IMPROVEMENT: Overlay gradient is now animated */}
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/60 via-blue-900/50 to-emerald-800/60 animate-gradient-shift" />
 
           <div className="relative z-10 text-center px-6">
@@ -84,7 +80,6 @@ const LoginScreen = () => {
             {isSignUp ? "Create Your Account" : "Welcome Back"}
           </h2>
 
-          {/* IMPROVEMENT: Error message now has a fade-in animation */}
           {error && (
             <div className="mb-4 p-3 rounded-lg bg-red-500/20 border border-red-400/30 text-red-200 text-sm animate-fade-in">
               {error}
@@ -94,23 +89,28 @@ const LoginScreen = () => {
           <button
             onClick={loginWithGoogle}
             disabled={loading || authLoading}
-            // IMPROVEMENT: Enhanced transitions and hover effects
             className="w-full flex items-center justify-center gap-3 bg-white text-gray-800 font-medium py-3 px-4 rounded-lg shadow hover:bg-gray-200 transition-all duration-300 mb-6 transform hover:scale-102"
           >
             <div className="hidden md:flex flex-col justify-center items-center relative overflow-hidden">
-              {!imageLoaded && (
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-blue-900 to-emerald-800 animate-pulse" />
-              )}
+              <div
+                className={`absolute inset-0 bg-gradient-to-br from-indigo-900 via-blue-900 to-emerald-800 transition-opacity duration-700 ease-out ${
+                  imageLoaded ? "opacity-0" : "opacity-100 animate-pulse"
+                }`}
+              />
+
               <img
                 src="/3d-rendering-planet-earth.jpg"
                 alt="Earth"
-                className={`absolute inset-0 w-full h-full object-cover animate-slow-zoom transition-opacity duration-500 ${
-                  imageLoaded ? "opacity-100" : "opacity-0"
-                }`}
                 onLoad={() => setImageLoaded(true)}
+                className={`absolute inset-0 w-full h-full object-cover transform transition-all duration-[2000ms] ease-out
+      ${
+        imageLoaded
+          ? "opacity-100 scale-100 animate-slow-zoom"
+          : "opacity-0 scale-105"
+      }`}
               />
-              {/* rest of your content */}
             </div>
+
             <img
               src="https://www.svgrepo.com/show/475656/google-color.svg"
               alt="Google"
@@ -136,7 +136,6 @@ const LoginScreen = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* IMPROVEMENT: Added a transition for smoother appearance */}
             {isSignUp && (
               <div className="relative animate-fade-in">
                 <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 w-5 h-5" />
@@ -145,7 +144,6 @@ const LoginScreen = () => {
                   placeholder="Display name"
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
-                  // IMPROVEMENT: Better focus styles and transitions
                   className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-shadow duration-300"
                   disabled={loading || authLoading}
                   required
@@ -183,7 +181,6 @@ const LoginScreen = () => {
             <button
               type="submit"
               disabled={loading || authLoading}
-              // IMPROVEMENT: Added transform for a "press" effect and better hover styles
               className="w-full py-3 px-4 rounded-lg font-bold text-white bg-gradient-to-r from-emerald-500 to-cyan-500 hover:opacity-90 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 transform active:scale-95"
             >
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : null}

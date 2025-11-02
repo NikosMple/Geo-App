@@ -17,7 +17,6 @@ import GlobalMap from "@/Pages/GlobalMap";
 export default function AppRoutes() {
   const location = useLocation();
 
-  // Memoize page transition config to prevent recreation on every render
   const pageTransition = useMemo(
     () => ({
       initial: { opacity: 0, y: 10 },
@@ -26,9 +25,8 @@ export default function AppRoutes() {
       transition: { duration: 0.25 },
     }),
     []
-  ); //The empty [] means: "never recalculate this - use the cached version forever"
+  );
 
-  // Memoize the location key
   const locationKey = useMemo(() => location.pathname, [location.pathname]);
 
   return (

@@ -3,7 +3,6 @@ import { db } from "../config/firebase.js";
 
 const router = express.Router();
 
-
 // Remove any properties whose values is undefind
 function pruneUndefined(obj) {
   if (!obj || typeof obj !== "object") return obj;
@@ -60,7 +59,6 @@ router.post("/", async (req, res) => {
         .collection("history")
         .add(pruneUndefined({ gameType, ...payload, createdAt: new Date().toISOString() }));
     } catch (historyErr) {
-      // Non-fatal; continue
       console.warn("Failed to append to history:", historyErr?.message || historyErr);
     }
 
@@ -71,7 +69,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Get a user's aggregated stats (latest per game type). Optionally include recent history.
+// Get a user's aggregated stats (latest per game type). 
 router.get("/:userId", async (req, res) => {
   try {
     const { userId } = req.params;

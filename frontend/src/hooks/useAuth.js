@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, createContext } from 'react';
+import React, { useState, useEffect, useContext, createContext } from "react";
 import {
   registerUser,
   loginUser,
@@ -7,7 +7,7 @@ import {
   onAuthStateChange,
   getUserProfile,
   loginWithGoogle as firebaseLoginWithGoogle,
-} from '@/services/firebaseService';
+} from "@/services/firebaseService";
 
 const AuthContext = createContext();
 
@@ -20,18 +20,15 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     let mounted = true;
 
-    console.log('Initializing auth system (popup flow)...');
-
     const unsubscribe = onAuthStateChange(async (firebaseUser) => {
       if (!mounted) return;
 
-      console.log('Auth state changed:', firebaseUser?.email || firebaseUser?.uid || 'No user');
       setLoading(true);
       setError(null);
 
       if (firebaseUser) {
         try {
-          console.log('Fetching user profile for:', firebaseUser.uid);
+          console.log("Fetching user profile for:", firebaseUser.uid);
 
           if (mounted) {
             setUser(firebaseUser);
@@ -44,15 +41,15 @@ export const AuthProvider = ({ children }) => {
             setUserProfile(profile);
           }
         } catch (err) {
-          console.error('Error fetching user profile:', err);
+          console.error("Error fetching user profile:", err);
           if (mounted) {
-            setError(err.message || 'Failed to load profile');
+            setError(err.message || "Failed to load profile");
             setUser(firebaseUser);
             setUserProfile(null);
           }
         }
       } else {
-        console.log('No user - clearing state');
+        console.log("No user - clearing state");
         if (mounted) {
           setUser(null);
           setUserProfile(null);
@@ -72,12 +69,12 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      console.log('Registering user:', email);
+      console.log("Registering user:", email);
       const user = await registerUser(email, password, displayName);
       return user;
     } catch (err) {
-      console.error('Registration error:', err);
-      setError(err.message || 'Registration failed');
+      console.error("Registration error:", err);
+      setError(err.message || "Registration failed");
       throw err;
     } finally {
       setLoading(false);
@@ -88,12 +85,12 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      console.log('Logging in user:', email);
+      console.log("Logging in user:", email);
       const user = await loginUser(email, password);
       return user;
     } catch (err) {
-      console.error('Login error:', err);
-      setError(err.message || 'Login failed');
+      console.error("Login error:", err);
+      setError(err.message || "Login failed");
       throw err;
     } finally {
       setLoading(false);
@@ -104,12 +101,12 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      console.log('Logging in as guest...');
+      console.log("Logging in as guest...");
       const user = await loginAnonymously();
       return user;
     } catch (err) {
-      console.error('Guest login error:', err);
-      setError(err.message || 'Guest login failed');
+      console.error("Guest login error:", err);
+      setError(err.message || "Guest login failed");
       throw err;
     } finally {
       setLoading(false);
@@ -120,12 +117,11 @@ export const AuthProvider = ({ children }) => {
     try {
       setError(null);
       setLoading(true);
-      console.log('Starting Google popup authentication...');
+      console.log("Starting Google popup authentication...");
       await firebaseLoginWithGoogle();
-      // popup resolves and auth state listener will pick up the user
     } catch (err) {
-      console.error('Google login error:', err);
-      setError(err.message || 'Google sign-in failed');
+      console.error("Google login error:", err);
+      setError(err.message || "Google sign-in failed");
       throw err;
     } finally {
       setLoading(false);
@@ -136,12 +132,12 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      console.log('Logging out user...');
+      console.log("Logging out user...");
       await logoutUser();
-      console.log('User logged out');
+      console.log("User logged out");
     } catch (err) {
-      console.error('Logout error:', err);
-      setError(err.message || 'Logout failed');
+      console.error("Logout error:", err);
+      setError(err.message || "Logout failed");
       throw err;
     } finally {
       setLoading(false);
@@ -170,6 +166,6 @@ export const AuthProvider = ({ children }) => {
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (!context) throw new Error('useAuth must be used within an AuthProvider');
+  if (!context) throw new Error("useAuth must be used within an AuthProvider");
   return context;
 };
