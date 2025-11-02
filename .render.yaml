@@ -3,6 +3,9 @@ services:
     name: geo-frontend
     env: node
     rootDir: frontend
-    buildCommand: npm install --legacy-peer-deps && npm run build
+    buildCommand: |
+      npm install -g npm@10
+      npm install --legacy-peer-deps
+      npm run build
     publishDir: build
     plan: free
