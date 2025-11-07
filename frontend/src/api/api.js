@@ -1,9 +1,9 @@
-import axios from "axios";
+import apiClient from "@/api/apiClient";
 
 const api = {
   getContinents: async () => {
     try {
-      const response = await axios.get("/api/continents");
+      const response = await apiClient.get("/api/continents");
       return response.data;
     } catch (error) {
       throw new Error(
@@ -17,7 +17,7 @@ const api = {
   // Player stats: save a finished game
   saveStats: async ({ userId, gameType, score, totalQuestions, correctAnswers, durationSec, metadata }) => {
     try {
-      const response = await axios.post("/api/stats", {
+      const response = await apiClient.post("/api/stats", {
         userId,
         gameType,
         score,
@@ -39,7 +39,7 @@ const api = {
   // Player stats: fetch latest per game type (optionally include history)
   getUserStats: async (userId, { includeHistory = false, historyLimit = 10 } = {}) => {
     try {
-      const response = await axios.get(`/api/stats/${userId}`, {
+      const response = await apiClient.get(`/api/stats/${userId}`, {
         params: { includeHistory, historyLimit },
       });
       return response.data;
@@ -53,7 +53,7 @@ const api = {
   // Add this method for getting available difficulties for a continent
   getContinentQuestions: async (continent) => {
     try {
-      const response = await axios.get(`/api/${continent}`);
+      const response = await apiClient.get(`/api/${continent}`);
       return response.data;
     } catch (error) {
       throw new Error(
@@ -66,7 +66,7 @@ const api = {
   
   getCapitalsQuizQuestions: async (continent, difficulty) => {
     try {
-      const response = await axios.get(
+      const response = await apiClient.get(
         `/api/capitals/${continent}/${difficulty}`
       );
       return response.data;
@@ -81,7 +81,7 @@ const api = {
   
   checkAnswer: async (continent, questionText, userAnswer) => {
     try {
-      const response = await axios.post("/api/capitals/check", {
+      const response = await apiClient.post("/api/capitals/check", {
         continent,
         question: questionText,
         userAnswer,
@@ -98,7 +98,7 @@ const api = {
   
   getCountries: async () => {
     try {
-      const response = await axios.get("/api/countries");
+      const response = await apiClient.get("/api/countries");
       return response.data;
     } catch (error) {
       console.log("API Error:", error);
@@ -112,7 +112,7 @@ const api = {
   
   getFlagsQuizQuestions: async (continent, difficulty) => {
     try {
-      const response = await axios.get(`/api/flags/${continent}/${difficulty}`);
+      const response = await apiClient.get(`/api/flags/${continent}/${difficulty}`);
       return response.data;
     } catch (error) {
       throw new Error(
@@ -125,7 +125,7 @@ const api = {
   
   checkFlagAnswer: async (continent, country_code, userAnswer) => {
     try {
-      const response = await axios.post("/api/flags/check", {
+      const response = await apiClient.post("/api/flags/check", {
         continent,
         country_code,
         userAnswer,
