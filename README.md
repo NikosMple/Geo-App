@@ -1,5 +1,7 @@
 # 🌍 Geo Quiz
 
+### 🎮 [Live Preview → https://geo-app-muig.onrender.com/](https://geo-app-muig.onrender.com/)
+
 A full-stack geography quiz app where players test their knowledge of **world capitals and flags** by continent and difficulty level and explore the world with an **interactive global map**.  
 The app supports authentication with Firebase and saves user progress and statistics to Firestore.
 
