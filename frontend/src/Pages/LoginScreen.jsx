@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Mail, Lock, User as UserIcon, Loader2, ArrowLeft } from "lucide-react";
+// Use image from public folder to avoid bundler alias issues
+const EarthImage = "/3d-rendering-planet-earth.jpg";
 import "@/styles/index.css";
 
 import { useAuth } from "@/hooks/useAuth";
@@ -56,10 +58,21 @@ const LoginScreen = () => {
       <div className="w-full max-w-5xl grid md:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/10 bg-white/5 border border-white/10">
         {/* Left Branding */}
         <div className="hidden md:flex flex-col justify-center items-center relative overflow-hidden">
+          {/* Placeholder background while Earth image loads */}
+          {!imageLoaded && (
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 animate-pulse" />
+          )}
+
+          {/* Earth image with smooth fade-in once loaded */}
           <img
-            src="/3d-rendering-planet-earth.jpg"
+            src={EarthImage}
             alt="Earth"
-            className="absolute inset-0 w-full h-full object-cover animate-slow-zoom"
+            loading="eager"
+            onLoad={() => setImageLoaded(true)}
+            onError={() => setImageLoaded(true)}
+            className={`absolute inset-0 w-full h-full object-cover animate-slow-zoom transition-opacity duration-700 ease-out ${
+              imageLoaded ? "opacity-100" : "opacity-0"
+            }`}
           />
 
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/60 via-blue-900/50 to-emerald-800/60 animate-gradient-shift" />

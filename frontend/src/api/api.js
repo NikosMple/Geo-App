@@ -13,9 +13,17 @@ const api = {
   },
 
   //-----------------------------------------------------------------------------------------------//
-  
+
   // Player stats: save a finished game
-  saveStats: async ({ userId, gameType, score, totalQuestions, correctAnswers, durationSec, metadata }) => {
+  saveStats: async ({
+    userId,
+    gameType,
+    score,
+    totalQuestions,
+    correctAnswers,
+    durationSec,
+    metadata,
+  }) => {
     try {
       const response = await apiClient.post("/api/stats", {
         userId,
@@ -35,9 +43,12 @@ const api = {
   },
 
   //-----------------------------------------------------------------------------------------------//
-  
+
   // Player stats: fetch latest per game type (optionally include history)
-  getUserStats: async (userId, { includeHistory = false, historyLimit = 10 } = {}) => {
+  getUserStats: async (
+    userId,
+    { includeHistory = false, historyLimit = 10 } = {}
+  ) => {
     try {
       const response = await apiClient.get(`/api/stats/${userId}`, {
         params: { includeHistory, historyLimit },
@@ -49,7 +60,7 @@ const api = {
       );
     }
   },
-  
+
   // Add this method for getting available difficulties for a continent
   getContinentQuestions: async (continent) => {
     try {
@@ -63,7 +74,7 @@ const api = {
   },
 
   //-----------------------------------------------------------------------------------------------//
-  
+
   getCapitalsQuizQuestions: async (continent, difficulty) => {
     try {
       const response = await apiClient.get(
@@ -78,7 +89,7 @@ const api = {
   },
 
   //-----------------------------------------------------------------------------------------------//
-  
+
   checkAnswer: async (continent, questionText, userAnswer) => {
     try {
       const response = await apiClient.post("/api/capitals/check", {
@@ -95,13 +106,14 @@ const api = {
   },
 
   //-----------------------------------------------------------------------------------------------//
-  
-  getCountries: async () => {
+
+  getContinents: async () => {
     try {
-      const response = await apiClient.get("/api/countries");
+      const response = await apiClient.get("/api/continents");
+      console.log("Continents API response:", response.data);
       return response.data;
     } catch (error) {
-      console.log("API Error:", error);
+      console.error("Continents API error:", error);
       throw new Error(
         `HTTP error! status: ${error.response?.status || "Network Error"}`
       );
@@ -109,10 +121,12 @@ const api = {
   },
 
   //-----------------------------------------------------------------------------------------------//
-  
+
   getFlagsQuizQuestions: async (continent, difficulty) => {
     try {
-      const response = await apiClient.get(`/api/flags/${continent}/${difficulty}`);
+      const response = await apiClient.get(
+        `/api/flags/${continent}/${difficulty}`
+      );
       return response.data;
     } catch (error) {
       throw new Error(
@@ -122,7 +136,7 @@ const api = {
   },
 
   //-----------------------------------------------------------------------------------------------//
-  
+
   checkFlagAnswer: async (continent, country_code, userAnswer) => {
     try {
       const response = await apiClient.post("/api/flags/check", {
